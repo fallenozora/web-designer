@@ -1,20 +1,144 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-   background-color: #FFFFE0; 
-   font-family: Arial, sans-serif;
-   color: #191970;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  line-height: 1.6;
 }
 
-.kartu-profil {
-   width: 300px;
-   margin: 50px auto;
-   padding: 20px;
-   background-color: white;
-   border-radius: 15px;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-   text-align: center;
+header {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: rgba(0, 123, 255, 0.2);
 }
 
-.kartu-profil img {
-   width: 150px;
-   border-radius: 50%;
+header h1 {
+  font-size: 2.8em;
+  margin-bottom: 10px;
+  animation: slideDown 1s ease-out;
 }
+
+header p {
+  font-size: 1.2em;
+  color: #aad8ff;
+}
+
+nav {
+  background-color: #005f99;
+  padding: 10px 0;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ffd700;
+}
+
+section {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: auto;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #00bfff;
+  display: inline-block;
+}
+
+.card-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input,
+form textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+}
+
+form button {
+  background-color: #00bfff;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background-color: #009acd;
+}
+
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  margin-top: 40px;
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+/* Animasi */
+@keyframes slideDown {
+  from {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
