@@ -121,6 +121,7 @@
       width: 300px;
       border-radius: 10px;
       transition: transform 0.3s;
+      cursor: pointer;
     }
 
     .gallery img:hover {
@@ -175,6 +176,65 @@
       margin-top: 40px;
     }
 
+    /* Detail page styling: biru lembut dengan gradien tipis */
+    .detail-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      padding: 30px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(0,119,182,0.06), rgba(0,180,216,0.03));
+      box-shadow: 0 10px 30px rgba(3,10,20,0.35);
+    }
+
+    .detail-hero {
+      width: 100%;
+      max-width: 920px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .detail-hero img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .detail-desc {
+      max-width: 920px;
+      text-align: left;
+      color: var(--text);
+      background: transparent;
+      padding: 14px 10px;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .detail-desc p {
+      margin-bottom: 8px;
+      color: rgba(0,0,0,0.75);
+      /* when in dark mode it'll be overridden by var(--text) so it's readable */
+    }
+
+    .detail-actions {
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+
+    /* make sure detail pages respond well */
+    @media (max-width:720px){
+      .gallery img{ width: 90%; max-width: 320px; }
+      .detail-hero { max-width: 100%; }
+      .detail-desc { padding: 10px; }
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -205,10 +265,10 @@
   <section id="sport" class="section container">
     <h2>🏆 Sport Design</h2>
     <div class="gallery">
-      <img src="barca vs psg.png" alt="Sport 1">
-      <img src="MESSI KIYOWO.png" alt="Sport 2">
-      <img src="dembele.png" alt="Sport 3">
-      <img src="RAPHINHA FINAL.png" alt="Sport 4">
+      <img src="barca vs psg.png" alt="Sport 1" onclick="showSection('sport-detail-1')">
+      <img src="MESSI KIYOWO.png" alt="Sport 2" onclick="showSection('sport-detail-2')">
+      <img src="dembele.png" alt="Sport 3" onclick="showSection('sport-detail-3')">
+      <img src="RAPHINHA FINAL.png" alt="Sport 4" onclick="showSection('sport-detail-4')">
     </div>
     <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
   </section>
@@ -217,10 +277,10 @@
   <section id="feed" class="section container">
     <h2>📱 Feed Instagram</h2>
     <div class="gallery">
-      <img src="Pekukuhan.png" alt="Feed 1">
-      <img src="Fanta.png" alt="Feed 2">
-      <img src="OPPENHEIMER final ig.png" alt="Feed 3">
-      <img src="Burger poster.png" alt="Feed 4">
+      <img src="Pekukuhan.png" alt="Feed 1" onclick="showSection('feed-detail-1')">
+      <img src="Fanta.png" alt="Feed 2" onclick="showSection('feed-detail-2')">
+      <img src="OPPENHEIMER final ig.png" alt="Feed 3" onclick="showSection('feed-detail-3')">
+      <img src="Burger poster.png" alt="Feed 4" onclick="showSection('feed-detail-4')">
     </div>
     <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
   </section>
@@ -229,9 +289,9 @@
   <section id="logo" class="section container">
     <h2>🎯 Logo Design</h2>
     <div class="gallery">
-      <img src="logo.png" alt="Logo 1">
-      <img src="logo kopi brewmance.png" alt="Logo 2">
-      <img src="logo fanz design 2.png" alt="Logo 3">
+      <img src="logo.png" alt="Logo 1" onclick="showSection('logo-detail-1')">
+      <img src="logo kopi brewmance.png" alt="Logo 2" onclick="showSection('logo-detail-2')">
+      <img src="logo fanz design 2.png" alt="Logo 3" onclick="showSection('logo-detail-3')">
     </div>
     <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
   </section>
@@ -240,10 +300,179 @@
   <section id="uiux" class="section container">
     <h2>💻 UI/UX Design</h2>
     <div class="gallery">
-      <img src="https://via.placeholder.com/300x200?text=UIUX+1" alt="UIUX 1">
-      <img src="https://via.placeholder.com/300x200?text=UIUX+2" alt="UIUX 2">
+      <img src="https://via.placeholder.com/300x200?text=UIUX+1" alt="UIUX 1" onclick="showSection('uiux-detail-1')">
+      <img src="https://via.placeholder.com/300x200?text=UIUX+2" alt="UIUX 2" onclick="showSection('uiux-detail-2')">
     </div>
     <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
+  </section>
+
+  <!-- DETAIL PAGES (semua ada di 1 file) -->
+  <!-- Sport details -->
+  <section id="sport-detail-1" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="barca vs psg.png" alt="Barca vs PSG - detail"></div>
+      <div class="detail-desc">
+        <h3>Barca vs PSG — Ringkas</h3>
+        <p>Desain poster ini dibuat untuk memunculkan energi pertandingan. Aku pakai warna kontras dan tipografi tegas supaya mata langsung fokus ke aksi.</p>
+        <p>Tools: Photoshop • Waktu pengerjaan: singkat • Catatan: cocok untuk promosi event online.</p>
+      </div>
+      <div class="detail-actions">
+        <button class="back-button" onclick="showSection('sport')">⬅ Kembali ke Galeri Sport</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="sport-detail-2" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="MESSI KIYOWO.png" alt="Messi - detail"></div>
+      <div class="detail-desc">
+        <h3>Messi Kiyowo — Ringkas</h3>
+        <p>Konsepnya fokus ke persona atlet: ekspresi dan gerak di-highlight. Warna dipilih agar menonjol saat tampil di feed sosial.</p>
+        <p>Tools: Illustrator & Photoshop • Notes: ideal untuk poster fan event.</p>
+      </div>
+      <div class="detail-actions">
+        <button class="back-button" onclick="showSection('sport')">⬅ Kembali ke Galeri Sport</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="sport-detail-3" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="dembele.png" alt="Dembele - detail"></div>
+      <div class="detail-desc">
+        <h3>Dembele — Ringkas</h3>
+        <p>Eksperimen warna dan tekstur untuk memberi kesan gerak cepat. Layout dibuat simple supaya tetap mudah dibaca di mobile.</p>
+        <p>Tools: Photoshop • Catatan: revisi minor mungkin diperlukan untuk cetak besar.</p>
+      </div>
+      <div class="detail-actions">
+        <button class="back-button" onclick="showSection('sport')">⬅ Kembali ke Galeri Sport</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="sport-detail-4" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="RAPHINHA FINAL.png" alt="Raphinha - detail"></div>
+      <div class="detail-desc">
+        <h3>Raphinha Final — Ringkas</h3>
+        <p>Desain ini menekankan momen kemenangan. Elemen grafis mendukung rasa dinamis dan cocok untuk header event.</p>
+        <p>Tools: Photoshop • Waktu: beberapa jam • Usage: digital promo.</p>
+      </div>
+      <div class="detail-actions">
+        <button class="back-button" onclick="showSection('sport')">⬅ Kembali ke Galeri Sport</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feed details -->
+  <section id="feed-detail-1" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="Pekukuhan.png" alt="Pekukuhan - detail"></div>
+      <div class="detail-desc">
+        <h3>Pekukuhan — Ringkas</h3>
+        <p>Konten ini dibuat untuk pengumuman resmi—komposisi bersih dan warna brand agar terlihat profesional pada feed.</p>
+        <p>Tools: Illustrator • Catatan: versi square siap upload.</p>
+      </div>
+      <div class="detail-actions"><button class="back-button" onclick="showSection('feed')">⬅ Kembali ke Galeri Feed</button></div>
+    </div>
+  </section>
+
+  <section id="feed-detail-2" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="Fanta.png" alt="Fanta - detail"></div>
+      <div class="detail-desc">
+        <h3>Fanta — Ringkas</h3>
+        <p>Desain promosi produk dengan warna cerah untuk menarik perhatian. Visual kuat supaya engagement naik.</p>
+        <p>Tools: Photoshop & Mockup.</p>
+      </div>
+      <div class="detail-actions"><button class="back-button" onclick="showSection('feed')">⬅ Kembali ke Galeri Feed</button></div>
+    </div>
+  </section>
+
+  <section id="feed-detail-3" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="OPPENHEIMER final ig.png" alt="Oppenheimer - detail"></div>
+      <div class="detail-desc">
+        <h3>Oppenheimer — Ringkas</h3>
+        <p>Poster tematik dengan mood dramatis. Kontras tinggi dan tipografi kuat jadi fokus utama.</p>
+        <p>Tools: Photoshop • Keterangan: untuk kampanye film.</p>
+      </div>
+      <div class="detail-actions"><button class="back-button" onclick="showSection('feed')">⬅ Kembali ke Galeri Feed</button></div>
+    </div>
+  </section>
+
+  <section id="feed-detail-4" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="Burger poster.png" alt="Burger poster - detail"></div>
+      <div class="detail-desc">
+        <h3>Burger Poster — Ringkas</h3>
+        <p>Poster makanan yang menggugah selera; komposisi dan warna dipilih untuk meningkatkan nafsu beli.</p>
+        <p>Tools: Illustrator & Photoshop.</p>
+      </div>
+      <div class="detail-actions"><button class="back-button" onclick="showSection('feed')">⬅ Kembali ke Galeri Feed</button></div>
+    </div>
+  </section>
+
+  <!-- Logo details -->
+  <section id="logo-detail-1" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="logo.png" alt="Logo 1 - detail"></div>
+      <div class="detail-desc">
+        <h3>Logo 1 — Ringkas</h3>
+        <p>Konsep sederhana untuk identitas visual yang mudah dikenali. Versi hitam-putih siap untuk format berbeda.</p>
+        <p>Tools: Illustrator • Catatan: scalable vector.</p>
+      </div>
+      <div class="detail-actions"><button class="back-button" onclick="showSection('logo')">⬅ Kembali ke Galeri Logo</button></div>
+    </div>
+  </section>
+
+  <section id="logo-detail-2" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="logo kopi brewmance.png" alt="Logo Kopi Brewmance - detail"></div>
+      <div class="detail-desc">
+        <h3>Logo Kopi Brewmance — Ringkas</h3>
+        <p>Identitas hangat dan ramah, dibuat supaya terasa cozy di kemasan & social media.</p>
+        <p>Tools: Illustrator • Notes: cocok untuk label produk.</p>
+      </div>
+      <div class="detail-actions"><button class="back-button" onclick="showSection('logo')">⬅ Kembali ke Galeri Logo</button></div>
+    </div>
+  </section>
+
+  <section id="logo-detail-3" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="logo fanz design 2.png" alt="Logo Fanz Design - detail"></div>
+      <div class="detail-desc">
+        <h3>Logo Fanz Design — Ringkas</h3>
+        <p>Logo modern dengan bentuk geometris untuk kesan profesional. Versi monokrom tersedia.</p>
+        <p>Tools: Illustrator.</p>
+      </div>
+      <div class="detail-actions"><button class="back-button" onclick="showSection('logo')">⬅ Kembali ke Galeri Logo</button></div>
+    </div>
+  </section>
+
+  <!-- UIUX details -->
+  <section id="uiux-detail-1" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="https://via.placeholder.com/300x200?text=UIUX+1" alt="UIUX 1 - detail"></div>
+      <div class="detail-desc">
+        <h3>UIUX 1 — Ringkas</h3>
+        <p>Sketsa awal dan eksplorasi layout. Fokus pada pengalaman pengguna yang simpel dan intuitif.</p>
+        <p>Tools: Figma • Status: prototype basic.</p>
+      </div>
+      <div class="detail-actions"><button class="back-button" onclick="showSection('uiux')">⬅ Kembali ke Galeri UI/UX</button></div>
+    </div>
+  </section>
+
+  <section id="uiux-detail-2" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="https://via.placeholder.com/300x200?text=UIUX+2" alt="UIUX 2 - detail"></div>
+      <div class="detail-desc">
+        <h3>UIUX 2 — Ringkas</h3>
+        <p>Exploration warna & hierarchy, dibuat untuk mobile-first. Clean layout supaya navigasi jelas.</p>
+        <p>Tools: Figma • Catatan: responsive-ready.</p>
+      </div>
+      <div class="detail-actions"><button class="back-button" onclick="showSection('uiux')">⬅ Kembali ke Galeri UI/UX</button></div>
+    </div>
   </section>
 
   <!-- Kontak -->
@@ -267,7 +496,8 @@
       document.querySelectorAll('.section').forEach(section => {
         section.classList.remove('active');
       });
-      document.getElementById(id).classList.add('active');
+      const el = document.getElementById(id);
+      if (el) el.classList.add('active');
       window.scrollTo(0, 0);
     }
 
@@ -288,6 +518,9 @@
         form.reset();
       }, 3000);
     });
+
+    // start at home by default
+    showSection('home');
   </script>
 
 </body>
