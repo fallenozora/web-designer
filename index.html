@@ -146,4 +146,129 @@
       font-weight: bold;
       cursor: pointer;
       border-radius: 5px;
-      transition:
+      transition: background 0.3s;
+    }
+
+    form button:hover {
+      background-color: #ffd700;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #111;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="container">
+      <h1>Fallen Ozora Raza</h1>
+      <p>Creative Director & Graphic Designer</p>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#portofolio">Portofolio</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="tentang" class="fade-in">
+      <div class="container">
+        <h2>Tentang Saya</h2>
+        <p>
+          Saya adalah seorang desainer grafis yang berfokus pada identitas visual dan branding dengan pendekatan strategis dan elegan. 
+          Misi saya adalah menciptakan karya desain yang tidak hanya estetis, tapi juga memiliki kekuatan naratif dan fungsionalitas yang tinggi.
+        </p>
+      </div>
+    </section>
+
+    <section id="portofolio" class="fade-in">
+      <div class="container">
+        <h2>Portofolio</h2>
+        <div class="gallery">
+          <div class="item">
+            <img src="https://via.placeholder.com/400x300/1a1a1a/ffffff?text=Logo+Design" alt="Logo Design" />
+            <p>Logo untuk brand profesional</p>
+          </div>
+          <div class="item">
+            <img src="https://via.placeholder.com/400x300/2c2c2c/ffffff?text=Brand+Identity" alt="Brand Identity" />
+            <p>Desain identitas visual lengkap</p>
+          </div>
+          <div class="item">
+            <img src="https://via.placeholder.com/400x300/333333/ffffff?text=Poster+Promo" alt="Poster Promo" />
+            <p>Poster promosi produk premium</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontak" class="fade-in">
+      <div class="container">
+        <h2>Kontak Saya</h2>
+        <form id="kontakForm">
+          <input type="text" id="nama" placeholder="Nama Kamu" required />
+          <input type="email" id="email" placeholder="Email Kamu" required />
+          <textarea id="pesan" placeholder="Tulis pesan kamu..." required></textarea>
+          <button type="submit">Kirim</button>
+        </form>
+        <p id="pesanStatus"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Fallen Ozora Raza. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Animasi saat scroll
+    const faders = document.querySelectorAll(".fade-in");
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    faders.forEach(fader => observer.observe(fader));
+
+    // Form
+    document.getElementById("kontakForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const nama = document.getElementById("nama").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const pesan = document.getElementById("pesan").value.trim();
+      const status = document.getElementById("pesanStatus");
+
+      if (nama && email && pesan) {
+        status.textContent = `Pesan dari ${nama} berhasil dikirim!`;
+        status.style.color = "#f0c040";
+        this.reset();
+      } else {
+        status.textContent = "Harap isi semua field!";
+        status.style.color = "#f44336";
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+
+
+ 
