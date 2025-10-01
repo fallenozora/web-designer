@@ -1,4 +1,4 @@
-/* Font & Reset */
+/* Reset & Base */
 * {
   margin: 0;
   padding: 0;
@@ -7,58 +7,60 @@
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #ffffff;
-  color: #333;
+  background-color: #0d0d0d;
+  color: #f5f5f5;
   line-height: 1.6;
 }
 
-/* Container */
 .container {
   width: 90%;
   max-width: 1100px;
   margin: auto;
 }
 
-/* Header */
+/* Header / Hero */
 .hero {
-  background: linear-gradient(135deg, #FFEB3B, #03A9F4);
-  color: #000;
+  background-color: #111;
   text-align: center;
-  padding: 80px 20px;
-  clip-path: ellipse(120% 100% at 50% 0%);
+  padding: 100px 20px 80px;
+  border-bottom: 3px solid #444;
 }
 
 .hero h1 {
-  font-size: 2.8em;
+  font-family: 'Georgia', serif;
+  font-size: 3em;
+  color: #f0c040; /* emas */
 }
 
 .hero p {
   font-size: 1.2em;
+  color: #ccc;
   margin-top: 10px;
 }
 
 /* Navigation */
 nav {
-  background-color: #03A9F4;
-  padding: 10px 0;
-  text-align: center;
+  background-color: #1a1a1a;
+  padding: 15px 0;
 }
 
 nav ul {
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 40px;
 }
 
 nav a {
-  color: #fff;
+  color: #f0c040;
   text-decoration: none;
   font-weight: bold;
+  font-size: 1em;
 }
 
 nav a:hover {
-  text-decoration: underline;
+  color: #fff;
+  border-bottom: 2px solid #f0c040;
 }
 
 /* Sections */
@@ -76,7 +78,8 @@ section.show {
 
 h2 {
   margin-bottom: 20px;
-  color: #03A9F4;
+  font-size: 2em;
+  color: #f0c040;
 }
 
 /* Gallery */
@@ -87,15 +90,16 @@ h2 {
 }
 
 .item {
-  border: 2px solid #FFEB3B;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
   border-radius: 8px;
   overflow: hidden;
   transition: transform 0.3s ease;
-  background-color: #fffde7;
 }
 
 .item:hover {
   transform: scale(1.03);
+  border-color: #f0c040;
 }
 
 .item img {
@@ -105,11 +109,12 @@ h2 {
 
 .item p {
   text-align: center;
-  padding: 10px;
+  padding: 12px;
   font-weight: bold;
+  color: #ccc;
 }
 
-/* Form Kontak */
+/* Form */
 form {
   display: flex;
   flex-direction: column;
@@ -118,14 +123,17 @@ form {
 
 form input,
 form textarea {
-  padding: 10px;
-  border: 2px solid #03A9F4;
+  padding: 12px;
+  border: 1px solid #444;
   border-radius: 5px;
   font-size: 1em;
+  background-color: #1a1a1a;
+  color: #fff;
 }
 
 form button {
-  background-color: #FFEB3B;
+  background-color: #f0c040;
+  color: #000;
   border: none;
   padding: 12px;
   font-weight: bold;
@@ -135,15 +143,14 @@ form button {
 }
 
 form button:hover {
-  background-color: #fdd835;
+  background-color: #ffd700;
 }
 
 /* Footer */
 footer {
-  background-color: #f5f5f5;
+  background-color: #111;
   text-align: center;
   padding: 20px;
-  color: #777;
   font-size: 0.9em;
+  color: #666;
 }
-
