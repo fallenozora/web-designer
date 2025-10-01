@@ -1,27 +1,22 @@
-// Animasi Fade-in Saat Scroll
+// Animasi fade-in saat scroll
 const faders = document.querySelectorAll(".fade-in");
 
-const appearOptions = {
-  threshold: 0.2,
-  rootMargin: "0px 0px -50px 0px"
-};
-
-const appearOnScroll = new IntersectionObserver(function (entries, observer) {
+const observer = new IntersectionObserver((entries, obs) => {
   entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-
-    entry.target.classList.add("show");
-    observer.unobserve(entry.target);
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+      obs.unobserve(entry.target);
+    }
   });
-}, appearOptions);
-
-faders.forEach(fader => {
-  appearOnScroll.observe(fader);
+}, {
+  threshold: 0.2
 });
 
-// Form Kontak
+faders.forEach(fader => observer.observe(fader));
+
+// Form kirim
 document.getElementById("kontakForm").addEventListener("submit", function (e) {
-  e.preventDefault(); // Mencegah reload halaman
+  e.preventDefault();
 
   const nama = document.getElementById("nama").value.trim();
   const email = document.getElementById("email").value.trim();
@@ -29,11 +24,12 @@ document.getElementById("kontakForm").addEventListener("submit", function (e) {
   const status = document.getElementById("pesanStatus");
 
   if (nama && email && pesan) {
-    status.textContent = `Terima kasih, ${nama}! Pesanmu telah terkirim.`;
-    status.style.color = "#00ffcc";
-    this.reset(); // Reset form
+    status.textContent = `Terima kasih, ${nama}! Pesanmu telah dikirim 🎉`;
+    status.style.color = "#4CAF50";
+    this.reset();
   } else {
-    status.textContent = "Harap lengkapi semua field.";
-    status.style.color = "orange";
+    status.textContent = "Harap isi semua field!";
+    status.style.color = "#f44336";
   }
 });
+
