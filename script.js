@@ -24,12 +24,11 @@ document.getElementById("kontakForm").addEventListener("submit", function (e) {
   const status = document.getElementById("pesanStatus");
 
   if (nama && email && pesan) {
-    status.textContent = `Terima kasih, ${nama}! Pesanmu telah dikirim 🎉`;
-    status.style.color = "#4CAF50";
+    status.textContent = `Pesan dari ${nama} berhasil dikirim!`;
+    status.style.color = "#f0c040";
     this.reset();
   } else {
     status.textContent = "Harap isi semua field!";
     status.style.color = "#f44336";
   }
 });
-
