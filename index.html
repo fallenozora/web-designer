@@ -1,20 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Fanzz.design</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fallen Ozora Raza</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-   <div class="kartu-profil">
-   <img src="foto profil.jpg" alt="Foto profil saya">
-   <h1>Fallen</h1>
-   <p>Saya adalah desainer visual.
-Selamat datang di website pertama saya!</p>
-   <a
-href="https://www.instagram.com/fanzz.design?utm_source=ig_web_button_share_sheet&igsh=MTM5cWlheW85aTBx">kunjungi
-instagram saya</a>
-<button id="sapabutton">sapa saya!</button>
-<script.src="script,js"></script.src>
+
+  <header class="fade-in">
+    <h1>Fallen Ozora Raza</h1>
+    <p>Web Developer | Creative Thinker | UI/UX Enthusiast</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#proyek">Proyek</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <section id="tentang" class="fade-in">
+    <h2>Tentang Saya</h2>
+    <p>Saya adalah seorang web developer yang berfokus pada pembuatan antarmuka yang elegan dan responsif. Saya senang bereksperimen dengan desain dan teknologi baru untuk menciptakan pengalaman pengguna yang menyenangkan.</p>
+  </section>
+
+  <section id="proyek" class="fade-in">
+    <h2>Proyek Unggulan</h2>
+    <div class="card-container">
+      <div class="card">Landing Page Produk</div>
+      <div class="card">Aplikasi Catatan</div>
+      <div class="card">Website Portfolio</div>
+    </div>
+  </section>
+
+  <section id="kontak" class="fade-in">
+    <h2>Kontak Saya</h2>
+    <form id="kontakForm">
+      <input type="text" id="nama" placeholder="Nama Anda" required />
+      <input type="email" id="email" placeholder="Email Anda" required />
+      <textarea id="pesan" placeholder="Tulis pesan..." required></textarea>
+      <button type="submit">Kirim</button>
+    </form>
+    <p id="pesanStatus"></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Fallen Ozora Raza. Dibuat dengan ❤️ dan CSS biru.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
 
