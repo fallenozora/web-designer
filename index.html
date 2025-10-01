@@ -5,7 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Fallen Ozora Raza - Desainer Grafis</title>
   <style>
-    /* Reset dan dasar */
+    :root {
+      --bg: #0d1b2a;
+      --text: #e0e1dd;
+      --primary: #00b4d8;
+      --secondary: #1b263b;
+      --accent: #0077b6;
+    }
+
+    body.light {
+      --bg: #f7f7f7;
+      --text: #1a1a1a;
+      --primary: #0077b6;
+      --secondary: #e0f7fa;
+      --accent: #023e8a;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -18,10 +33,10 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #0d1b2a;
-      color: #e0e1dd;
+      background-color: var(--bg);
+      color: var(--text);
       line-height: 1.6;
-      overflow-x: hidden;
+      transition: all 0.5s ease;
     }
 
     .container {
@@ -32,11 +47,12 @@
     }
 
     header {
-      background: linear-gradient(to right, #1b263b, #415a77);
+      background: linear-gradient(to right, var(--secondary), var(--accent));
       padding: 60px 0;
       text-align: center;
       color: #fff;
       animation: fadeInDown 1.2s ease-out;
+      position: relative;
     }
 
     header h1 {
@@ -61,7 +77,40 @@
     }
 
     nav a:hover {
-      color: #00b4d8;
+      color: var(--primary);
+    }
+
+    .toggle-theme {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+
+    .toggle-theme:hover {
+      background: var(--accent);
+    }
+
+    .download-cv {
+      margin-top: 20px;
+      display: inline-block;
+      background-color: var(--primary);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .download-cv:hover {
+      background-color: var(--accent);
     }
 
     section {
@@ -78,7 +127,7 @@
     h2 {
       text-align: center;
       margin-bottom: 30px;
-      color: #00b4d8;
+      color: var(--primary);
       font-size: 2rem;
     }
 
@@ -120,6 +169,7 @@
       border: none;
       border-radius: 5px;
       font-size: 1rem;
+      background: #f1f1f1;
     }
 
     textarea {
@@ -128,7 +178,7 @@
     }
 
     button {
-      background-color: #0077b6;
+      background-color: var(--accent);
       color: white;
       padding: 12px;
       border: none;
@@ -139,11 +189,31 @@
     }
 
     button:hover {
-      background-color: #00b4d8;
+      background-color: var(--primary);
+    }
+
+    .social {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .social a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .notification {
+      text-align: center;
+      color: var(--primary);
+      font-size: 0.95rem;
+      margin-top: 10px;
+      display: none;
     }
 
     footer {
-      background-color: #1b263b;
+      background-color: var(--secondary);
       color: #adb5bd;
       text-align: center;
       padding: 20px 0;
@@ -169,6 +239,12 @@
       .gallery img {
         width: 100%;
       }
+
+      .toggle-theme {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+      }
     }
   </style>
 </head>
@@ -176,6 +252,7 @@
 
   <header>
     <div class="container">
+      <button class="toggle-theme">Ganti Tema</button>
       <h1>Fallen Ozora Raza</h1>
       <p>Desainer Grafis Profesional</p>
       <nav>
@@ -185,6 +262,7 @@
           <li><a href="#contact">Kontak</a></li>
         </ul>
       </nav>
+      <a href="cv-fallen-ozora.pdf" class="download-cv" download>📄 Unduh CV</a>
     </div>
   </header>
 
@@ -209,12 +287,17 @@
   <section id="contact" class="section">
     <div class="container">
       <h2>Kontak</h2>
-      <form>
+      <form id="contact-form">
         <input type="text" placeholder="Nama Anda" required>
         <input type="email" placeholder="Email Anda" required>
         <textarea placeholder="Pesan Anda" required></textarea>
         <button type="submit">Kirim</button>
       </form>
+      <div class="notification" id="notif">✅ Pesan terkirim! Terima kasih.</div>
+      <div class="social">
+        <a href="https://instagram.com/" target="_blank">Instagram</a> |
+        <a href="https://behance.net/" target="_blank">Behance</a>
+      </div>
     </div>
   </section>
 
@@ -225,7 +308,7 @@
   </footer>
 
   <script>
-    // Fade-in animasi saat scroll
+    // Animasi scroll
     const sections = document.querySelectorAll('.section');
 
     const observer = new IntersectionObserver(entries => {
@@ -237,10 +320,25 @@
       });
     }, { threshold: 0.2 });
 
-    sections.forEach(section => {
-      observer.observe(section);
+    sections.forEach(section => observer.observe(section));
+
+    // Toggle tema
+    const themeBtn = document.querySelector('.toggle-theme');
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+    });
+
+    // Simulasi kirim form
+    const form = document.getElementById('contact-form');
+    const notif = document.getElementById('notif');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      notif.style.display = 'block';
+      setTimeout(() => {
+        notif.style.display = 'none';
+        form.reset();
+      }, 3000);
     });
   </script>
 </body>
 </html>
-
