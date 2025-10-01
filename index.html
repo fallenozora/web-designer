@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fallen Ozora Raza - Portofolio</title>
   <style>
     :root {
@@ -22,113 +22,91 @@
     }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bg);
+      background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background 0.3s, color 0.3s;
     }
 
     .container {
-      width: 90%;
-      max-width: 1100px;
+      max-width: 1000px;
       margin: auto;
-      padding: 40px 0;
+      padding: 40px 20px;
+      text-align: center;
     }
 
     header {
       background: linear-gradient(to right, var(--secondary), var(--accent));
-      padding: 60px 0;
-      text-align: center;
-      color: #fff;
-      animation: fadeInDown 1.2s ease-out;
+      color: white;
+      padding: 40px 20px;
       position: relative;
     }
 
     header h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       margin-bottom: 10px;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: #a8dadc;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: var(--primary);
     }
 
     .toggle-theme {
       position: absolute;
       top: 20px;
       right: 20px;
-      background: var(--primary);
-      color: #fff;
-      border: none;
       padding: 10px 15px;
+      border: none;
+      background: var(--primary);
+      color: white;
       border-radius: 20px;
       cursor: pointer;
-      font-size: 0.9rem;
     }
 
     .download-cv {
       margin-top: 20px;
       display: inline-block;
-      background-color: var(--primary);
-      color: #fff;
-      padding: 12px 20px;
-      border-radius: 30px;
+      padding: 10px 20px;
+      background: var(--primary);
+      color: white;
       text-decoration: none;
+      border-radius: 30px;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .category {
+      background: var(--secondary);
+      color: white;
+      padding: 40px 20px;
+      border-radius: 10px;
+      cursor: pointer;
       transition: background 0.3s;
     }
 
-    .download-cv:hover {
-      background-color: var(--accent);
-    }
-
-    section {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
-    }
-
-    section.show {
-      opacity: 1;
-      transform: translateY(0);
+    .category:hover {
+      background: var(--accent);
     }
 
     h2 {
-      text-align: center;
-      margin-bottom: 30px;
       color: var(--primary);
-      font-size: 2rem;
-    }
-
-    p {
-      font-size: 1.1rem;
-      text-align: center;
+      margin-bottom: 20px;
     }
 
     .gallery {
@@ -136,231 +114,167 @@
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
-      margin-top: 30px;
+      margin: 30px 0;
     }
 
     .gallery img {
       width: 300px;
-      border-radius: 12px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
+      border-radius: 10px;
+      transition: transform 0.3s;
     }
 
     .gallery img:hover {
       transform: scale(1.05);
-      box-shadow: 0 8px 20px rgba(0, 180, 216, 0.3);
+    }
+
+    .back-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
     }
 
     form {
       display: flex;
       flex-direction: column;
-      gap: 15px;
       max-width: 500px;
-      margin: 30px auto 0;
+      margin: auto;
+      gap: 15px;
     }
 
     input, textarea {
       padding: 12px;
-      border: none;
       border-radius: 5px;
+      border: none;
       font-size: 1rem;
-      background: #f1f1f1;
     }
 
-    textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-
-    button {
-      background-color: var(--accent);
+    button[type="submit"] {
+      background: var(--accent);
       color: white;
       padding: 12px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 1rem;
-      transition: background-color 0.3s;
-    }
-
-    button:hover {
-      background-color: var(--primary);
     }
 
     .notification {
-      text-align: center;
       color: var(--primary);
-      font-size: 0.95rem;
       margin-top: 10px;
       display: none;
     }
 
-    .social {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .social a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: var(--primary);
-      font-weight: bold;
-    }
-
     footer {
-      background-color: var(--secondary);
-      color: #adb5bd;
+      background: var(--secondary);
+      color: white;
       text-align: center;
-      padding: 20px 0;
+      padding: 20px;
       margin-top: 40px;
     }
 
-    .portfolio-section {
-      margin-bottom: 60px;
-    }
-
-    @keyframes fadeInDown {
-      0% {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      .gallery img {
-        width: 100%;
-      }
-
-      .toggle-theme {
-        top: 10px;
-        right: 10px;
-        padding: 8px 12px;
-      }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="container">
-      <button class="toggle-theme">Ganti Tema</button>
-      <h1>Fallen Ozora Raza</h1>
-      <p>Desainer Grafis Profesional</p>
-      <nav>
-        <ul>
-          <li><a href="#about">Tentang</a></li>
-          <li><a href="#portfolio">Portofolio</a></li>
-          <li><a href="#contact">Kontak</a></li>
-        </ul>
-      </nav>
-      <a href="cv-fallen-ozora.pdf" class="download-cv" download>📄 Unduh CV</a>
-    </div>
+    <h1>Fallen Ozora Raza</h1>
+    <p>Desainer Grafis Profesional</p>
+    <button class="toggle-theme">Ganti Tema</button><br>
+    <a href="cv-fallen-ozora.pdf" class="download-cv" download>📄 Unduh CV</a>
   </header>
 
-  <section id="about" class="section">
-    <div class="container">
-      <h2>Tentang Saya</h2>
-      <p>Saya adalah desainer grafis yang berfokus pada branding, sport design, UI/UX dan konten sosial media. Saya memadukan kreativitas dengan teknologi untuk menghasilkan desain yang berdampak.</p>
+  <!-- Halaman Home -->
+  <section id="home" class="section active container">
+    <h2>Pilih Kategori Portofolio</h2>
+    <div class="category-grid">
+      <div class="category" onclick="showSection('sport')">🏆 Sport Design</div>
+      <div class="category" onclick="showSection('feed')">📱 Feed Instagram</div>
+      <div class="category" onclick="showSection('logo')">🎯 Logo Design</div>
+      <div class="category" onclick="showSection('uiux')">💻 UI/UX Design</div>
     </div>
   </section>
 
-  <!-- Portfolio -->
-  <section id="portfolio" class="section">
-    <div class="container">
-      <h2>Portofolio</h2>
-
-      <!-- Sport Design -->
-      <div class="portfolio-section">
-        <h3 style="text-align:center; color:var(--accent); margin: 20px 0;">🏆 Sport Design</h3>
-        <div class="gallery">
-          <img src="https://via.placeholder.com/300x200?text=Sport+1" alt="Sport Design 1">
-          <img src="https://via.placeholder.com/300x200?text=Sport+2" alt="Sport Design 2">
-        </div>
-      </div>
-
-      <!-- Feed Instagram -->
-      <div class="portfolio-section">
-        <h3 style="text-align:center; color:var(--accent); margin: 20px 0;">📱 Feed Instagram</h3>
-        <div class="gallery">
-          <img src="https://via.placeholder.com/300x200?text=Feed+1" alt="Feed 1">
-          <img src="https://via.placeholder.com/300x200?text=Feed+2" alt="Feed 2">
-        </div>
-      </div>
-
-      <!-- Logo Design -->
-      <div class="portfolio-section">
-        <h3 style="text-align:center; color:var(--accent); margin: 20px 0;">🎯 Logo Design</h3>
-        <div class="gallery">
-          <img src="https://via.placeholder.com/300x200?text=Logo+1" alt="Logo 1">
-          <img src="https://via.placeholder.com/300x200?text=Logo+2" alt="Logo 2">
-        </div>
-      </div>
-
-      <!-- UI/UX -->
-      <div class="portfolio-section">
-        <h3 style="text-align:center; color:var(--accent); margin: 20px 0;">💻 UI/UX Design</h3>
-        <div class="gallery">
-          <img src="https://via.placeholder.com/300x200?text=UIUX+1" alt="UI/UX 1">
-          <img src="https://via.placeholder.com/300x200?text=UIUX+2" alt="UI/UX 2">
-        </div>
-      </div>
+  <!-- Halaman Sport Design -->
+  <section id="sport" class="section container">
+    <h2>🏆 Sport Design</h2>
+    <div class="gallery">
+      <img src="https://via.placeholder.com/300x200?text=Sport+1" alt="Sport 1">
+      <img src="https://via.placeholder.com/300x200?text=Sport+2" alt="Sport 2">
     </div>
+    <button class="back-button" onclick="showSection('home')">⬅️ Kembali ke Menu</button>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="section">
-    <div class="container">
-      <h2>Kontak</h2>
-      <form id="contact-form">
-        <input type="text" placeholder="Nama Anda" required>
-        <input type="email" placeholder="Email Anda" required>
-        <textarea placeholder="Pesan Anda" required></textarea>
-        <button type="submit">Kirim</button>
-      </form>
-      <div class="notification" id="notif">✅ Pesan terkirim! Terima kasih.</div>
-      <div class="social">
-        <a href="https://instagram.com/" target="_blank">Instagram</a> |
-        <a href="https://behance.net/" target="_blank">Behance</a>
-      </div>
+  <!-- Feed IG -->
+  <section id="feed" class="section container">
+    <h2>📱 Feed Instagram</h2>
+    <div class="gallery">
+      <img src="https://via.placeholder.com/300x200?text=Feed+1" alt="Feed 1">
+      <img src="https://via.placeholder.com/300x200?text=Feed+2" alt="Feed 2">
     </div>
+    <button class="back-button" onclick="showSection('home')">⬅️ Kembali ke Menu</button>
+  </section>
+
+  <!-- Logo Design -->
+  <section id="logo" class="section container">
+    <h2>🎯 Logo Design</h2>
+    <div class="gallery">
+      <img src="https://via.placeholder.com/300x200?text=Logo+1" alt="Logo 1">
+      <img src="https://via.placeholder.com/300x200?text=Logo+2" alt="Logo 2">
+    </div>
+    <button class="back-button" onclick="showSection('home')">⬅️ Kembali ke Menu</button>
+  </section>
+
+  <!-- UI UX -->
+  <section id="uiux" class="section container">
+    <h2>💻 UI/UX Design</h2>
+    <div class="gallery">
+      <img src="https://via.placeholder.com/300x200?text=UIUX+1" alt="UIUX 1">
+      <img src="https://via.placeholder.com/300x200?text=UIUX+2" alt="UIUX 2">
+    </div>
+    <button class="back-button" onclick="showSection('home')">⬅️ Kembali ke Menu</button>
+  </section>
+
+  <!-- Kontak -->
+  <section id="contact" class="section container active">
+    <h2>Kontak Saya</h2>
+    <form id="contact-form">
+      <input type="text" placeholder="Nama Anda" required>
+      <input type="email" placeholder="Email Anda" required>
+      <textarea placeholder="Pesan Anda" required></textarea>
+      <button type="submit">Kirim</button>
+    </form>
+    <div class="notification" id="notif">✅ Pesan berhasil dikirim!</div>
   </section>
 
   <footer>
-    <div class="container">
-      <p>&copy; 2025 Fallen Ozora Raza. Semua hak dilindungi.</p>
-    </div>
+    <p>&copy; 2025 Fallen Ozora Raza | IG & Behance</p>
   </footer>
 
   <script>
-    // Animasi scroll
-    const sections = document.querySelectorAll('.section');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          observer.unobserve(entry.target);
-        }
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
       });
-    }, { threshold: 0.2 });
+      document.getElementById(id).classList.add('active');
+      window.scrollTo(0, 0);
+    }
 
-    sections.forEach(section => observer.observe(section));
-
-    // Toggle tema
+    // Dark mode toggle
     document.querySelector('.toggle-theme').addEventListener('click', () => {
       document.body.classList.toggle('light');
     });
 
-    // Simulasi kirim form
+    // Simulasi submit
     const form = document.getElementById('contact-form');
     const notif = document.getElementById('notif');
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       notif.style.display = 'block';
@@ -373,3 +287,4 @@
 
 </body>
 </html>
+
