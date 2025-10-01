@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fallen Ozora Raza - Desainer Grafis</title>
+  <title>Fallen Ozora Raza - Portofolio</title>
   <style>
     :root {
       --bg: #0d1b2a;
@@ -11,14 +11,6 @@
       --primary: #00b4d8;
       --secondary: #1b263b;
       --accent: #0077b6;
-    }
-
-    body.light {
-      --bg: #f7f7f7;
-      --text: #1a1a1a;
-      --primary: #0077b6;
-      --secondary: #e0f7fa;
-      --accent: #023e8a;
     }
 
     * {
@@ -36,7 +28,6 @@
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.6;
-      transition: all 0.5s ease;
     }
 
     .container {
@@ -52,7 +43,6 @@
       text-align: center;
       color: #fff;
       animation: fadeInDown 1.2s ease-out;
-      position: relative;
     }
 
     header h1 {
@@ -80,39 +70,6 @@
       color: var(--primary);
     }
 
-    .toggle-theme {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: background 0.3s;
-    }
-
-    .toggle-theme:hover {
-      background: var(--accent);
-    }
-
-    .download-cv {
-      margin-top: 20px;
-      display: inline-block;
-      background-color: var(--primary);
-      color: #fff;
-      padding: 12px 20px;
-      border-radius: 30px;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-
-    .download-cv:hover {
-      background-color: var(--accent);
-    }
-
     section {
       opacity: 0;
       transform: translateY(40px);
@@ -131,9 +88,8 @@
       font-size: 2rem;
     }
 
-    p {
-      font-size: 1.1rem;
-      text-align: center;
+    .portfolio-section {
+      margin-bottom: 60px;
     }
 
     .gallery {
@@ -141,7 +97,6 @@
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
-      margin-top: 30px;
     }
 
     .gallery img {
@@ -154,62 +109,6 @@
     .gallery img:hover {
       transform: scale(1.05);
       box-shadow: 0 8px 20px rgba(0, 180, 216, 0.3);
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 500px;
-      margin: 30px auto 0;
-    }
-
-    input, textarea {
-      padding: 12px;
-      border: none;
-      border-radius: 5px;
-      font-size: 1rem;
-      background: #f1f1f1;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-
-    button {
-      background-color: var(--accent);
-      color: white;
-      padding: 12px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background-color 0.3s;
-    }
-
-    button:hover {
-      background-color: var(--primary);
-    }
-
-    .social {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .social a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: var(--primary);
-      font-weight: bold;
-    }
-
-    .notification {
-      text-align: center;
-      color: var(--primary);
-      font-size: 0.95rem;
-      margin-top: 10px;
-      display: none;
     }
 
     footer {
@@ -239,12 +138,6 @@
       .gallery img {
         width: 100%;
       }
-
-      .toggle-theme {
-        top: 10px;
-        right: 10px;
-        padding: 8px 12px;
-      }
     }
   </style>
 </head>
@@ -252,63 +145,75 @@
 
   <header>
     <div class="container">
-      <button class="toggle-theme">Ganti Tema</button>
       <h1>Fallen Ozora Raza</h1>
       <p>Desainer Grafis Profesional</p>
       <nav>
         <ul>
-          <li><a href="#about">Tentang</a></li>
-          <li><a href="#portfolio">Portofolio</a></li>
-          <li><a href="#contact">Kontak</a></li>
+          <li><a href="#sport">Sport Design</a></li>
+          <li><a href="#feed">Feed Instagram</a></li>
+          <li><a href="#logo">Logo</a></li>
+          <li><a href="#uiux">UI/UX Design</a></li>
         </ul>
       </nav>
-      <a href="cv-fallen-ozora.pdf" class="download-cv" download>📄 Unduh CV</a>
     </div>
   </header>
 
-  <section id="about" class="section">
+  <!-- SPORT DESIGN -->
+  <section id="sport" class="portfolio-section section">
     <div class="container">
-      <h2>Tentang Saya</h2>
-      <p>Saya adalah desainer grafis yang berfokus pada visual branding, ilustrasi, dan komunikasi kreatif. Saya menciptakan desain yang fungsional dan memikat secara estetika, memadukan teknologi dengan seni visual.</p>
-    </div>
-  </section>
-
-  <section id="portfolio" class="section">
-    <div class="container">
-      <h2>Portofolio</h2>
+      <h2>🏆 Sport Design</h2>
       <div class="gallery">
-        <img src="https://via.placeholder.com/300x200?text=Desain+1" alt="Karya 1">
-        <img src="https://via.placeholder.com/300x200?text=Desain+2" alt="Karya 2">
-        <img src="https://via.placeholder.com/300x200?text=Desain+3" alt="Karya 3">
+        <img src="https://via.placeholder.com/300x200?text=Sport+1" alt="Sport 1">
+        <img src="https://via.placeholder.com/300x200?text=Sport+2" alt="Sport 2">
+        <img src="https://via.placeholder.com/300x200?text=Sport+3" alt="Sport 3">
       </div>
     </div>
   </section>
 
-  <section id="contact" class="section">
+  <!-- FEED INSTAGRAM -->
+  <section id="feed" class="portfolio-section section">
     <div class="container">
-      <h2>Kontak</h2>
-      <form id="contact-form">
-        <input type="text" placeholder="Nama Anda" required>
-        <input type="email" placeholder="Email Anda" required>
-        <textarea placeholder="Pesan Anda" required></textarea>
-        <button type="submit">Kirim</button>
-      </form>
-      <div class="notification" id="notif">✅ Pesan terkirim! Terima kasih.</div>
-      <div class="social">
-        <a href="https://instagram.com/" target="_blank">Instagram</a> |
-        <a href="https://behance.net/" target="_blank">Behance</a>
+      <h2>📱 Feed Instagram</h2>
+      <div class="gallery">
+        <img src="https://via.placeholder.com/300x200?text=Feed+1" alt="Feed 1">
+        <img src="https://via.placeholder.com/300x200?text=Feed+2" alt="Feed 2">
+        <img src="https://via.placeholder.com/300x200?text=Feed+3" alt="Feed 3">
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGO -->
+  <section id="logo" class="portfolio-section section">
+    <div class="container">
+      <h2>🎯 Logo Design</h2>
+      <div class="gallery">
+        <img src="https://via.placeholder.com/300x200?text=Logo+1" alt="Logo 1">
+        <img src="https://via.placeholder.com/300x200?text=Logo+2" alt="Logo 2">
+        <img src="https://via.placeholder.com/300x200?text=Logo+3" alt="Logo 3">
+      </div>
+    </div>
+  </section>
+
+  <!-- UI/UX -->
+  <section id="uiux" class="portfolio-section section">
+    <div class="container">
+      <h2>💻 UI/UX Design</h2>
+      <div class="gallery">
+        <img src="https://via.placeholder.com/300x200?text=UIUX+1" alt="UIUX 1">
+        <img src="https://via.placeholder.com/300x200?text=UIUX+2" alt="UIUX 2">
+        <img src="https://via.placeholder.com/300x200?text=UIUX+3" alt="UIUX 3">
       </div>
     </div>
   </section>
 
   <footer>
     <div class="container">
-      <p>&copy; 2025 Fallen Ozora Raza. Semua hak dilindungi.</p>
+      <p>&copy; 2025 Fallen Ozora Raza. Semua hak cipta dilindungi.</p>
     </div>
   </footer>
 
   <script>
-    // Animasi scroll
+    // Animasi scroll (fade-in)
     const sections = document.querySelectorAll('.section');
 
     const observer = new IntersectionObserver(entries => {
@@ -318,27 +223,12 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.1 });
 
-    sections.forEach(section => observer.observe(section));
-
-    // Toggle tema
-    const themeBtn = document.querySelector('.toggle-theme');
-    themeBtn.addEventListener('click', () => {
-      document.body.classList.toggle('light');
-    });
-
-    // Simulasi kirim form
-    const form = document.getElementById('contact-form');
-    const notif = document.getElementById('notif');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      notif.style.display = 'block';
-      setTimeout(() => {
-        notif.style.display = 'none';
-        form.reset();
-      }, 3000);
+    sections.forEach(section => {
+      observer.observe(section);
     });
   </script>
+
 </body>
 </html>
