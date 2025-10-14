@@ -1,335 +1,665 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portofolio Fallen</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fallen Ozora Raza - Portofolio</title>
   <style>
     :root {
-      --primary: #ff3366;
-      --bg: #0f0f0f;
-      --text: #fff;
+      --bg: #0d1b2a;
+      --text: #e0e1dd;
+      --primary: #00b4d8;
+      --secondary: #1b263b;
+      --accent: #0077b6;
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-      font-family: Poppins, sans-serif;
+    body.light {
+      --bg: #f7f7f7;
+      --text: #1a1a1a;
+      --primary: #0077b6;
+      --secondary: #e0f7fa;
+      --accent: #023e8a;
     }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
+      font-family: 'Segoe UI', sans-serif;
       background: var(--bg);
       color: var(--text);
+      transition: background 0.3s, color 0.3s;
     }
 
-    /* Navbar Blur */
+    /* NAVBAR (sticky blur) */
     nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(20, 20, 20, 0.5);
-      backdrop-filter: blur(15px);
+      position: sticky;
+      top: 10px;
+      z-index: 999;
       display: flex;
       justify-content: center;
-      gap: 25px;
-      padding: 15px 0;
-      z-index: 100;
-      transition: background 0.3s ease;
+      gap: 18px;
+      padding: 12px 18px;
+      margin: 8px;
+      background: rgba(10,18,28,0.42);
+      backdrop-filter: blur(10px);
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.04);
     }
-
-    nav a {
-      color: #fff;
+    nav a, nav button {
+      color: var(--text);
       text-decoration: none;
-      font-weight: 500;
-      position: relative;
-      transition: color 0.3s ease;
-    }
-
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-      width: 0%;
-      height: 2px;
-      background: var(--primary);
-      transition: width 0.3s ease;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    .section {
-      display: none;
-      opacity: 0;
-      transform: translateY(30px) scale(0.98);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-      padding: 100px 20px;
-      text-align: center;
-    }
-
-    .section.active {
-      display: block;
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      background: url('bg.jpg') center/cover no-repeat;
-    }
-
-    h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      color: var(--primary);
-      margin-bottom: 25px;
-    }
-
-    .category {
-      display: inline-block;
-      background: #1a1a1a;
-      padding: 10px 25px;
-      margin: 5px;
-      border-radius: 25px;
+      font-weight: 600;
+      background: transparent;
+      border: none;
       cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .category:hover {
-      transform: scale(1.05);
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      margin-top: 30px;
-    }
-
-    .gallery img {
-      width: 100%;
+      padding: 8px 12px;
       border-radius: 10px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
+      transition: background 180ms, color 180ms, transform 120ms;
+    }
+    nav a:hover, nav button:hover { color: var(--primary); transform: translateY(-2px); }
+
+    .container { max-width: 1000px; margin: auto; padding: 40px 20px; text-align: center; }
+
+    header {
+      background: linear-gradient(to right, var(--secondary), var(--accent));
+      color: white;
+      padding: 40px 20px;
+      position: relative;
+      border-radius: 8px;
+      margin: 6px;
+    }
+    header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+    .toggle-theme { position: absolute; top: 20px; right: 20px; padding: 10px 15px; border: none; background: var(--primary); color: white; border-radius: 20px; cursor: pointer; }
+
+    .download-cv { margin-top: 20px; display: inline-block; padding: 10px 20px; background: var(--primary); color: white; text-decoration: none; border-radius: 30px; }
+
+    /* Section base + AOS-like */
+    .section { display: none; opacity: 0; transform: translateY(20px); transition: opacity 520ms ease, transform 520ms ease; }
+    .section.active { display: block; opacity: 1; transform: translateY(0); }
+
+    .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 30px; }
+    .category { background: var(--secondary); color: white; padding: 40px 20px; border-radius: 10px; cursor: pointer; transition: background 0.3s, transform 0.18s; }
+    .category:hover { background: var(--accent); transform: translateY(-6px); }
+
+    h2 { color: var(--primary); margin-bottom: 20px; }
+
+    .gallery { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 30px 0; }
+    .thumb {
+      width: 300px;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+    .thumb img { display:block; width:100%; height:220px; object-fit:cover; transition: transform 0.3s; cursor: pointer; }
+    .thumb:hover img { transform: scale(1.04); }
+    .thumb .thumb-actions {
+      display:flex; gap:8px; padding:10px;
+      justify-content: center; background: rgba(0,0,0,0.25);
+    }
+    .btn-mini {
+      background: var(--primary);
+      color: white;
+      border:none;
+      padding:8px 12px;
+      border-radius: 8px;
+      cursor:pointer;
+      font-weight:700;
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border:1px solid rgba(255,255,255,0.06);
+      padding:8px 12px;
+      border-radius:8px;
+      cursor:pointer;
     }
 
-    .gallery img:hover {
-      transform: scale(1.03);
-    }
+    .back-button { margin-top: 20px; padding: 10px 20px; background: var(--primary); color: white; border: none; border-radius: 30px; cursor: pointer; }
 
     /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
+    .modal { display:none; position:fixed; inset:0; background: rgba(2,6,12,0.75); justify-content:center; align-items:center; z-index:1200; padding:20px; }
+    .modal.open { display:flex; }
+    .modal-card { width: min(1100px, 96%); max-height: 90vh; overflow:auto; background: #fff; color:#000; border-radius:12px; padding:14px; display:flex; gap:12px; align-items:flex-start; }
+    .modal-card img { width:100%; height:auto; border-radius:8px; object-fit:contain; }
+    .modal-info { width:320px; max-width:320px; display:flex; flex-direction:column; gap:10px; }
+    .modal-close { margin-left:auto; background:transparent; border:none; font-size:20px; cursor:pointer; }
 
-    .modal.active {
-      display: flex;
-    }
+    /* Detail page styling (kept original) */
+    .detail-page { display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 30px; border-radius: 12px; background: linear-gradient(180deg, rgba(0,119,182,0.06), rgba(0,180,216,0.03)); box-shadow: 0 10px 30px rgba(3,10,20,0.35); }
+    .detail-hero { width: 100%; max-width: 920px; border-radius: 12px; overflow: hidden; background: white; display: flex; justify-content: center; align-items: center; }
+    .detail-hero img { width: 100%; height: auto; display: block; object-fit: contain; }
+    .detail-desc { max-width: 920px; text-align: left; color: var(--text); background: transparent; padding: 14px 10px; font-size: 1rem; line-height: 1.5; }
+    .detail-desc p { margin-bottom: 8px; color: rgba(0,0,0,0.75); }
 
-    .modal img {
-      max-width: 80%;
-      max-height: 80%;
-      border-radius: 10px;
-    }
+    /* ABOUT */
+    #about .about-container { display:flex; flex-direction:column; align-items:center; gap:18px; }
+    #about img { width:160px; height:160px; border-radius:50%; object-fit:cover; border:4px solid var(--primary); }
+    .skills { width:100%; max-width:600px; text-align:left; margin-top:8px; }
+    .skill { margin-bottom:12px; }
+    .skill-name { font-weight:700; margin-bottom:6px; }
+    .skill-bar { background: rgba(255,255,255,0.03); height:12px; border-radius:10px; overflow:hidden; }
+    .skill-progress { height:100%; width:0; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 900ms cubic-bezier(.2,.9,.3,1); }
 
-    /* Tentang Saya */
-    .about {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      text-align: center;
-    }
+    /* CONTACT */
+    form { display:flex; flex-direction:column; max-width:500px; margin:auto; gap:12px; }
+    input, textarea { padding:12px; border-radius:6px; border:none; font-size:1rem; }
 
-    .about img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--primary);
-    }
+    footer { background: var(--secondary); color: white; text-align: center; padding: 20px; margin-top: 24px; border-radius:8px; }
 
-    .skills {
-      max-width: 500px;
-      width: 100%;
-    }
-
-    .skill {
-      margin: 15px 0;
-      text-align: left;
-    }
-
-    .skill-bar {
-      width: 100%;
-      background: #2a2a2a;
-      border-radius: 5px;
-      overflow: hidden;
-    }
-
-    .skill-progress {
-      height: 10px;
-      width: 0;
-      background: var(--primary);
-      border-radius: 5px;
-      transition: width 1s ease;
-    }
-
-    footer {
-      text-align: center;
-      padding: 50px 0;
-      color: #aaa;
+    @media (max-width:920px) {
+      .thumb img { height:160px; }
+      .modal-card { flex-direction:column; }
+      .modal-info { width:100%; max-width:100%; }
     }
   </style>
 </head>
 <body>
-  <nav>
+
+  <header>
+    <h1>Fallen Ozora Raza</h1>
+    <p>Desainer Grafis Pelajar</p>
+    <button class="toggle-theme">Ganti Tema</button><br>
+    <a href="cv-fallen-ozora.pdf" class="download-cv" download>📄 Unduh CV</a>
+  </header>
+
+  <!-- NAVBAR -->
+  <nav aria-label="Main navigation">
     <a href="#" onclick="showSection('home')">Home</a>
     <a href="#" onclick="showSection('about')">Tentang Saya</a>
-    <a href="#" onclick="showSection('portfolio')">Portofolio</a>
+    <a href="#" onclick="showSection('home')">Portofolio</a>
     <a href="#" onclick="showSection('contact')">Kontak</a>
+    <button id="themeToggle" style="background:transparent;border:1px solid rgba(255,255,255,0.04);padding:6px 10px;border-radius:8px;">🌙</button>
   </nav>
 
   <!-- HOME -->
-  <section id="home" class="section active hero">
-    <h1>Fallen Ozora</h1>
-    <h2>Desainer Grafis & UI/UX</h2>
+  <section id="home" class="section active container" data-aos>
+    <h2>Pilih Kategori Portofolio</h2>
+    <div class="category-grid">
+      <div class="category" onclick="showSection('sport')"> Sport Design</div>
+      <div class="category" onclick="showSection('feed')"> Feed Instagram</div>
+      <div class="category" onclick="showSection('logo')"> Logo Design</div>
+      <div class="category" onclick="showSection('uiux')"> UI/UX Design</div>
+    </div>
   </section>
 
-  <!-- TENTANG SAYA -->
-  <section id="about" class="section">
-    <div class="about">
-      <img src="https://via.placeholder.com/150" alt="Profil" />
-      <h2>Tentang Saya</h2>
-      <p>Halo! Saya Fallen Ozora, seorang desainer yang fokus di bidang desain grafis, animasi, dan UI/UX. Saya suka bereksperimen dengan gaya visual modern dan minimalis.</p>
+  <!-- ABOUT (di setelah Home) -->
+  <section id="about" class="section container" data-aos>
+    <h2>Tentang Saya</h2>
+    <div class="about-container">
+      <img src="https://via.placeholder.com/320x320.png?text=Foto+Profil+Fallen" alt="Foto Fallen Ozora Raza">
+      <p style="max-width:760px;">Saya Fallen Ozora Raza, seorang pelajar yang berfokus di bidang desain grafis dan UI/UX. Saya senang menciptakan karya visual yang modern, clean, dan bermakna. Fokus utamaku: poster, branding, dan feed sosial media yang komunikatif.</p>
 
       <div class="skills">
         <div class="skill">
-          <p>Adobe Photoshop</p>
+          <div class="skill-name">Photoshop <span style="float:right">90%</span></div>
           <div class="skill-bar"><div class="skill-progress" data-skill="90%"></div></div>
         </div>
         <div class="skill">
-          <p>Figma</p>
-          <div class="skill-bar"><div class="skill-progress" data-skill="85%"></div></div>
+          <div class="skill-name">Illustrator <span style="float:right">82%</span></div>
+          <div class="skill-bar"><div class="skill-progress" data-skill="82%"></div></div>
         </div>
         <div class="skill">
-          <p>Illustrator</p>
+          <div class="skill-name">Figma / UI <span style="float:right">75%</span></div>
+          <div class="skill-bar"><div class="skill-progress" data-skill="75%"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill-name">After Effects (basic) <span style="float:right">70%</span></div>
           <div class="skill-bar"><div class="skill-progress" data-skill="70%"></div></div>
         </div>
+      </div>
+
+      <div class="tools" aria-hidden="false" style="margin-top:8px;">
+        <div class="tool">Photoshop</div>
+        <div class="tool">Illustrator</div>
+        <div class="tool">Figma</div>
+        <div class="tool">CorelDRAW</div>
+        <div class="tool">Canva</div>
       </div>
     </div>
   </section>
 
-  <!-- PORTOFOLIO -->
-  <section id="portfolio" class="section">
-    <h2>Portofolio</h2>
-    <div>
-      <span class="category" onclick="showCategory('sport')">Sport</span>
-      <span class="category" onclick="showCategory('feed')">Feed</span>
-      <span class="category" onclick="showCategory('logo')">Logo</span>
-      <span class="category" onclick="showCategory('uiux')">UI/UX</span>
-      <span class="category" onclick="showCategory('poster')">Poster & Ilustrasi</span>
-    </div>
+  <!-- PORTFOLIO: Sport -->
+  <section id="sport" class="section container" data-aos>
+    <h2>Sport Design</h2>
+    <div class="gallery" id="sport-gallery">
+      <!-- Each thumb keeps your original image file; added "Preview" and "Detail" actions -->
+      <div class="thumb" data-title="Barca vs PSG — Ringkas" data-desc="Desain poster ini dibuat untuk memunculkan energi pertandingan. Saya pakai warna kontras dan susunan pemain yang berekspresi tegas supaya mata langsung fokus ke aksi." data-img="barca vs psg.png">
+        <img src="barca vs psg.png" alt="Barca vs PSG">
+        <div class="thumb-actions">
+          <button class="btn-mini" onclick="openModalFromThumb(this)">Preview</button>
+          <button class="btn-ghost" onclick="showSection('sport-detail-1')">Detail</button>
+        </div>
+      </div>
 
-    <div id="sport" class="gallery category-section active">
-      <img src="barca vs psg.png" alt="Sport 1" onclick="openModal(this)" />
-      <img src="MESSI KIYOWO.png" alt="Sport 2" onclick="openModal(this)" />
-      <img src="dembele.png" alt="Sport 3" onclick="openModal(this)" />
-    </div>
+      <div class="thumb" data-title="Messi Kiyowo — Ringkas" data-desc="Konsepnya fokus ke persona atlet: ekspresi dan gerak di-highlight. Warna dipilih menyesuaikan tone tim tersebut." data-img="MESSI KIYOWO.png">
+        <img src="MESSI KIYOWO.png" alt="Messi Kiyowo">
+        <div class="thumb-actions">
+          <button class="btn-mini" onclick="openModalFromThumb(this)">Preview</button>
+          <button class="btn-ghost" onclick="showSection('sport-detail-2')">Detail</button>
+        </div>
+      </div>
 
-    <div id="feed" class="gallery category-section">
-      <img src="Fanta.png" alt="Feed 1" onclick="openModal(this)" />
-      <img src="Pekukuhan.png" alt="Feed 2" onclick="openModal(this)" />
-    </div>
+      <div class="thumb" data-title="Dembele — Ringkas" data-desc="Eksperimen warna dan tekstur untuk memberi kesan gerak cepat. Layout dibuat simple supaya tetap mudah dibaca di mobile." data-img="dembele.png">
+        <img src="dembele.png" alt="Dembele">
+        <div class="thumb-actions">
+          <button class="btn-mini" onclick="openModalFromThumb(this)">Preview</button>
+          <button class="btn-ghost" onclick="showSection('sport-detail-3')">Detail</button>
+        </div>
+      </div>
 
-    <div id="logo" class="gallery category-section">
-      <img src="logo.png" alt="Logo 1" onclick="openModal(this)" />
-      <img src="logo kopi brewmance.png" alt="Logo 2" onclick="openModal(this)" />
-      <img src="logo fanz design 2.png" alt="Logo 3" onclick="openModal(this)" />
+      <div class="thumb" data-title="Raphinha Final — Ringkas" data-desc="Desain ini menekankan momen kemenangan. Elemen grafis mendukung rasa dinamis dan cocok untuk header event." data-img="RAPHINHA FINAL.png">
+        <img src="RAPHINHA FINAL.png" alt="Raphinha Final">
+        <div class="thumb-actions">
+          <button class="btn-mini" onclick="openModalFromThumb(this)">Preview</button>
+          <button class="btn-ghost" onclick="showSection('sport-detail-4')">Detail</button>
+        </div>
+      </div>
     </div>
+    <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
+  </section>
 
-    <div id="uiux" class="gallery category-section">
-      <img src="Burger poster.png" alt="UI/UX 1" onclick="openModal(this)" />
-      <img src="OPPENHEIMER final ig.png" alt="UI/UX 2" onclick="openModal(this)" />
+  <!-- PORTFOLIO: Feed -->
+  <section id="feed" class="section container" data-aos>
+    <h2>Feed Instagram</h2>
+    <div class="gallery" id="feed-gallery">
+      <div class="thumb" data-title="Pekukuhan — Ringkas" data-desc="Konten ini dibuat untuk pengumuman resmi—komposisi bersih dan warna brand agar terlihat profesional pada feed." data-img="Pekukuhan.png">
+        <img src="Pekukuhan.png" alt="Pekukuhan">
+        <div class="thumb-actions">
+          <button class="btn-mini" onclick="openModalFromThumb(this)">Preview</button>
+          <button class="btn-ghost" onclick="showSection('feed-detail-1')">Detail</button>
+        </div>
+      </div>
+
+      <div class="thumb" data-title="Fanta — Ringkas" data-desc="Desain promosi produk dengan warna cerah untuk menarik perhatian." data-img="Fanta.png">
+        <img src="Fanta.png" alt="Fanta">
+        <div class="thumb-actions">
+          <button class="btn-mini" onclick="openModalFromThumb(this)">Preview</button>
+          <button class="btn-ghost" onclick="showSection('feed-detail-2')">Detail</button>
+        </div>
+      </div>
+
+      <div class="thumb" data-title="OPPENHEIMER — Ringkas" data-desc="Poster tematik dengan mood dramatis; tipografi kuat." data-img="OPPENHEIMER final ig.png">
+        <img src="OPPENHEIMER final ig.png" alt="Oppenheimer">
+        <div class="thumb-actions">
+          <button class="btn-mini" onclick="openModalFromThumb(this)">Preview</button>
+          <button class="btn-ghost" onclick="showSection('feed-detail-3')">Detail</button>
+        </div>
+      </div>
+
+      <div class="thumb" data-title="Burger Poster — Ringkas" data-desc="Poster makanan yang menggugah selera; komposisi dan warna dipilih untuk meningkatkan nafsu beli." data-img="Burger poster.png">
+        <img src="Burger poster.png" alt="Burger poster">
+        <div class="thumb-actions">
+          <button class="btn-mini" onclick="openModalFromThumb(this)">Preview</button>
+          <button class="btn-ghost" onclick="showSection('feed-detail-4')">Detail</button>
+        </div>
+      </div>
     </div>
+    <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
+  </section>
 
-    <div id="poster" class="gallery category-section">
-      <img src="https://via.placeholder.com/300x400?text=Poster+1" alt="Poster 1" onclick="openModal(this)" />
-      <img src="https://via.placeholder.com/300x400?text=Ilustrasi+2" alt="Poster 2" onclick="openModal(this)" />
-      <img src="https://via.placeholder.com/300x400?text=Artwork+3" alt="Poster 3" onclick="openModal(this)" />
+  <!-- PORTFOLIO: Logo -->
+  <section id="logo" class="section container" data-aos>
+    <h2>Logo Design</h2>
+    <div class="gallery" id="logo-gallery">
+      <div class="thumb" data-title="Logo DKV — Ringkas" data-desc="Maskot burung hantu yang melambangkan DKV." data-img="logo.png">
+        <img src="logo.png" alt="Logo 1">
+        <div class="thumb-actions">
+          <button class="btn-mini" onclick="openModalFromThumb(this)">Preview</button>
+          <button class="btn-ghost" onclick="showSection('logo-detail-1')">Detail</button>
+        </div>
+      </div>
+
+      <div class="thumb" data-title="Logo Kopi Brewmance — Ringkas" data-desc="Identitas hangat & ramah." data-img="logo kopi brewmance.png">
+        <img src="logo kopi brewmance.png" alt="Logo Kopi Brewmance">
+        <div class="thumb-actions">
+          <button class="btn-mini" onclick="openModalFromThumb(this)">Preview</button>
+          <button class="btn-ghost" onclick="showSection('logo-detail-2')">Detail</button>
+        </div>
+      </div>
+
+      <div class="thumb" data-title="Logo Fanz Design — Ringkas" data-desc="Logo modern berbasis bentuk geometris." data-img="logo fanz design 2.png">
+        <img src="logo fanz design 2.png" alt="Logo Fanz">
+        <div class="thumb-actions">
+          <button class="btn-mini" onclick="openModalFromThumb(this)">Preview</button>
+          <button class="btn-ghost" onclick="showSection('logo-detail-3')">Detail</button>
+        </div>
+      </div>
+    </div>
+    <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
+  </section>
+
+  <!-- PORTFOLIO: UI/UX -->
+  <section id="uiux" class="section container" data-aos>
+    <h2>UI/UX Design</h2>
+    <div class="gallery" id="uiux-gallery">
+      <div class="thumb" data-title="UIUX 1 — Ringkas" data-desc="Sketsa awal & eksplorasi layout." data-img="https://via.placeholder.com/800x500?text=UIUX+1">
+        <img src="https://via.placeholder.com/300x200?text=UIUX+1" alt="UIUX 1">
+        <div class="thumb-actions">
+          <button class="btn-mini" onclick="openModalFromThumb(this)">Preview</button>
+          <button class="btn-ghost" onclick="showSection('uiux-detail-1')">Detail</button>
+        </div>
+      </div>
+
+      <div class="thumb" data-title="UIUX 2 — Ringkas" data-desc="Exploration warna & hierarchy." data-img="https://via.placeholder.com/800x500?text=UIUX+2">
+        <img src="https://via.placeholder.com/300x200?text=UIUX+2" alt="UIUX 2">
+        <div class="thumb-actions">
+          <button class="btn-mini" onclick="openModalFromThumb(this)">Preview</button>
+          <button class="btn-ghost" onclick="showSection('uiux-detail-2')">Detail</button>
+        </div>
+      </div>
+    </div>
+    <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
+  </section>
+
+  <!-- DETAIL PAGES (tetap persis seperti punya kamu) -->
+  <!-- Sport details -->
+  <section id="sport-detail-1" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="barca vs psg.png" alt="Barca vs PSG - detail"></div>
+      <div class="detail-desc">
+        <h3>Barca vs PSG — Ringkas</h3>
+        <p>Desain poster ini dibuat untuk memunculkan energi pertandingan. Saya pakai warna kontras dan susunan pemain yang berekspresi tegas supaya mata langsung fokus ke aksi.</p>
+        <p>Tools: Photoshop • Waktu pengerjaan: singkat • Catatan: cocok untuk poster pertandiingan.</p>
+      </div>
+      <div class="detail-actions">
+        <button class="back-button" onclick="showSection('sport')">⬅ Kembali ke Galeri Sport</button>
+      </div>
     </div>
   </section>
 
-  <!-- KONTAK -->
-  <section id="contact" class="section">
-    <h2>Kontak</h2>
-    <p>Email: <a href="mailto:fallenozora@gmail.com">fallenozora@gmail.com</a></p>
-    <p>Instagram: @fallenozora</p>
+  <section id="sport-detail-2" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="MESSI KIYOWO.png" alt="Messi - detail"></div>
+      <div class="detail-desc">
+        <h3>Messi Kiyowo — Ringkas</h3>
+        <p>Konsepnya fokus ke persona atlet: ekspresi dan gerak di-highlight. Warna dipilih menyesuaikan tone tim tersebut.</p>
+        <p>Tools: Photoshop • Notes: ideal untuk poster fan event.</p>
+      </div>
+      <div class="detail-actions">
+        <button class="back-button" onclick="showSection('sport')">⬅ Kembali ke Galeri Sport</button>
+      </div>
+    </div>
   </section>
+
+  <section id="sport-detail-3" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="dembele.png" alt="Dembele - detail"></div>
+      <div class="detail-desc">
+        <h3>Dembele — Ringkas</h3>
+        <p>Eksperimen warna dan tekstur untuk memberi kesan gerak cepat. Layout dibuat simple supaya tetap mudah dibaca di mobile.</p>
+        <p>Tools: Photoshop • Catatan: Cocok untuk poster fan art.</p>
+      </div>
+      <div class="detail-actions">
+        <button class="back-button" onclick="showSection('sport')">⬅ Kembali ke Galeri Sport</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="sport-detail-4" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="RAPHINHA FINAL.png" alt="Raphinha - detail"></div>
+      <div class="detail-desc">
+        <h3>Raphinha Final — Ringkas</h3>
+        <p>Desain ini menekankan momen kemenangan. Elemen grafis mendukung rasa dinamis dan cocok untuk header event.</p>
+        <p>Tools: Photoshop • Waktu: beberapa jam • Usage: digital promo.</p>
+      </div>
+      <div class="detail-actions">
+        <button class="back-button" onclick="showSection('sport')">⬅ Kembali ke Galeri Sport</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feed details -->
+  <section id="feed-detail-1" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="Pekukuhan.png" alt="Pekukuhan - detail"></div>
+      <div class="detail-desc">
+        <h3>Pekukuhan — Ringkas</h3>
+        <p>Konten ini dibuat untuk pengumuman resmi—komposisi bersih dan warna brand agar terlihat profesional pada feed.</p>
+        <p>Tools: Photoshop • Catatan: versi square siap upload.</p>
+      </div>
+      <div class="detail-actions"><button class="back-button" onclick="showSection('feed')">⬅ Kembali ke Galeri Feed</button></div>
+    </div>
+  </section>
+
+  <section id="feed-detail-2" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="Fanta.png" alt="Fanta - detail"></div>
+      <div class="detail-desc">
+        <h3>Fanta — Ringkas</h3>
+        <p>Desain promosi produk dengan warna cerah untuk menarik perhatian. Visual kuat supaya engagement naik.</p>
+        <p>Tools: Photoshop.</p>
+      </div>
+      <div class="detail-actions"><button class="back-button" onclick="showSection('feed')">⬅ Kembali ke Galeri Feed</button></div>
+    </div>
+  </section>
+
+  <section id="feed-detail-3" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="OPPENHEIMER final ig.png" alt="Oppenheimer - detail"></div>
+      <div class="detail-desc">
+        <h3>Oppenheimer — Ringkas</h3>
+        <p>Poster tematik dengan mood dramatis. Kontras tinggi dan tipografi kuat jadi fokus utama.</p>
+        <p>Tools: Photoshop • Keterangan: untuk kampanye film.</p>
+      </div>
+      <div class="detail-actions"><button class="back-button" onclick="showSection('feed')">⬅ Kembali ke Galeri Feed</button></div>
+    </div>
+  </section>
+
+  <section id="feed-detail-4" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="Burger poster.png" alt="Burger poster - detail"></div>
+      <div class="detail-desc">
+        <h3>Burger Poster — Ringkas</h3>
+        <p>Poster makanan yang menggugah selera; komposisi dan warna dipilih untuk meningkatkan nafsu beli.</p>
+        <p>Tools: Photoshop.</p>
+      </div>
+      <div class="detail-actions"><button class="back-button" onclick="showSection('feed')">⬅ Kembali ke Galeri Feed</button></div>
+    </div>
+  </section>
+
+  <!-- Logo details -->
+  <section id="logo-detail-1" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="logo.png" alt="Logo 1 - detail"></div>
+      <div class="detail-desc">
+        <h3>Logo 1 — Ringkas</h3>
+        <p>Logo ini saya buat untuk instagram kelas desain komunikasi visual, Dengan maskot burung hantu yang melambangkan maskot DKV (desain komunikasi visual) yang memegang kamera yang melambangkan senjata para anggota DKV. Versi hitam-putih siap untuk format berbeda.</p>
+        <p>Tools: Illustrator,Coreldraw • Catatan: scalable vector.</p>
+      </div>
+      <div class="detail-actions"><button class="back-button" onclick="showSection('logo')">⬅ Kembali ke Galeri Logo</button></div>
+    </div>
+  </section>
+
+  <section id="logo-detail-2" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="logo kopi brewmance.png" alt="Logo Kopi Brewmance - detail"></div>
+      <div class="detail-desc">
+        <h3>Logo Kopi Brewmance — Ringkas</h3>
+        <p>Identitas hangat dan ramah, dibuat supaya terasa cozy di kemasan & social media.</p>
+        <p>Tools: Illustrator • Notes: cocok untuk label produk.</p>
+      </div>
+      <div class="detail-actions"><button class="back-button" onclick="showSection('logo')">⬅ Kembali ke Galeri Logo</button></div>
+    </div>
+  </section>
+
+  <section id="logo-detail-3" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="logo fanz design 2.png" alt="Logo Fanz Design - detail"></div>
+      <div class="detail-desc">
+        <h3>Logo Fanz Design — Ringkas</h3>
+        <p>Logo modern dengan bentuk geometris untuk kesan profesional. Versi monokrom tersedia.</p>
+        <p>Tools: Illustrator.</p>
+      </div>
+      <div class="detail-actions"><button class="back-button" onclick="showSection('logo')">⬅ Kembali ke Galeri Logo</button></div>
+    </div>
+  </section>
+
+  <!-- UIUX details -->
+  <section id="uiux-detail-1" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="https://via.placeholder.com/300x200?text=UIUX+1" alt="UIUX 1 - detail"></div>
+      <div class="detail-desc">
+        <h3>UIUX 1 — Ringkas</h3>
+        <p>Sketsa awal dan eksplorasi layout. Fokus pada pengalaman pengguna yang simpel dan intuitif.</p>
+        <p>Tools: Figma • Status: prototype basic.</p>
+      </div>
+      <div class="detail-actions"><button class="back-button" onclick="showSection('uiux')">⬅ Kembali ke Galeri UI/UX</button></div>
+    </div>
+  </section>
+
+  <section id="uiux-detail-2" class="section container">
+    <div class="detail-page">
+      <div class="detail-hero"><img src="https://via.placeholder.com/300x200?text=UIUX+2" alt="UIUX 2 - detail"></div>
+      <div class="detail-desc">
+        <h3>UIUX 2 — Ringkas</h3>
+        <p>Exploration warna & hierarchy, dibuat untuk mobile-first. Clean layout supaya navigasi jelas.</p>
+        <p>Tools: Figma • Catatan: responsive-ready.</p>
+      </div>
+      <div class="detail-actions"><button class="back-button" onclick="showSection('uiux')">⬅ Kembali ke Galeri UI/UX</button></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section container" data-aos>
+    <h2>Kontak Saya</h2>
+    <form id="contact-form">
+      <input type="text" placeholder="Nama Anda" required>
+      <input type="email" placeholder="Email Anda" required>
+      <textarea placeholder="Pesan Anda" required></textarea>
+      <button type="submit">Kirim</button>
+    </form>
+    <div class="notification" id="notif">✅ Pesan berhasil dikirim!</div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Fallen Ozora Raza | IG & Behance</p>
+  </footer>
 
   <!-- MODAL -->
-  <div class="modal" id="modal">
-    <img src="" alt="preview" />
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <div style="flex:1; min-width:220px;">
+        <img id="modal-img" src="" alt="Preview">
+      </div>
+      <div class="modal-info">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <h3 id="modal-title" style="margin:0; font-size:1rem;">Judul</h3>
+          <button class="modal-close" onclick="closeModal()">✕</button>
+        </div>
+        <p id="modal-desc" class="small" style="color:#333; opacity:0.9;"></p>
+        <div style="margin-top:auto; display:flex; gap:8px;">
+          <button class="btn-mini" onclick="downloadCurrent()">Download</button>
+          <button class="btn-ghost" onclick="closeModal()">Tutup</button>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <footer>&copy; 2025 Fallen Ozora. All Rights Reserved.</footer>
-
   <script>
+    /* Show section (kept interaction like koding lama) */
     function showSection(id) {
-      const sections = document.querySelectorAll(".section");
-      sections.forEach(section => {
-        if (section.id === id) {
-          section.classList.add("active");
-        } else {
-          section.classList.remove("active");
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      const el = document.getElementById(id);
+      if (el) el.classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+      // animate skill bars when opening about
+      if (id === 'about') animateSkillBars();
+    }
+
+    // start at home
+    showSection('home');
+
+    /* Theme toggle (kept) */
+    document.querySelector('.toggle-theme').addEventListener('click', () => document.body.classList.toggle('light'));
+    document.getElementById('themeToggle').addEventListener('click', () => document.body.classList.toggle('light'));
+
+    /* Simple AOS-like using IntersectionObserver for elements with data-aos */
+    const aosElems = document.querySelectorAll('[data-aos]');
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          en.target.classList.add('active');
+          obs.unobserve(en.target);
         }
       });
+    }, { threshold: 0.12 });
 
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    aosElems.forEach(e => io.observe(e));
 
-      if (id === "about") {
-        document.querySelectorAll(".skill-progress").forEach(bar => {
-          bar.style.width = bar.dataset.skill;
-        });
-      }
+    /* Thumbnail Preview Modal logic
+       - openModalFromThumb(button) expects the button inside .thumb; we find .thumb parent
+    */
+    let currentAsset = null;
+    function openModalFromThumb(btn) {
+      const thumb = btn.closest('.thumb');
+      if (!thumb) return;
+      const img = thumb.getAttribute('data-img') || thumb.querySelector('img')?.src;
+      const title = thumb.getAttribute('data-title') || '';
+      const desc = thumb.getAttribute('data-desc') || '';
+      const modal = document.getElementById('modal');
+      document.getElementById('modal-img').src = img;
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-desc').textContent = desc;
+      currentAsset = img;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
     }
-
-    function showCategory(categoryId) {
-      document.querySelectorAll(".category-section").forEach(sec => {
-        sec.classList.remove("active");
-        sec.style.display = "none";
-      });
-      const selected = document.getElementById(categoryId);
-      selected.classList.add("active");
-      selected.style.display = "grid";
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
     }
-
-    function openModal(img) {
-      const modal = document.getElementById("modal");
-      modal.classList.add("active");
-      modal.querySelector("img").src = img.src;
-    }
-
-    document.getElementById("modal").addEventListener("click", () => {
-      document.getElementById("modal").classList.remove("active");
+    // close by clicking overlay
+    document.getElementById('modal').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('modal')) closeModal();
     });
+    // close on ESC
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    function downloadCurrent() {
+      if (!currentAsset) return;
+      const a = document.createElement('a');
+      a.href = currentAsset;
+      a.download = currentAsset.split('/').pop().replace(/\s/g,'-');
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+
+    /* Skill bar animation for About */
+    function animateSkillBars() {
+      document.querySelectorAll('.skill-progress').forEach(el => {
+        const v = el.dataset.skill || '0%';
+        // small delay for nicer effect
+        setTimeout(() => { el.style.width = v; }, 120);
+      });
+    }
+    // reset on leaving about so it can animate again later
+    const aboutSection = document.getElementById('about');
+    const obsAboutReset = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) {
+          document.querySelectorAll('.skill-progress').forEach(el => el.style.width = '0');
+        }
+      });
+    }, { threshold: 0.08 });
+    if (aboutSection) obsAboutReset.observe(aboutSection);
+
+    /* Contact form simulation (kept) */
+    const form = document.getElementById('contact-form');
+    const notif = document.getElementById('notif');
+    if (form) {
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        notif.style.display = 'block';
+        setTimeout(() => { notif.style.display = 'none'; form.reset(); }, 2500);
+      });
+    }
+
+    /* Accessibility: make nav keyboard friendly */
+    document.querySelectorAll('nav a, nav button, .btn-mini, .btn-ghost').forEach(el => el.setAttribute('tabindex', '0'));
   </script>
 </body>
 </html>
