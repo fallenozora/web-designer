@@ -660,6 +660,63 @@
 
     /* Accessibility: make nav keyboard friendly */
     document.querySelectorAll('nav a, nav button, .btn-mini, .btn-ghost').forEach(el => el.setAttribute('tabindex', '0'));
+    /* ✨ Animasi lembut untuk tiap section dan elemen */
+.section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.section.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animasi gambar & tombol */
+img, button, .category, .thumb {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+img:hover, button:hover, .category:hover, .thumb:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* Navbar blur transparan halus */
+header {
+  backdrop-filter: blur(15px);
+  background: rgba(15, 30, 45, 0.7);
+  transition: background 0.4s ease;
+}
+body.light header {
+  background: rgba(255,255,255,0.6);
+}
+
+/* Fade halus saat elemen muncul */
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.active {
+  animation: fadeSlide 0.6s ease forwards;
+}
+<script>
+// ✨ Efek transisi lembut antar section (tanpa ubah logika showSection)
+document.querySelectorAll('.category, .back-button, nav button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.body.style.transition = "background 0.6s ease";
+  });
+});
+
+// ✨ Animasi saat scroll (elemen muncul perlahan)
+window.addEventListener('scroll', () => {
+  document.querySelectorAll('.section, .thumb').forEach(el => {
+    const pos = el.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+    if (pos < windowHeight - 100) {
+      el.style.opacity = 1;
+      el.style.transform = "translateY(0)";
+    }
+  });
+});
   </script>
 </body>
 </html>
