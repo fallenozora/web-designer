@@ -11,6 +11,9 @@
             --primary: #00b4d8;
             --secondary: #1b263b;
             --accent: #0077b6;
+            --gap-sm: 10px; /* New: Small gap */
+            --gap-md: 15px; /* New: Medium gap */
+            --gap-lg: 20px; /* New: Large gap */
         }
 
         body.light {
@@ -34,31 +37,30 @@
             transition: background 0.3s, color 0.3s;
         }
 
-        /* PERUBAHAN UTAMA 1: Mengurangi padding container global */
         .container {
             max-width: 1000px;
             margin: auto;
-            padding: 30px 15px; /* Padding dikurangi dari 40px 20px menjadi 30px 15px */
+            padding: var(--gap-lg) var(--gap-md); /* Menggunakan variabel gap */
             text-align: center;
         }
 
         header {
             background: linear-gradient(to right, var(--secondary), var(--accent));
             color: white;
-            padding: 30px 20px; /* Padding header dikurangi dari 40px */
+            padding: var(--gap-lg) var(--gap-lg); /* Menggunakan variabel gap */
             position: relative;
         }
 
         header h1 {
             font-size: 2.5rem;
-            margin-bottom: 8px; /* Margin dikurangi dari 10px */
+            margin-bottom: var(--gap-sm); /* Menggunakan variabel gap */
         }
 
         .toggle-theme {
             position: absolute;
-            top: 15px; /* Disesuaikan agar tetap terlihat */
-            right: 15px; /* Disesuaikan agar tetap terlihat */
-            padding: 8px 12px; /* Disesuaikan agar lebih kecil */
+            top: var(--gap-md);
+            right: var(--gap-md);
+            padding: 8px 12px;
             border: none;
             background: var(--primary);
             color: white;
@@ -67,9 +69,9 @@
         }
 
         .download-cv {
-            margin-top: 15px; /* Margin dikurangi dari 20px */
+            margin-top: var(--gap-md);
             display: inline-block;
-            padding: 10px 20px;
+            padding: var(--gap-sm) var(--gap-lg);
             background: var(--primary);
             color: white;
             text-decoration: none;
@@ -87,15 +89,15 @@
 
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Lebar minimal dikurangi sedikit */
-            gap: 20px; /* Jarak antar kategori dikurangi dari 30px */
-            margin-top: 25px; /* Margin dikurangi dari 30px */
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--gap-lg); /* Menggunakan variabel gap */
+            margin-top: var(--gap-lg); /* Menggunakan variabel gap */
         }
 
         .category {
             background: var(--secondary);
             color: white;
-            padding: 30px 15px; /* Padding kategori dikurangi dari 40px 20px */
+            padding: var(--gap-lg) var(--gap-md);
             border-radius: 10px;
             cursor: pointer;
             transition: background 0.3s;
@@ -107,19 +109,23 @@
 
         h2 {
             color: var(--primary);
-            margin-bottom: 15px; /* Margin bawah h2 dikurangi dari 20px */
+            margin-bottom: var(--gap-md);
         }
 
+        /* PERBAIKAN UTAMA 1: Galeri Gambar */
         .gallery {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px; /* Jarak antar gambar dikurangi dari 20px */
+            gap: var(--gap-md); /* Jarak antar gambar disesuaikan */
             justify-content: center;
-            margin: 25px 0; /* Margin dikurangi dari 30px */
+            margin: var(--gap-lg) 0;
         }
 
         .gallery img {
-            width: 280px; /* Lebar gambar dikurangi sedikit dari 300px */
+            width: 300px; /* Default desktop width */
+            max-width: 100%; /* Pastikan gambar tidak melebihi lebar parent */
+            height: auto; /* Penting agar aspek rasio terjaga */
+            object-fit: contain; /* Memastikan gambar sepenuhnya terlihat dalam area */
             border-radius: 10px;
             transition: transform 0.3s;
             cursor: pointer;
@@ -130,8 +136,8 @@
         }
 
         .back-button {
-            margin-top: 15px; /* Margin dikurangi dari 20px */
-            padding: 10px 20px;
+            margin-top: var(--gap-md);
+            padding: var(--gap-sm) var(--gap-lg);
             background: var(--primary);
             color: white;
             border: none;
@@ -144,11 +150,11 @@
             flex-direction: column;
             max-width: 500px;
             margin: auto;
-            gap: 10px; /* Jarak antar input dikurangi dari 15px */
+            gap: var(--gap-sm);
         }
 
         input, textarea {
-            padding: 10px; /* Padding input dikurangi dari 12px */
+            padding: var(--gap-sm);
             border-radius: 5px;
             border: none;
             font-size: 1rem;
@@ -157,7 +163,7 @@
         button[type="submit"] {
             background: var(--accent);
             color: white;
-            padding: 12px;
+            padding: var(--gap-sm);
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -165,7 +171,7 @@
 
         .notification {
             color: var(--primary);
-            margin-top: 10px;
+            margin-top: var(--gap-sm);
             display: none;
         }
 
@@ -173,8 +179,8 @@
             background: var(--secondary);
             color: white;
             text-align: center;
-            padding: 15px; /* Padding footer dikurangi dari 20px */
-            margin-top: 30px; /* Margin dikurangi dari 40px */
+            padding: var(--gap-md);
+            margin-top: var(--gap-lg);
         }
 
         /* Detail page styling */
@@ -182,103 +188,190 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px; /* Jarak antar elemen detail dikurangi dari 18px */
-            padding: 20px; /* Padding detail page dikurangi dari 30px */
+            gap: var(--gap-md);
+            padding: var(--gap-lg);
             border-radius: 12px;
             background: linear-gradient(180deg, rgba(0,119,182,0.06), rgba(0,180,216,0.03));
-            box-shadow: 0 5px 20px rgba(3,10,20,0.25); /* Shadow dikurangi agar lebih soft */
+            box-shadow: 0 5px 20px rgba(3,10,20,0.25);
+        }
+
+        /* PERBAIKAN UTAMA 2: Detail Hero Gambar */
+        .detail-hero {
+            width: 100%;
+            max-width: 920px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: var(--gap-sm); /* Tambahkan padding agar gambar tidak menempel di tepi hero */
+        }
+
+        .detail-hero img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain; /* Pastikan gambar sepenuhnya terlihat */
+            max-height: 500px; /* Batasi tinggi maksimum untuk gambar detail */
+        }
+
+        .detail-desc {
+            max-width: 920px;
+            text-align: left;
+            color: var(--text);
+            background: transparent;
+            padding: var(--gap-md) var(--gap-sm);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .detail-desc p {
+            margin-bottom: var(--gap-sm);
+            color: var(--text);
+        }
+
+        .detail-actions {
+            display:flex;
+            gap:var(--gap-sm);
+            align-items:center;
+            flex-wrap: wrap; /* Memungkinkan wrap di layar kecil */
+            justify-content: center;
         }
 
         /* About Me Spacing Disesuaikan */
         #about-me p {
             max-width: 800px;
-            margin: 15px auto; /* Margin atas/bawah dikurangi dari 20px */
+            margin: var(--gap-md) auto;
             text-align: left;
-            padding: 0 15px;
-            line-height: 1.6; /* Line height disesuaikan */
+            padding: 0 var(--gap-md);
+            line-height: 1.6;
         }
         #about-me h3 {
             color: var(--primary);
-            margin-top: 20px; /* Margin atas dikurangi dari 30px */
-            margin-bottom: 8px; /* Margin bawah dikurangi dari 10px */
-            /* ... properti lain tetap ... */
+            margin-top: var(--gap-lg);
+            margin-bottom: var(--gap-sm);
+            text-align: left;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 var(--gap-md);
         }
         #about-me ul {
-            margin: 0 auto 15px auto; /* Margin bawah dikurangi dari 20px */
-            /* ... properti lain tetap ... */
+            max-width: 800px;
+            margin: 0 auto var(--gap-md) auto;
+            text-align: left;
+            list-style: none;
+            padding: 0 calc(var(--gap-md) + 20px); /* Sedikit lebih banyak padding untuk list item */
+        }
+        #about-me ul li {
+            margin-bottom: 5px; /* Jarak antar list item dikurangi */
+            position: relative;
+            padding-left: 20px;
+        }
+        #about-me ul li::before {
+            content: '•';
+            color: var(--primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+            left: 0;
         }
         #about-me .profile-img {
-            width: 120px; /* Ukuran gambar profil dikurangi sedikit untuk HP */
-            height: 120px; 
-            margin-bottom: 15px; /* Margin dikurangi dari 20px */
-            /* ... properti lain tetap ... */
+            width: 120px;
+            height: 120px;
+            margin-bottom: var(--gap-md);
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         
-        /* PERUBAHAN UTAMA 2: Media Query untuk Layar Handphone */
-        @media (max-width: 720px) {
-            
-            /* Menyesuaikan Padding Container di Mobile */
+        /* Media Query untuk Layar Handphone */
+        @media (max-width: 768px) { /* Menggunakan breakpoint 768px untuk tablet/HP */
+            :root {
+                --gap-sm: 8px;
+                --gap-md: 12px;
+                --gap-lg: 16px;
+            }
+
             .container {
-                padding: 20px 10px; /* Padding container di HP lebih kecil */
+                padding: var(--gap-md) var(--gap-sm);
             }
 
             header h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .toggle-theme {
-                top: 10px;
-                right: 10px;
+                top: var(--gap-sm);
+                right: var(--gap-sm);
                 padding: 6px 10px;
             }
-
-            .download-cv {
-                margin-top: 10px;
-            }
             
-            /* Grid kategori dibuat menjadi 2 kolom di HP */
+            .download-cv {
+                margin-top: var(--gap-sm);
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
             .category-grid {
-                grid-template-columns: 1fr 1fr; 
-                gap: 15px;
+                grid-template-columns: 1fr 1fr; /* 2 kolom di HP */
+                gap: var(--gap-md);
             }
 
             .category {
-                padding: 25px 10px;
+                padding: var(--gap-lg) var(--gap-sm);
+                font-size: 0.95rem;
+            }
+            
+            /* PERBAIKAN UTAMA 3: Galeri Gambar di Mobile */
+            .gallery {
+                gap: var(--gap-sm);
+            }
+            .gallery img {
+                width: 95%; /* Gambar akan mengambil hampir seluruh lebar layar */
+                max-width: 320px; /* Batasan maksimum agar tidak terlalu besar di tablet kecil */
             }
 
-            /* Galeri Gambar di Mobile */
-            .gallery img{
-                width: 90%;
-                max-width: 320px;
-            }
-            
             /* Mengurangi Jarak Antar Tombol di Mobile */
             #home > div:last-child { 
-                margin-top: 25px !important; 
-                gap: 10px !important; 
-                flex-direction: column; /* Tombol dibuat ke bawah agar tidak terlalu lebar */
+                margin-top: var(--gap-lg) !important; 
+                gap: var(--gap-sm) !important; 
+                flex-direction: column; 
             }
             
-            /* Mengurangi Padding pada Teks Detail/About di Mobile */
             #about-me p, #about-me h3, #about-me ul {
-                 padding: 0 10px; /* Padding sisi dikurangi */
+                 padding: 0 var(--gap-sm);
             }
-            
+
+            #about-me ul {
+                padding: 0 calc(var(--gap-sm) + 20px);
+            }
+
             .detail-desc {
-                padding: 10px;
+                padding: var(--gap-sm);
+                font-size: 0.9rem;
             }
-            
-            /* Membuat elemen form dan back button lebih responsif */
+
             .detail-actions {
                 flex-direction: column;
-                gap: 10px;
+                gap: var(--gap-sm);
             }
             
             .back-button, .detail-actions a.download-cv {
                 width: 100%;
-                max-width: 300px; /* Batasi lebar tombol */
+                max-width: 250px; 
+                padding: 8px 16px;
+                font-size: 0.9rem;
             }
-
+            
+            footer {
+                padding: var(--gap-sm);
+                font-size: 0.85rem;
+            }
         }
         
         @keyframes fadeIn {
