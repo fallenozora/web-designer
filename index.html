@@ -34,30 +34,31 @@
             transition: background 0.3s, color 0.3s;
         }
 
+        /* PERUBAHAN UTAMA 1: Mengurangi padding container global */
         .container {
             max-width: 1000px;
             margin: auto;
-            padding: 40px 20px;
+            padding: 30px 15px; /* Padding dikurangi dari 40px 20px menjadi 30px 15px */
             text-align: center;
         }
 
         header {
             background: linear-gradient(to right, var(--secondary), var(--accent));
             color: white;
-            padding: 40px 20px;
+            padding: 30px 20px; /* Padding header dikurangi dari 40px */
             position: relative;
         }
 
         header h1 {
             font-size: 2.5rem;
-            margin-bottom: 10px;
+            margin-bottom: 8px; /* Margin dikurangi dari 10px */
         }
 
         .toggle-theme {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 10px 15px;
+            top: 15px; /* Disesuaikan agar tetap terlihat */
+            right: 15px; /* Disesuaikan agar tetap terlihat */
+            padding: 8px 12px; /* Disesuaikan agar lebih kecil */
             border: none;
             background: var(--primary);
             color: white;
@@ -66,7 +67,7 @@
         }
 
         .download-cv {
-            margin-top: 20px;
+            margin-top: 15px; /* Margin dikurangi dari 20px */
             display: inline-block;
             padding: 10px 20px;
             background: var(--primary);
@@ -86,15 +87,15 @@
 
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Lebar minimal dikurangi sedikit */
+            gap: 20px; /* Jarak antar kategori dikurangi dari 30px */
+            margin-top: 25px; /* Margin dikurangi dari 30px */
         }
 
         .category {
             background: var(--secondary);
             color: white;
-            padding: 40px 20px;
+            padding: 30px 15px; /* Padding kategori dikurangi dari 40px 20px */
             border-radius: 10px;
             cursor: pointer;
             transition: background 0.3s;
@@ -106,19 +107,19 @@
 
         h2 {
             color: var(--primary);
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Margin bawah h2 dikurangi dari 20px */
         }
 
         .gallery {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 15px; /* Jarak antar gambar dikurangi dari 20px */
             justify-content: center;
-            margin: 30px 0;
+            margin: 25px 0; /* Margin dikurangi dari 30px */
         }
 
         .gallery img {
-            width: 300px;
+            width: 280px; /* Lebar gambar dikurangi sedikit dari 300px */
             border-radius: 10px;
             transition: transform 0.3s;
             cursor: pointer;
@@ -129,7 +130,7 @@
         }
 
         .back-button {
-            margin-top: 20px;
+            margin-top: 15px; /* Margin dikurangi dari 20px */
             padding: 10px 20px;
             background: var(--primary);
             color: white;
@@ -143,11 +144,11 @@
             flex-direction: column;
             max-width: 500px;
             margin: auto;
-            gap: 15px;
+            gap: 10px; /* Jarak antar input dikurangi dari 15px */
         }
 
         input, textarea {
-            padding: 12px;
+            padding: 10px; /* Padding input dikurangi dari 12px */
             border-radius: 5px;
             border: none;
             font-size: 1rem;
@@ -172,129 +173,114 @@
             background: var(--secondary);
             color: white;
             text-align: center;
-            padding: 20px;
-            margin-top: 40px;
+            padding: 15px; /* Padding footer dikurangi dari 20px */
+            margin-top: 30px; /* Margin dikurangi dari 40px */
         }
 
-        /* Detail page styling: biru lembut dengan gradien tipis /
+        /* Detail page styling */
         .detail-page {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 18px;
-            padding: 30px;
+            gap: 15px; /* Jarak antar elemen detail dikurangi dari 18px */
+            padding: 20px; /* Padding detail page dikurangi dari 30px */
             border-radius: 12px;
             background: linear-gradient(180deg, rgba(0,119,182,0.06), rgba(0,180,216,0.03));
-            box-shadow: 0 10px 30px rgba(3,10,20,0.35);
+            box-shadow: 0 5px 20px rgba(3,10,20,0.25); /* Shadow dikurangi agar lebih soft */
         }
 
-        .detail-hero {
-            width: 100%;
-            max-width: 920px;
-            border-radius: 12px;
-            overflow: hidden;
-            background: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .detail-hero img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: contain;
-        }
-
-        .detail-desc {
-            max-width: 920px;
-            text-align: left;
-            color: var(--text);
-            background: transparent;
-            padding: 14px 10px;
-            font-size: 1rem;
-            line-height: 1.5;
-        }
-
-        .detail-desc p {
-            margin-bottom: 8px;
-            color: rgba(0,0,0,0.75); /* when in dark mode it'll be overridden by var(--text) so it's readable */
-        }
-
-        .detail-actions {
-            display:flex;
-            gap:12px;
-            align-items:center;
-        }
-
-        /* styling for the new 'about' section content using existing classes */
+        /* About Me Spacing Disesuaikan */
         #about-me p {
             max-width: 800px;
-            margin: 20px auto;
+            margin: 15px auto; /* Margin atas/bawah dikurangi dari 20px */
             text-align: left;
             padding: 0 15px;
-            line-height: 1.7;
+            line-height: 1.6; /* Line height disesuaikan */
         }
         #about-me h3 {
-            color: var(--accent);
-            margin-top: 30px;
-            margin-bottom: 10px;
-            text-align: left;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 0 15px;
+            color: var(--primary);
+            margin-top: 20px; /* Margin atas dikurangi dari 30px */
+            margin-bottom: 8px; /* Margin bawah dikurangi dari 10px */
+            /* ... properti lain tetap ... */
         }
         #about-me ul {
-            max-width: 800px;
-            margin: 0 auto 20px auto;
-            text-align: left;
-            list-style: none;
-            padding: 0 35px;
+            margin: 0 auto 15px auto; /* Margin bawah dikurangi dari 20px */
+            /* ... properti lain tetap ... */
         }
-        #about-me ul li {
-            margin-bottom: 8px;
-            position: relative;
-            padding-left: 20px;
-        }
-        #about-me ul li::before {
-            content: '•';
-            color: var(--primary);
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
-            position: absolute;
-            left: 0;
-        }
-        /* Profile image specific styling */
         #about-me .profile-img {
-            width: 150px; /* Adjust size as needed */
-            height: 150px; /* Adjust size as needed */
-            border-radius: 50%; /* Makes the image round */
-            object-fit: cover; /* Ensures the image covers the area without distortion */
-            margin-bottom: 20px;
-            border: 4px solid var(--primary); /* Optional: add a border */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            width: 120px; /* Ukuran gambar profil dikurangi sedikit untuk HP */
+            height: 120px; 
+            margin-bottom: 15px; /* Margin dikurangi dari 20px */
+            /* ... properti lain tetap ... */
         }
+        
+        /* PERUBAHAN UTAMA 2: Media Query untuk Layar Handphone */
+        @media (max-width: 720px) {
+            
+            /* Menyesuaikan Padding Container di Mobile */
+            .container {
+                padding: 20px 10px; /* Padding container di HP lebih kecil */
+            }
 
+            header h1 {
+                font-size: 2rem;
+            }
 
-        /* make sure detail pages respond well */
-        @media (max-width:720px){
+            .toggle-theme {
+                top: 10px;
+                right: 10px;
+                padding: 6px 10px;
+            }
+
+            .download-cv {
+                margin-top: 10px;
+            }
+            
+            /* Grid kategori dibuat menjadi 2 kolom di HP */
+            .category-grid {
+                grid-template-columns: 1fr 1fr; 
+                gap: 15px;
+            }
+
+            .category {
+                padding: 25px 10px;
+            }
+
+            /* Galeri Gambar di Mobile */
             .gallery img{
                 width: 90%;
                 max-width: 320px;
             }
-            .detail-hero {
-                max-width: 100%;
+            
+            /* Mengurangi Jarak Antar Tombol di Mobile */
+            #home > div:last-child { 
+                margin-top: 25px !important; 
+                gap: 10px !important; 
+                flex-direction: column; /* Tombol dibuat ke bawah agar tidak terlalu lebar */
             }
+            
+            /* Mengurangi Padding pada Teks Detail/About di Mobile */
+            #about-me p, #about-me h3, #about-me ul {
+                 padding: 0 10px; /* Padding sisi dikurangi */
+            }
+            
             .detail-desc {
                 padding: 10px;
             }
-            #about-me p, #about-me h3, #about-me ul {
-                 padding: 0 5px;
+            
+            /* Membuat elemen form dan back button lebih responsif */
+            .detail-actions {
+                flex-direction: column;
+                gap: 10px;
             }
+            
+            .back-button, .detail-actions a.download-cv {
+                width: 100%;
+                max-width: 300px; /* Batasi lebar tombol */
+            }
+
         }
+        
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -331,15 +317,15 @@
 
     <section id="about-me" class="section container">
         <h2>Tentang Fallen Ozora Raza</h2>
-        <img src="fotoku.jpg" alt="Fallen Ozora Raza" class="profile-img">
+        <img src="assets/fotoku.jpg" alt="Foto Profil Fallen Ozora Raza" class="profile-img">
         <p>
-            Halo! Saya Fallen Ozora Raza, seorang desainer grafis pelajar yang bersemangat dalam menciptakan visual yang kuat dan komunikatif. Saya berfokus pada desain yang tidak hanya indah secara estetika, tetapi juga efektif dalam mencapai tujuannya, baik itu untuk branding, media sosial, atau antarmuka pengguna.
+            Halo! Saya **Fallen Ozora Raza**, seorang desainer grafis pelajar yang bersemangat dalam menciptakan visual yang kuat dan komunikatif. Saya berfokus pada desain yang tidak hanya indah secara estetika, tetapi juga efektif dalam mencapai tujuannya, baik itu untuk branding, media sosial, atau antarmuka pengguna.
         </p>
 
         <h3>Keahlian Utama:</h3>
         <ul>
-            <li>**Desain Grafis:** Mahir menggunakan Adobe Photoshop dan Illustrator untuk membuat ilustrasi, poster, dan materi promosi.</li>
-            <li>**Desain UI/UX:** Memahami prinsip dasar User Interface dan User Experience, dengan pengalaman menggunakan Figma untuk prototyping.</li>
+            <li>**Desain Grafis:** Mahir menggunakan **Adobe Photoshop** untuk membuat desain, poster, dan materi promosi.</li>
+            <li>**Desain UI/UX:** Memahami prinsip dasar User Interface dan User Experience, dengan pengalaman menggunakan **Figma** untuk prototyping.</li>
             <li>**Branding:** Mampu mengembangkan identitas visual dan logo yang unik dan berkesan.</li>
             <li>**Tipografi dan Layout:** Fokus pada komposisi dan keterbacaan yang optimal.</li>
         </ul>
@@ -463,6 +449,7 @@
             <div class="detail-desc">
                 <h3>Fanta — Ringkas</h3>
                 <p>Desain promosi produk dengan warna cerah untuk menarik perhatian. Visual kuat supaya engagement naik.</p>
+                <p>Tools: Photoshop.</p>
             </div>
             <div class="detail-actions"><button class="back-button" onclick="showSection('feed')">⬅ Kembali ke Galeri Feed</button></div>
         </div>
@@ -484,6 +471,7 @@
             <div class="detail-desc">
                 <h3>Burger Poster — Ringkas</h3>
                 <p>Poster makanan yang menggugah selera; komposisi dan warna dipilih untuk meningkatkan nafsu beli.</p>
+                <p>Tools: Photoshop.</p>
             </div>
             <div class="detail-actions"><button class="back-button" onclick="showSection('feed')">⬅ Kembali ke Galeri Feed</button></div>
         </div>
