@@ -1,700 +1,705 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fallen Ozora Raza - Portofolio</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            /* FONT SIZE DASAR & FLUID */
-            font-size: clamp(16px, 1.5vw, 18px);
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fallen Ozora Raza - Portofolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* FONT SIZE DASAR & FLUID */
+            font-size: clamp(16px, 1.5vw, 18px);
 
-            --bg: #0d1b2a;
-            --text: #e0e1dd;
-            --primary: #00b4d8;
-            --secondary: #1b263b;
-            --accent: #0077b6;
-            
-            /* Jarak menggunakan REM (Relatif terhadap root font-size) */
-            --gap-xs: 0.5rem;   /* ~8px */
-            --gap-sm: 0.75rem;  /* ~12px */
-            --gap-md: 1rem;     /* ~16px */
-            --gap-lg: 1.5rem;   /* ~24px */
-            --gap-xl: 2.5rem;   /* ~40px */
-        }
+            --bg: #0d1b2a;
+            --text: #e0e1dd;
+            --primary: #00b4d8;
+            --secondary: #1b263b;
+            --accent: #0077b6;
+            
+            /* Jarak menggunakan REM (Relatif terhadap root font-size) */
+            --gap-xs: 0.5rem;   /* ~8px */
+            --gap-sm: 0.75rem;  /* ~12px */
+            --gap-md: 1rem;     /* ~16px */
+            --gap-lg: 1.5rem;   /* ~24px */
+            --gap-xl: 2.5rem;   /* ~40px */
+        }
 
-        body.light {
-            --bg: #f7f7f7;
-            --text: #1a1a1a;
-            --primary: #0077b6;
-            --secondary: #e0f7fa;
-            --accent: #023e8a;
-        }
+        body.light {
+            --bg: #f7f7f7;
+            --text: #1a1a1a;
+            --primary: #0077b6;
+            --secondary: #e0f7fa;
+            --accent: #023e8a;
+        }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-        body {
-            /* Menggunakan Poppins */
-            font-family: 'Poppins', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            transition: background 0.3s, color 0.3s;
-            line-height: 1.6; 
-        }
+        body {
+            /* Menggunakan Poppins */
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            transition: background 0.3s, color 0.3s;
+            line-height: 1.6; 
+        }
 
-        .container {
-            width: 95vw; 
-            max-width: 1200px;
-            margin: auto;
-            padding: var(--gap-lg) var(--gap-md); 
-            text-align: center;
-        }
+        .container {
+            width: 95vw; 
+            max-width: 1200px;
+            margin: auto;
+            padding: var(--gap-lg) var(--gap-md); 
+            text-align: center;
+        }
 
-        header {
-            background: linear-gradient(to right, var(--secondary), var(--accent));
-            color: white;
-            padding: var(--gap-xl) var(--gap-lg);
-            position: relative;
-        }
+        header {
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+            color: white;
+            padding: var(--gap-xl) var(--gap-lg);
+            position: relative;
+        }
 
-        header h1 {
-            font-size: clamp(2rem, 4vw, 3.5rem); 
-            margin-bottom: var(--gap-xs);
-            font-weight: 700; /* Bold */
-        }
-        header p {
-            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
-            font-weight: 300; /* Light */
-        }
+        header h1 {
+            font-size: clamp(2rem, 4vw, 3.5rem); 
+            margin-bottom: var(--gap-xs);
+            font-weight: 700; /* Bold */
+        }
+        header p {
+            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+            font-weight: 300; /* Light */
+        }
 
-        .toggle-theme {
-            position: absolute;
-            top: var(--gap-md);
-            right: var(--gap-md);
-            padding: var(--gap-sm) var(--gap-md);
-            border: none;
-            background: var(--primary);
-            color: white;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.85rem;
-        }
+        .toggle-theme {
+            position: absolute;
+            top: var(--gap-md);
+            right: var(--gap-md);
+            padding: var(--gap-sm) var(--gap-md);
+            border: none;
+            background: var(--primary);
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
 
-        .download-cv {
-            margin-top: var(--gap-md);
-            display: inline-block;
-            padding: var(--gap-sm) var(--gap-lg);
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
+        .download-cv {
+            margin-top: var(--gap-md);
+            display: inline-block;
+            padding: var(--gap-sm) var(--gap-lg);
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
 
-        .section {
-            display: none;
-        }
+        .section {
+            display: none;
+        }
 
-        .section.active {
-            display: block;
-            animation: fadeIn 0.5s ease-in;
-        }
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
 
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: var(--gap-lg);
-            margin-top: var(--gap-xl);
-        }
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--gap-lg);
+            margin-top: var(--gap-xl);
+        }
 
-        .category {
-            background: var(--secondary);
-            color: white;
-            padding: var(--gap-lg) var(--gap-md);
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background 0.3s;
-            font-size: clamp(1rem, 1.5vw, 1.2rem);
-            font-weight: 600;
-        }
+        .category {
+            background: var(--secondary);
+            color: white;
+            padding: var(--gap-lg) var(--gap-md);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            font-weight: 600;
+        }
 
-        h2 {
-            color: var(--primary);
-            margin-bottom: var(--gap-lg);
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            font-weight: 700;
-        }
-        
-        /* CSS GALERI (Untuk halaman kategori) */
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--gap-md);
-            justify-content: center;
-            margin: var(--gap-xl) 0;
-            align-items: flex-start;
-        }
+        h2 {
+            color: var(--primary);
+            margin-bottom: var(--gap-lg);
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 700;
+        }
+        
+        /* CSS GALERI (Untuk halaman kategori) */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--gap-md);
+            justify-content: center;
+            margin: var(--gap-xl) 0;
+            align-items: flex-start;
+        }
 
-        .gallery img {
-            width: clamp(150px, 45vw, 300px); 
-            max-width: 100%; 
-            height: auto; 
-            object-fit: contain; 
-            border-radius: 10px;
-            transition: transform 0.3s;
-            cursor: pointer;
-        }
-        /* AKHIR GALERI */
+        .gallery img {
+            width: clamp(150px, 45vw, 300px); 
+            max-width: 100%; 
+            height: auto; 
+            object-fit: contain; 
+            border-radius: 10px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        /* AKHIR GALERI */
 
-        .back-button, .detail-actions a {
-            margin-top: var(--gap-md);
-            padding: var(--gap-sm) var(--gap-lg);
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
+        .back-button, .detail-actions a {
+            margin-top: var(--gap-md);
+            padding: var(--gap-sm) var(--gap-lg);
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
 
-        .back-button:hover, .detail-actions a:hover {
-            background: var(--accent);
-        }
-        
-        #about-me p, #about-me h3, #about-me ul {
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 0 var(--gap-md);
-        }
-        #about-me p {
-            margin: var(--gap-md) auto;
-            text-align: left;
-        }
-        #about-me h3 {
-            color: var(--primary);
-            margin-top: var(--gap-xl);
-            margin-bottom: var(--gap-sm);
-            text-align: left;
-            font-size: clamp(1.1rem, 2vw, 1.5rem);
-            font-weight: 600;
-        }
-        #about-me ul {
-            margin-bottom: var(--gap-lg);
-            text-align: left;
-            padding: 0 calc(var(--gap-md) + 1.2rem); 
-        }
-        #about-me ul li {
-            margin-bottom: var(--gap-xs); 
-            padding-left: 1.5rem;
-        }
-        #about-me .profile-img {
-            width: clamp(100px, 15vw, 150px); 
-            height: clamp(100px, 15vw, 150px);
-            margin-bottom: var(--gap-md);
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--primary);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        
-        /* DETAIL PAGE STYLES */
-        .detail-page {
-            padding: var(--gap-lg);
-        }
+        .back-button:hover, .detail-actions a:hover {
+            background: var(--accent);
+        }
+        
+        #about-me p, #about-me h3, #about-me ul {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 var(--gap-md);
+        }
+        #about-me p {
+            margin: var(--gap-md) auto;
+            text-align: left;
+        }
+        #about-me h3 {
+            color: var(--primary);
+            margin-top: var(--gap-xl);
+            margin-bottom: var(--gap-sm);
+            text-align: left;
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            font-weight: 600;
+        }
+        #about-me ul {
+            margin-bottom: var(--gap-lg);
+            text-align: left;
+            padding: 0 calc(var(--gap-md) + 1.2rem); 
+        }
+        #about-me ul li {
+            margin-bottom: var(--gap-xs); 
+            padding-left: 1.5rem;
+        }
+        #about-me .profile-img {
+            width: clamp(100px, 15vw, 150px); 
+            height: clamp(100px, 15vw, 150px);
+            margin-bottom: var(--gap-md);
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* DETAIL PAGE STYLES */
+        .detail-page {
+            padding: var(--gap-lg);
+        }
 
-        .detail-hero {
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .detail-hero img {
-            max-width: 100%; 
-            height: auto; 
-            max-height: 80vh; 
-            display: block; 
-            margin: 0 auto;
-            border-radius: 10px;
-        }
-        
-        .detail-desc {
-            max-width: 920px;
-            padding: var(--gap-md) var(--gap-sm);
-            margin: 0 auto;
-        }
-        .detail-desc h3 {
-             font-size: clamp(1.2rem, 2vw, 1.8rem);
-             margin-bottom: var(--gap-sm);
-             font-weight: 600;
-        }
-        .detail-desc p {
-            font-size: 0.95rem; 
-            margin-bottom: var(--gap-sm);
-        }
+        .detail-hero {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .detail-hero img {
+            max-width: 100%; 
+            height: auto; 
+            max-height: 80vh; 
+            display: block; 
+            margin: 0 auto;
+            border-radius: 10px;
+        }
+        
+        .detail-desc {
+            max-width: 920px;
+            padding: var(--gap-md) var(--gap-sm);
+            margin: 0 auto;
+        }
+        .detail-desc h3 {
+             font-size: clamp(1.2rem, 2vw, 1.8rem);
+             margin-bottom: var(--gap-sm);
+             font-weight: 600;
+        }
+        .detail-desc p {
+            font-size: 0.95rem; 
+            margin-bottom: var(--gap-sm);
+        }
 
-        .detail-actions {
-            display:flex;
-            gap:var(--gap-sm);
-            align-items:center;
-            flex-wrap: wrap; 
-            justify-content: center;
-        }
+        .detail-actions {
+            display:flex;
+            gap:var(--gap-sm);
+            align-items:center;
+            flex-wrap: wrap; 
+            justify-content: center;
+        }
 
-        /* --- STYLING LINK SOSIAL BARU --- */
-        .social-link {
-            display: inline-block;
-            padding: var(--gap-sm) var(--gap-lg);
-            background: #E1306C; /* Warna khas Instagram */
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: var(--gap-lg); /* Margin bawah agar ada jarak dari tombol kembali */
-            transition: background 0.3s, transform 0.2s;
-        }
+        /* --- STYLING LINK SOSIAL BARU --- */
+        .social-link {
+            display: inline-block;
+            padding: var(--gap-sm) var(--gap-lg);
+            background: #E1306C; /* Warna khas Instagram */
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: var(--gap-lg); /* Margin bawah agar ada jarak dari tombol kembali */
+            transition: background 0.3s, transform 0.2s;
+        }
 
-        .social-link:hover {
-            background: #C135A2; 
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-        /* --- AKHIR STYLING LINK SOSIAL --- */
+        .social-link:hover {
+            background: #C135A2; 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        /* --- AKHIR STYLING LINK SOSIAL --- */
 
 
-        /* REVISI FORM KONTAK */
-        #contact-form {
-            max-width: 500px;
-            display: flex;
-            flex-direction: column;
-            gap: var(--gap-md);
-            margin: var(--gap-xl) auto;
-            padding: var(--gap-lg);
-            background: var(--secondary);
-            border-radius: 15px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-        }
+        /* REVISI FORM KONTAK */
+        #contact-form {
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap-md);
+            margin: var(--gap-xl) auto;
+            padding: var(--gap-lg);
+            background: var(--secondary);
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
 
-        #contact-form input, 
-        #contact-form textarea {
-            padding: var(--gap-md);
-            font-size: 1rem;
-            border: 1px solid var(--accent);
-            border-radius: 8px;
-            background: var(--bg);
-            color: var(--text);
-            transition: border-color 0.3s, box-shadow 0.3s;
-            resize: none;
-        }
-        
-        #contact-form input:focus, 
-        #contact-form textarea:focus {
-            border-color: var(--primary);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.3);
-        }
+        #contact-form input, 
+        #contact-form textarea {
+            padding: var(--gap-md);
+            font-size: 1rem;
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            background: var(--bg);
+            color: var(--text);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            resize: none;
+        }
+        
+        #contact-form input:focus, 
+        #contact-form textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.3);
+        }
 
-        #contact-form textarea {
-            min-height: 150px;
-        }
-        
-        #contact-form button[type="submit"] {
-            padding: var(--gap-md) var(--gap-lg);
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: background 0.3s, transform 0.1s;
-        }
-        
-        #contact-form button[type="submit"]:hover {
-            background: var(--accent);
-            transform: translateY(-1px);
-        }
+        #contact-form textarea {
+            min-height: 150px;
+        }
+        
+        #contact-form button[type="submit"] {
+            padding: var(--gap-md) var(--gap-lg);
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.1s;
+        }
+        
+        #contact-form button[type="submit"]:hover {
+            background: var(--accent);
+            transform: translateY(-1px);
+        }
 
-        .notification {
-            display: none;
-            margin-top: var(--gap-md);
-            padding: var(--gap-sm);
-            background: #4CAF50;
-            color: white;
-            border-radius: 5px;
-            font-weight: 600;
-        }
-        
-        footer {
-            background: var(--secondary);
-            padding: var(--gap-md);
-            margin-top: var(--gap-xl);
-            font-size: 0.85rem;
-            font-weight: 300;
-        }
+        .notification {
+            display: none;
+            margin-top: var(--gap-md);
+            padding: var(--gap-sm);
+            background: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        
+        footer {
+            background: var(--secondary);
+            padding: var(--gap-md);
+            margin-top: var(--gap-xl);
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
 
-        /* Media Query untuk Layar Handphone */
-        @media (max-width: 768px) { 
-            
-            .container {
-                padding: var(--gap-md) var(--gap-xs);
-            }
-            
-            /* Galeri Gambar Kategori */
-            .gallery {
-                flex-direction: column; 
-                align-items: center; 
-            }
+        /* Media Query untuk Layar Handphone */
+        @media (max-width: 768px) { 
+            
+            .container {
+                padding: var(--gap-md) var(--gap-xs);
+            }
+            
+            /* Galeri Gambar Kategori */
+            .gallery {
+                flex-direction: column; 
+                align-items: center; 
+            }
 
-            .gallery img {
-                width: 85vw; 
-                max-width: 350px;
-                margin: var(--gap-md) auto;
-            }
-            
-            /* Gambar di Halaman Detail */
-            .detail-hero img {
-                width: 90vw; 
-                max-width: none; 
-                max-height: none;
-                border-radius: 5px;
-            }
-            
-            .category-grid {
-                grid-template-columns: 1fr 1fr; 
-                gap: var(--gap-md);
-                margin-top: var(--gap-lg);
-            }
-            
-            #home > div:last-child { 
-                margin-top: var(--gap-xl) !important; 
-                gap: var(--gap-md) !important; 
-                flex-direction: column; 
-            }
-            
-            .back-button, .detail-actions a.download-cv, .social-link {
-                width: 100%; /* Membuat tombol dan link sosial full width di HP */
-                max-width: 300px; 
-            }
-            
-            /* Jarak untuk elemen di footer agar tidak menempel */
-            .social-link {
-                margin-top: var(--gap-md);
-                margin-bottom: var(--gap-md);
-            }
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+            .gallery img {
+                width: 85vw; 
+                max-width: 350px;
+                margin: var(--gap-md) auto;
+            }
+            
+            /* Gambar di Halaman Detail - DITAMBAHKAN PROPERTI CENTERING DI SINI */
+            .detail-hero img {
+                width: 90vw; 
+                max-width: none; 
+                max-height: none;
+                border-radius: 5px;
+                /* KODE TAMBAHAN UNTUK CENTERING */
+                display: block; 
+                margin-left: auto; 
+                margin-right: auto;
+                /* AKHIR KODE TAMBAHAN */
+            }
+            
+            .category-grid {
+                grid-template-columns: 1fr 1fr; 
+                gap: var(--gap-md);
+                margin-top: var(--gap-lg);
+            }
+            
+            #home > div:last-child { 
+                margin-top: var(--gap-xl) !important; 
+                gap: var(--gap-md) !important; 
+                flex-direction: column; 
+            }
+            
+            .back-button, .detail-actions a.download-cv, .social-link {
+                width: 100%; /* Membuat tombol dan link sosial full width di HP */
+                max-width: 300px; 
+            }
+            
+            /* Jarak untuk elemen di footer agar tidak menempel */
+            .social-link {
+                margin-top: var(--gap-md);
+                margin-bottom: var(--gap-md);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Fallen Ozora Raza</h1>
-        <p>Desainer Grafis Pelajar</p>
-        <button class="toggle-theme">Ganti Tema</button><br>
-        <a href="cv-fallen-ozora.pdf" class="download-cv" download>📄 Unduh CV</a>
-    </header>
+    <header>
+        <h1>Fallen Ozora Raza</h1>
+        <p>Desainer Grafis Pelajar</p>
+        <button class="toggle-theme">Ganti Tema</button><br>
+        <a href="cv-fallen-ozora.pdf" class="download-cv" download>📄 Unduh CV</a>
+    </header>
 
-    <section id="home" class="section active container">
-        <h2>Pilih Kategori Portofolio</h2>
-        <div class="category-grid">
-            <div class="category" onclick="showSection('sport')">Sport Design</div>
-            <div class="category" onclick="showSection('feed')">Feed Instagram</div>
-            <div class="category" onclick="showSection('logo')">Logo Design</div>
-            <div class="category" onclick="showSection('uiux')">UI/UX Design</div>
-        </div>
-        <div style="margin-top: 40px; display: flex; justify-content: center; gap: 20px;">
-            <a class="download-cv" style="background: var(--accent);" onclick="showSection('about-me')"> Tentang Saya</a>
-            <a class="download-cv" style="background: var(--accent);" onclick="showSection('contact')"> Kontak Saya</a>
-        </div>
-    </section>
+    <section id="home" class="section active container">
+        <h2>Pilih Kategori Portofolio</h2>
+        <div class="category-grid">
+            <div class="category" onclick="showSection('sport')">Sport Design</div>
+            <div class="category" onclick="showSection('feed')">Feed Instagram</div>
+            <div class="category" onclick="showSection('logo')">Logo Design</div>
+            <div class="category" onclick="showSection('uiux')">UI/UX Design</div>
+        </div>
+        <div style="margin-top: 40px; display: flex; justify-content: center; gap: 20px;">
+            <a class="download-cv" style="background: var(--accent);" onclick="showSection('about-me')"> Tentang Saya</a>
+            <a class="download-cv" style="background: var(--accent);" onclick="showSection('contact')"> Kontak Saya</a>
+        </div>
+    </section>
 
-    <section id="about-me" class="section container">
-        <h2>Tentang Fallen Ozora Raza</h2>
-        <img src="fotoku.jpg" alt="Fallen Ozora Raza" class="profile-img">
-        <p>
-            Halo! Saya Fallen Ozora Raza, seorang desainer grafis pelajar yang bersemangat dalam menciptakan visual yang kuat dan komunikatif. Saya berfokus pada desain yang tidak hanya indah secara estetika, tetapi juga efektif dalam mencapai tujuannya, baik itu untuk branding, media sosial, atau antarmuka pengguna.
-        </p>
+    <section id="about-me" class="section container">
+        <h2>Tentang Fallen Ozora Raza</h2>
+        <img src="fotoku.jpg" alt="Fallen Ozora Raza" class="profile-img">
+        <p>
+            Halo! Saya Fallen Ozora Raza, seorang desainer grafis pelajar yang bersemangat dalam menciptakan visual yang kuat dan komunikatif. Saya berfokus pada desain yang tidak hanya indah secara estetika, tetapi juga efektif dalam mencapai tujuannya, baik itu untuk branding, media sosial, atau antarmuka pengguna.
+        </p>
 
-        <h3>Keahlian Utama:</h3>
-        <ul>
-            <li>Desain Grafis : Mahir menggunakan Adobe Photoshop untuk membuat desain, poster, dan materi promosi.</li>
-            <li>Desain UI/UX : Memahami prinsip dasar User Interface dan User Experience, dengan pengalaman menggunakan Figma untuk prototyping.</li>
-            <li>Branding : Mampu mengembangkan identitas visual dan logo yang unik dan berkesan.</li>
-            <li>Tipografi dan Layout : Fokus pada komposisi dan keterbacaan yang optimal.</li>
-        </ul>
+        <h3>Keahlian Utama:</h3>
+        <ul>
+            <li>Desain Grafis : Mahir menggunakan Adobe Photoshop untuk membuat desain, poster, dan materi promosi.</li>
+            <li>Desain UI/UX : Memahami prinsip dasar User Interface dan User Experience, dengan pengalaman menggunakan Figma untuk prototyping.</li>
+            <li>Branding : Mampu mengembangkan identitas visual dan logo yang unik dan berkesan.</li>
+            <li>Tipografi dan Layout : Fokus pada komposisi dan keterbacaan yang optimal.</li>
+        </ul>
 
-        <p>
-            Portofolio ini mencerminkan perjalanan dan eksperimen saya di berbagai bidang desain. Saya selalu terbuka untuk proyek baru dan kesempatan berkolaborasi.
-        </p>
-        <div class="detail-actions">
-            <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
-            <a class="download-cv" href="cv-fallen-ozora.pdf" download style="margin: 0; background: var(--secondary);">📄 Unduh CV</a>
-        </div>
-    </section>
+        <p>
+            Portofolio ini mencerminkan perjalanan dan eksperimen saya di berbagai bidang desain. Saya selalu terbuka untuk proyek baru dan kesempatan berkolaborasi.
+        </p>
+        <div class="detail-actions">
+            <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
+            <a class="download-cv" href="cv-fallen-ozora.pdf" download style="margin: 0; background: var(--secondary);">📄 Unduh CV</a>
+        </div>
+    </section>
 
-    <section id="sport" class="section container">
-        <h2>Sport Design</h2>
-        <div class="gallery">
-            <img src="barca vs psg.png" alt="Sport 1" onclick="showSection('sport-detail-1')">
-            <img src="MESSI KIYOWO.png" alt="Sport 2" onclick="showSection('sport-detail-2')">
-            <img src="dembele.png" alt="Sport 3" onclick="showSection('sport-detail-3')">
-            <img src="RAPHINHA FINAL.png" alt="Sport 4" onclick="showSection('sport-detail-4')">
-        </div>
-        <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
-    </section>
+    <section id="sport" class="section container">
+        <h2>Sport Design</h2>
+        <div class="gallery">
+            <img src="barca vs psg.png" alt="Sport 1" onclick="showSection('sport-detail-1')">
+            <img src="MESSI KIYOWO.png" alt="Sport 2" onclick="showSection('sport-detail-2')">
+            <img src="dembele.png" alt="Sport 3" onclick="showSection('sport-detail-3')">
+            <img src="RAPHINHA FINAL.png" alt="Sport 4" onclick="showSection('sport-detail-4')">
+        </div>
+        <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
+    </section>
 
-    <section id="feed" class="section container">
-        <h2>Feed Instagram</h2>
-        <div class="gallery">
-            <img src="Pekukuhan.png" alt="Feed 1" onclick="showSection('feed-detail-1')">
-            <img src="Fanta.png" alt="Feed 2" onclick="showSection('feed-detail-2')">
-            <img src="OPPENHEIMER final ig.png" alt="Feed 3" onclick="showSection('feed-detail-3')">
-            <img src="Burger poster.png" alt="Feed 4" onclick="showSection('feed-detail-4')">
-        </div>
-        <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
-    </section>
+    <section id="feed" class="section container">
+        <h2>Feed Instagram</h2>
+        <div class="gallery">
+            <img src="Pekukuhan.png" alt="Feed 1" onclick="showSection('feed-detail-1')">
+            <img src="Fanta.png" alt="Feed 2" onclick="showSection('feed-detail-2')">
+            <img src="OPPENHEIMER final ig.png" alt="Feed 3" onclick="showSection('feed-detail-3')">
+            <img src="Burger poster.png" alt="Feed 4" onclick="showSection('feed-detail-4')">
+        </div>
+        <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
+    </section>
 
-    <section id="logo" class="section container">
-        <h2>Logo Design</h2>
-        <div class="gallery">
-            <img src="logo.png" alt="Logo 1" onclick="showSection('logo-detail-1')">
-            <img src="logo kopi brewmance.png" alt="Logo 2" onclick="showSection('logo-detail-2')">
-            <img src="logo fanz design 2.png" alt="Logo 3" onclick="showSection('logo-detail-3')">
-        </div>
-        <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
-    </section>
+    <section id="logo" class="section container">
+        <h2>Logo Design</h2>
+        <div class="gallery">
+            <img src="logo.png" alt="Logo 1" onclick="showSection('logo-detail-1')">
+            <img src="logo kopi brewmance.png" alt="Logo 2" onclick="showSection('logo-detail-2')">
+            <img src="logo fanz design 2.png" alt="Logo 3" onclick="showSection('logo-detail-3')">
+        </div>
+        <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
+    </section>
 
-    <section id="uiux" class="section container">
-        <h2>UI/UX Design</h2>
-        <div class="gallery">
-            <img src="https://via.placeholder.com/300x200?text=UIUX+1" alt="UIUX 1" onclick="showSection('uiux-detail-1')">
-            <img src="https://via.placeholder.com/300x200?text=UIUX+2" alt="UIUX 2" onclick="showSection('uiux-detail-2')">
-        </div>
-        <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
-    </section>
+    <section id="uiux" class="section container">
+        <h2>UI/UX Design</h2>
+        <div class="gallery">
+            <img src="https://via.placeholder.com/300x200?text=UIUX+1" alt="UIUX 1" onclick="showSection('uiux-detail-1')">
+            <img src="https://via.placeholder.com/300x200?text=UIUX+2" alt="UIUX 2" onclick="showSection('uiux-detail-2')">
+        </div>
+        <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
+    </section>
 
-    <section id="sport-detail-1" class="section container">
-        <div class="detail-page">
-            <div class="detail-hero"><img src="barca vs psg.png" alt="Barca vs PSG - detail"></div>
-            <div class="detail-desc">
-                <h3>Barca vs PSG — Ringkas</h3>
-                <p>Desain poster ini dibuat untuk memunculkan energi pertandingan. Saya pakai warna kontras dan susunan pemain yang berekspresi tegas supaya mata langsung fokus ke aksi.</p>
-                <p>Tools: Photoshop • Waktu pengerjaan: singkat • Catatan: cocok untuk poster pertandiingan.</p>
-            </div>
-            <div class="detail-actions">
-                <button class="back-button" onclick="showSection('sport')">⬅ Kembali ke Galeri Sport</button>
-            </div>
-        </div>
-    </section>
-    <section id="sport-detail-2" class="section container">
-        <div class="detail-page">
-            <div class="detail-hero"><img src="MESSI KIYOWO.png" alt="Messi - detail"></div>
-            <div class="detail-desc">
-                <h3>Messi Kiyowo — Ringkas</h3>
-                <p>Konsepnya fokus ke persona atlet: ekspresi dan gerak di-highlight. Warna dipilih menyesuaikan tone tim tersebut.</p>
-                <p>Tools: Photoshop • Notes: ideal untuk poster fan event.</p>
-            </div>
-            <div class="detail-actions">
-                <button class="back-button" onclick="showSection('sport')">⬅ Kembali ke Galeri Sport</button>
-            </div>
-        </div>
-    </section>
-    <section id="sport-detail-3" class="section container">
-        <div class="detail-page">
-            <div class="detail-hero"><img src="dembele.png" alt="Dembele - detail"></div>
-            <div class="detail-desc">
-                <h3>Dembele — Ringkas</h3>
-                <p>Eksperimen warna dan tekstur untuk memberi kesan gerak cepat. Layout dibuat simple supaya tetap mudah dibaca di mobile.</p>
-                <p>Tools: Photoshop • Catatan: Cocok untuk poster fan art.</p>
-            </div>
-            <div class="detail-actions">
-                <button class="back-button" onclick="showSection('sport')">⬅ Kembali ke Galeri Sport</button>
-            </div>
-        </div>
-    </section>
-    <section id="sport-detail-4" class="section container">
-        <div class="detail-page">
-            <div class="detail-hero"><img src="RAPHINHA FINAL.png" alt="Raphinha - detail"></div>
-            <div class="detail-desc">
-                <h3>Raphinha Final — Ringkas</h3>
-                <p>Desain ini menekankan momen kemenangan. Elemen grafis mendukung rasa dinamis dan cocok untuk header event.</p>
-                <p>Tools: Photoshop • Waktu: beberapa jam • Usage: digital promo.</p>
-            </div>
-            <div class="detail-actions">
-                <button class="back-button" onclick="showSection('sport')">⬅ Kembali ke Galeri Sport</button>
-            </div>
-        </div>
-    </section>
-    <section id="feed-detail-1" class="section container">
-        <div class="detail-page">
-            <div class="detail-hero"><img src="Pekukuhan.png" alt="Pekukuhan - detail"></div>
-            <div class="detail-desc">
-                <h3>Pekukuhan — Ringkas</h3>
-                <p>Konten ini dibuat untuk pengumuman resmi—komposisi bersih dan warna brand agar terlihat profesional pada feed.</p>
-                <p>Tools: Photoshop • Catatan: versi square siap upload.</p>
-            </div>
-            <div class="detail-actions"><button class="back-button" onclick="showSection('feed')">⬅ Kembali ke Galeri Feed</button></div>
-        </div>
-    </section>
-    <section id="feed-detail-2" class="section container">
-        <div class="detail-page">
-            <div class="detail-hero"><img src="Fanta.png" alt="Fanta - detail"></div>
-            <div class="detail-desc">
-                <h3>Fanta — Ringkas</h3>
-                <p>Desain promosi produk dengan warna cerah untuk menarik perhatian. Visual kuat supaya engagement naik.</p>
-                <p>Tools: Photoshop.</p>
-            </div>
-            <div class="detail-actions"><button class="back-button" onclick="showSection('feed')">⬅ Kembali ke Galeri Feed</button></div>
-        </div>
-    </section>
-    <section id="feed-detail-3" class="section container">
-        <div class="detail-page">
-            <div class="detail-hero"><img src="OPPENHEIMER final ig.png" alt="Oppenheimer - detail"></div>
-            <div class="detail-desc">
-                <h3>Oppenheimer — Ringkas</h3>
-                <p>Poster tematik dengan mood dramatis. Kontras tinggi dan tipografi kuat jadi fokus utama.</p>
-                <p>Tools: Photoshop • Keterangan: untuk kampanye film.</p>
-            </div>
-            <div class="detail-actions"><button class="back-button" onclick="showSection('feed')">⬅ Kembali ke Galeri Feed</button></div>
-        </div>
-    </section>
-    <section id="feed-detail-4" class="section container">
-        <div class="detail-page">
-            <div class="detail-hero"><img src="Burger poster.png" alt="Burger poster - detail"></div>
-            <div class="detail-desc">
-                <h3>Burger Poster — Ringkas</h3>
-                <p>Poster makanan yang menggugah selera; komposisi dan warna dipilih untuk meningkatkan nafsu beli.</p>
-                <p>Tools: Photoshop.</p>
-            </div>
-            <div class="detail-actions"><button class="back-button" onclick="showSection('feed')">⬅ Kembali ke Galeri Feed</button></div>
-        </div>
-    </section>
-    <section id="logo-detail-1" class="section container">
-        <div class="detail-page">
-            <div class="detail-hero"><img src="logo.png" alt="Logo 1 - detail"></div>
-            <div class="detail-desc">
-                <h3>Logo 1 — Ringkas</h3>
-                <p>Logo ini saya buat untuk instagram kelas desain komunikasi visual, Dengan maskot burung hantu yang melambangkan maskot DKV (desain komunikasi visual) yang memegang kamera yang melambangkan senjata para anggota DKV. Versi hitam-putih siap untuk format berbeda.</p>
-                <p>Tools: Illustrator,Coreldraw • Catatan: scalable vector.</p>
-            </div>
-            <div class="detail-actions"><button class="back-button" onclick="showSection('logo')">⬅ Kembali ke Galeri Logo</button></div>
-        </div>
-    </section>
-    <section id="logo-detail-2" class="section container">
-        <div class="detail-page">
-            <div class="detail-hero"><img src="logo kopi brewmance.png" alt="Logo Kopi Brewmance - detail"></div>
-            <div class="detail-desc">
-                <h3>Logo Kopi Brewmance — Ringkas</h3>
-                <p>Identitas hangat dan ramah, dibuat supaya terasa cozy di kemasan & social media.</p>
-                <p>Tools: Illustrator • Notes: cocok untuk label produk.</p>
-            </div>
-            <div class="detail-actions"><button class="back-button" onclick="showSection('logo')">⬅ Kembali ke Galeri Logo</button></div>
-        </div>
-    </section>
-    <section id="logo-detail-3" class="section container">
-        <div class="detail-page">
-            <div class="detail-hero"><img src="logo fanz design 2.png" alt="Logo Fanz Design - detail"></div>
-            <div class="detail-desc">
-                <h3>Logo Fanz Design — Ringkas</h3>
-                <p>Logo modern dengan bentuk geometris untuk kesan profesional. Versi monokrom tersedia.</p>
-                <p>Tools: Illustrator.</p>
-            </div>
-            <div class="detail-actions"><button class="back-button" onclick="showSection('logo')">⬅ Kembali ke Galeri Logo</button></div>
-        </div>
-    </section>
-    <section id="uiux-detail-1" class="section container">
-        <div class="detail-page">
-            <div class="detail-hero"><img src="https://via.placeholder.com/300x200?text=UIUX+1" alt="UIUX 1 - detail"></div>
-            <div class="detail-desc">
-                <h3>UIUX 1 — Ringkas</h3>
-                <p>Sketsa awal dan eksplorasi layout. Fokus pada pengalaman pengguna yang simpel dan intuitif.</p>
-                <p>Tools: Figma • Status: prototype basic.</p>
-            </div>
-            <div class="detail-actions"><button class="back-button" onclick="showSection('uiux')">⬅ Kembali ke Galeri UI/UX</button></div>
-        </div>
-    </section>
-    <section id="uiux-detail-2" class="section container">
-        <div class="detail-page">
-            <div class="detail-hero"><img src="https://via.placeholder.com/300x200?text=UIUX+2" alt="UIUX 2 - detail"></div>
-            <div class="detail-desc">
-                <h3>UIUX 2 — Ringkas</h3>
-                <p>Exploration warna & hierarchy, dibuat untuk mobile-first. Clean layout supaya navigasi jelas.</p>
-                <p>Tools: Figma • Catatan: responsive-ready.</p>
-            </div>
-            <div class="detail-actions"><button class="back-button" onclick="showSection('uiux')">⬅ Kembali ke Galeri UI/UX</button></div>
-    </section>
-    <section id="contact" class="section container">
-        <h2>Kontak Saya</h2>
-        <form id="contact-form">
-            <input type="text" placeholder="Nama Anda" required>
-            <input type="email" placeholder="Email Anda" required>
-            <textarea placeholder="Pesan Anda" required></textarea>
-            <button type="submit">Kirim</button>
-        </form>
-        <div class="notification" id="notif">✅ Pesan berhasil dikirim!</div>
-        
-        <a href="https://www.instagram.com/fanzz.design?igsh=MW1waHN1ZDh0ejF4eg==" target="_blank" class="social-link" style="margin-top: var(--gap-lg);">
-             Kunjungi Instagram Saya
-        </a>
-        <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
-    </section>
+    <section id="sport-detail-1" class="section container">
+        <div class="detail-page">
+            <div class="detail-hero"><img src="barca vs psg.png" alt="Barca vs PSG - detail"></div>
+            <div class="detail-desc">
+                <h3>Barca vs PSG — Ringkas</h3>
+                <p>Desain poster ini dibuat untuk memunculkan energi pertandingan. Saya pakai warna kontras dan susunan pemain yang berekspresi tegas supaya mata langsung fokus ke aksi.</p>
+                <p>Tools: Photoshop • Waktu pengerjaan: singkat • Catatan: cocok untuk poster pertandiingan.</p>
+            </div>
+            <div class="detail-actions">
+                <button class="back-button" onclick="showSection('sport')">⬅ Kembali ke Galeri Sport</button>
+            </div>
+        </div>
+    </section>
+    <section id="sport-detail-2" class="section container">
+        <div class="detail-page">
+            <div class="detail-hero"><img src="MESSI KIYOWO.png" alt="Messi - detail"></div>
+            <div class="detail-desc">
+                <h3>Messi Kiyowo — Ringkas</h3>
+                <p>Konsepnya fokus ke persona atlet: ekspresi dan gerak di-highlight. Warna dipilih menyesuaikan tone tim tersebut.</p>
+                <p>Tools: Photoshop • Notes: ideal untuk poster fan event.</p>
+            </div>
+            <div class="detail-actions">
+                <button class="back-button" onclick="showSection('sport')">⬅ Kembali ke Galeri Sport</button>
+            </div>
+        </div>
+    </section>
+    <section id="sport-detail-3" class="section container">
+        <div class="detail-page">
+            <div class="detail-hero"><img src="dembele.png" alt="Dembele - detail"></div>
+            <div class="detail-desc">
+                <h3>Dembele — Ringkas</h3>
+                <p>Eksperimen warna dan tekstur untuk memberi kesan gerak cepat. Layout dibuat simple supaya tetap mudah dibaca di mobile.</p>
+                <p>Tools: Photoshop • Catatan: Cocok untuk poster fan art.</p>
+            </div>
+            <div class="detail-actions">
+                <button class="back-button" onclick="showSection('sport')">⬅ Kembali ke Galeri Sport</button>
+            </div>
+        </div>
+    </section>
+    <section id="sport-detail-4" class="section container">
+        <div class="detail-page">
+            <div class="detail-hero"><img src="RAPHINHA FINAL.png" alt="Raphinha - detail"></div>
+            <div class="detail-desc">
+                <h3>Raphinha Final — Ringkas</h3>
+                <p>Desain ini menekankan momen kemenangan. Elemen grafis mendukung rasa dinamis dan cocok untuk header event.</p>
+                <p>Tools: Photoshop • Waktu: beberapa jam • Usage: digital promo.</p>
+            </div>
+            <div class="detail-actions">
+                <button class="back-button" onclick="showSection('sport')">⬅ Kembali ke Galeri Sport</button>
+            </div>
+        </div>
+    </section>
+    <section id="feed-detail-1" class="section container">
+        <div class="detail-page">
+            <div class="detail-hero"><img src="Pekukuhan.png" alt="Pekukuhan - detail"></div>
+            <div class="detail-desc">
+                <h3>Pekukuhan — Ringkas</h3>
+                <p>Konten ini dibuat untuk pengumuman resmi—komposisi bersih dan warna brand agar terlihat profesional pada feed.</p>
+                <p>Tools: Photoshop • Catatan: versi square siap upload.</p>
+            </div>
+            <div class="detail-actions"><button class="back-button" onclick="showSection('feed')">⬅ Kembali ke Galeri Feed</button></div>
+        </div>
+    </section>
+    <section id="feed-detail-2" class="section container">
+        <div class="detail-page">
+            <div class="detail-hero"><img src="Fanta.png" alt="Fanta - detail"></div>
+            <div class="detail-desc">
+                <h3>Fanta — Ringkas</h3>
+                <p>Desain promosi produk dengan warna cerah untuk menarik perhatian. Visual kuat supaya engagement naik.</p>
+                <p>Tools: Photoshop.</p>
+            </div>
+            <div class="detail-actions"><button class="back-button" onclick="showSection('feed')">⬅ Kembali ke Galeri Feed</button></div>
+        </div>
+    </section>
+    <section id="feed-detail-3" class="section container">
+        <div class="detail-page">
+            <div class="detail-hero"><img src="OPPENHEIMER final ig.png" alt="Oppenheimer - detail"></div>
+            <div class="detail-desc">
+                <h3>Oppenheimer — Ringkas</h3>
+                <p>Poster tematik dengan mood dramatis. Kontras tinggi dan tipografi kuat jadi fokus utama.</p>
+                <p>Tools: Photoshop • Keterangan: untuk kampanye film.</p>
+            </div>
+            <div class="detail-actions"><button class="back-button" onclick="showSection('feed')">⬅ Kembali ke Galeri Feed</button></div>
+        </div>
+    </section>
+    <section id="feed-detail-4" class="section container">
+        <div class="detail-page">
+            <div class="detail-hero"><img src="Burger poster.png" alt="Burger poster - detail"></div>
+            <div class="detail-desc">
+                <h3>Burger Poster — Ringkas</h3>
+                <p>Poster makanan yang menggugah selera; komposisi dan warna dipilih untuk meningkatkan nafsu beli.</p>
+                <p>Tools: Photoshop.</p>
+            </div>
+            <div class="detail-actions"><button class="back-button" onclick="showSection('feed')">⬅ Kembali ke Galeri Feed</button></div>
+        </div>
+    </section>
+    <section id="logo-detail-1" class="section container">
+        <div class="detail-page">
+            <div class="detail-hero"><img src="logo.png" alt="Logo 1 - detail"></div>
+            <div class="detail-desc">
+                <h3>Logo 1 — Ringkas</h3>
+                <p>Logo ini saya buat untuk instagram kelas desain komunikasi visual, Dengan maskot burung hantu yang melambangkan maskot DKV (desain komunikasi visual) yang memegang kamera yang melambangkan senjata para anggota DKV. Versi hitam-putih siap untuk format berbeda.</p>
+                <p>Tools: Illustrator,Coreldraw • Catatan: scalable vector.</p>
+            </div>
+            <div class="detail-actions"><button class="back-button" onclick="showSection('logo')">⬅ Kembali ke Galeri Logo</button></div>
+        </div>
+    </section>
+    <section id="logo-detail-2" class="section container">
+        <div class="detail-page">
+            <div class="detail-hero"><img src="logo kopi brewmance.png" alt="Logo Kopi Brewmance - detail"></div>
+            <div class="detail-desc">
+                <h3>Logo Kopi Brewmance — Ringkas</h3>
+                <p>Identitas hangat dan ramah, dibuat supaya terasa cozy di kemasan & social media.</p>
+                <p>Tools: Illustrator • Notes: cocok untuk label produk.</p>
+            </div>
+            <div class="detail-actions"><button class="back-button" onclick="showSection('logo')">⬅ Kembali ke Galeri Logo</button></div>
+        </div>
+    </section>
+    <section id="logo-detail-3" class="section container">
+        <div class="detail-page">
+            <div class="detail-hero"><img src="logo fanz design 2.png" alt="Logo Fanz Design - detail"></div>
+            <div class="detail-desc">
+                <h3>Logo Fanz Design — Ringkas</h3>
+                <p>Logo modern dengan bentuk geometris untuk kesan profesional. Versi monokrom tersedia.</p>
+                <p>Tools: Illustrator.</p>
+            </div>
+            <div class="detail-actions"><button class="back-button" onclick="showSection('logo')">⬅ Kembali ke Galeri Logo</button></div>
+        </div>
+    </section>
+    <section id="uiux-detail-1" class="section container">
+        <div class="detail-page">
+            <div class="detail-hero"><img src="https://via.placeholder.com/300x200?text=UIUX+1" alt="UIUX 1 - detail"></div>
+            <div class="detail-desc">
+                <h3>UIUX 1 — Ringkas</h3>
+                <p>Sketsa awal dan eksplorasi layout. Fokus pada pengalaman pengguna yang simpel dan intuitif.</p>
+                <p>Tools: Figma • Status: prototype basic.</p>
+            </div>
+            <div class="detail-actions"><button class="back-button" onclick="showSection('uiux')">⬅ Kembali ke Galeri UI/UX</button></div>
+        </div>
+    </section>
+    <section id="uiux-detail-2" class="section container">
+        <div class="detail-page">
+            <div class="detail-hero"><img src="https://via.placeholder.com/300x200?text=UIUX+2" alt="UIUX 2 - detail"></div>
+            <div class="detail-desc">
+                <h3>UIUX 2 — Ringkas</h3>
+                <p>Exploration warna & hierarchy, dibuat untuk mobile-first. Clean layout supaya navigasi jelas.</p>
+                <p>Tools: Figma • Catatan: responsive-ready.</p>
+            </div>
+            <div class="detail-actions"><button class="back-button" onclick="showSection('uiux')">⬅ Kembali ke Galeri UI/UX</button></div>
+    </section>
+    <section id="contact" class="section container">
+        <h2>Kontak Saya</h2>
+        <form id="contact-form">
+            <input type="text" placeholder="Nama Anda" required>
+            <input type="email" placeholder="Email Anda" required>
+            <textarea placeholder="Pesan Anda" required></textarea>
+            <button type="submit">Kirim</button>
+        </form>
+        <div class="notification" id="notif">✅ Pesan berhasil dikirim!</div>
+        
+        <a href="https://www.instagram.com/fanzz.design?igsh=MW1waHN1ZDh0ejF4eg==" target="_blank" class="social-link" style="margin-top: var(--gap-lg);">
+             Kunjungi Instagram Saya
+        </a>
+        <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
+    </section>
 
-    <footer>
-        <p>&copy; 2025 Fallen Ozora Raza | IG & Behance</p>
-    </footer>
+    <footer>
+        <p>&copy; 2025 Fallen Ozora Raza | IG & Behance</p>
+    </footer>
 
-    <script>
-        function showSection(id) {
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
-            const el = document.getElementById(id);
-            if (el) el.classList.add('active');
-            window.scrollTo(0, 0);
-        }
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            const el = document.getElementById(id);
+            if (el) el.classList.add('active');
+            window.scrollTo(0, 0);
+        }
 
-        // Dark mode toggle
-        document.querySelector('.toggle-theme').addEventListener('click', () => {
-            document.body.classList.toggle('light');
-        });
+        // Dark mode toggle
+        document.querySelector('.toggle-theme').addEventListener('click', () => {
+            document.body.classList.toggle('light');
+        });
 
-        // Simulasi submit
-        const form = document.getElementById('contact-form');
-        const notif = document.getElementById('notif');
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            notif.style.display = 'block';
-            setTimeout(() => {
-                notif.style.display = 'none';
-                form.reset();
-            }, 3000);
-        });
+        // Simulasi submit
+        const form = document.getElementById('contact-form');
+        const notif = document.getElementById('notif');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            notif.style.display = 'block';
+            setTimeout(() => {
+                notif.style.display = 'none';
+                form.reset();
+            }, 3000);
+        });
 
-        // start at home by default
-        showSection('home');
-    </script>
+        // start at home by default
+        showSection('home');
+    </script>
 </body>
 </html>
