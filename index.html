@@ -135,6 +135,7 @@
             font-weight: 700;
         }
         
+        /* CSS GALERI (Untuk halaman kategori) */
         .gallery {
             display: flex;
             flex-wrap: wrap;
@@ -144,9 +145,8 @@
             align-items: flex-start;
         }
 
-        /* Tampilan Desktop & Tablet (Sudah bagus) */
         .gallery img {
-            width: clamp(150px, 45vw, 300px); /* Pertahankan perilaku clamp yang ada */
+            width: clamp(150px, 45vw, 300px); 
             max-width: 100%; 
             height: auto; 
             object-fit: contain; 
@@ -154,7 +154,7 @@
             transition: transform 0.3s;
             cursor: pointer;
         }
-        /* Akhir Tampilan Desktop */
+        /* AKHIR GALERI */
 
         .back-button, .detail-actions a {
             margin-top: var(--gap-md);
@@ -205,6 +205,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         
+        /* DETAIL PAGE STYLES */
         .detail-page {
             padding: var(--gap-lg);
         }
@@ -214,9 +215,18 @@
             max-width: 1000px;
             margin: 0 auto;
         }
+        
+        /* Gambar detail di layar besar/desktop */
         .detail-hero img {
+            max-width: 100%; 
+            height: auto; 
             max-height: 80vh; 
+            display: block; 
+            margin: 0 auto;
+            border-radius: 10px;
         }
+        /* AKHIR DETAIL PAGE STYLES */
+        
         .detail-desc {
             max-width: 920px;
             padding: var(--gap-md) var(--gap-sm);
@@ -258,27 +268,33 @@
             font-weight: 300;
         }
 
-        /* Media Query untuk Layar Handphone (REVISI KRITIS DI SINI) */
+        /* Media Query untuk Layar Handphone */
         @media (max-width: 768px) { 
             
             .container {
                 padding: var(--gap-md) var(--gap-xs);
             }
             
-            /* REVISI GALERI UNTUK HP: Memaksa gambar menjadi satu kolom dengan margin/ruang tepi. */
+            /* Galeri Gambar Kategori (Dibuat 1 kolom dengan margin) */
             .gallery {
-                /* Mengubah cara flexbox bekerja di HP agar item selalu menyusun vertikal */
                 flex-direction: column; 
-                align-items: center; /* Memastikan gambar berada di tengah kolom */
+                align-items: center; 
             }
 
             .gallery img {
-                /* Mengambil lebar viewport dikurangi margin yang Anda inginkan (misalnya 10%) */
-                width: 85vw; /* Gambar hanya akan mengambil 85% lebar viewport */
-                max-width: 350px; /* Batas maksimum agar tidak terlalu lebar */
-                margin: var(--gap-md) auto; /* Margin atas-bawah dan auto di kiri-kanan */
+                width: 85vw; /* Gambar mengambil 85% lebar viewport */
+                max-width: 350px;
+                margin: var(--gap-md) auto;
             }
-            /* AKHIR REVISI KRITIS */
+            
+            /* REVISI KRITIS: Gambar di Halaman Detail (Detail-Hero) */
+            .detail-hero img {
+                width: 90vw; /* Gambar detail mengambil 90% lebar viewport */
+                max-width: none; /* Hilangkan batas max-width desktop */
+                max-height: none; /* Hilangkan batas max-height desktop */
+                border-radius: 5px;
+            }
+            /* AKHIR REVISI KRITIS HP */
 
             .category-grid {
                 grid-template-columns: 1fr 1fr; 
