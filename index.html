@@ -4,16 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Fallen Ozora Raza - Portofolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
+            /* FONT SIZE DASAR & FLUID */
+            font-size: clamp(16px, 1.5vw, 18px);
+
             --bg: #0d1b2a;
             --text: #e0e1dd;
             --primary: #00b4d8;
             --secondary: #1b263b;
             --accent: #0077b6;
-            --gap-sm: 10px; /* New: Small gap */
-            --gap-md: 15px; /* New: Medium gap */
-            --gap-lg: 20px; /* New: Large gap */
+            
+            /* Jarak menggunakan REM (Relatif terhadap root font-size) */
+            --gap-xs: 0.5rem;   /* ~8px */
+            --gap-sm: 0.75rem;  /* ~12px */
+            --gap-md: 1rem;     /* ~16px */
+            --gap-lg: 1.5rem;   /* ~24px */
+            --gap-xl: 2.5rem;   /* ~40px */
         }
 
         body.light {
@@ -31,41 +43,50 @@
         }
 
         body {
-            font-family: 'Segoe UI', sans-serif;
+            /* Menggunakan Poppins */
+            font-family: 'Poppins', sans-serif;
             background: var(--bg);
             color: var(--text);
             transition: background 0.3s, color 0.3s;
+            line-height: 1.6; 
         }
 
         .container {
-            max-width: 1000px;
+            width: 95vw; 
+            max-width: 1200px;
             margin: auto;
-            padding: var(--gap-lg) var(--gap-md); /* Menggunakan variabel gap */
+            padding: var(--gap-lg) var(--gap-md); 
             text-align: center;
         }
 
         header {
             background: linear-gradient(to right, var(--secondary), var(--accent));
             color: white;
-            padding: var(--gap-lg) var(--gap-lg); /* Menggunakan variabel gap */
+            padding: var(--gap-xl) var(--gap-lg);
             position: relative;
         }
 
         header h1 {
-            font-size: 2.5rem;
-            margin-bottom: var(--gap-sm); /* Menggunakan variabel gap */
+            font-size: clamp(2rem, 4vw, 3.5rem); 
+            margin-bottom: var(--gap-xs);
+            font-weight: 700; /* Bold */
+        }
+        header p {
+            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+            font-weight: 300; /* Light */
         }
 
         .toggle-theme {
             position: absolute;
             top: var(--gap-md);
             right: var(--gap-md);
-            padding: 8px 12px;
+            padding: var(--gap-sm) var(--gap-md);
             border: none;
             background: var(--primary);
             color: white;
             border-radius: 20px;
             cursor: pointer;
+            font-size: 0.85rem;
         }
 
         .download-cv {
@@ -76,6 +97,8 @@
             color: white;
             text-decoration: none;
             border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
         .section {
@@ -89,9 +112,9 @@
 
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: var(--gap-lg); /* Menggunakan variabel gap */
-            margin-top: var(--gap-lg); /* Menggunakan variabel gap */
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--gap-lg);
+            margin-top: var(--gap-xl);
         }
 
         .category {
@@ -101,41 +124,36 @@
             border-radius: 10px;
             cursor: pointer;
             transition: background 0.3s;
-        }
-
-        .category:hover {
-            background: var(--accent);
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            font-weight: 600;
         }
 
         h2 {
             color: var(--primary);
-            margin-bottom: var(--gap-md);
+            margin-bottom: var(--gap-lg);
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 700;
         }
-
-        /* PERBAIKAN UTAMA 1: Galeri Gambar */
+        
         .gallery {
             display: flex;
             flex-wrap: wrap;
-            gap: var(--gap-md); /* Jarak antar gambar disesuaikan */
+            gap: var(--gap-md);
             justify-content: center;
-            margin: var(--gap-lg) 0;
+            margin: var(--gap-xl) 0;
         }
 
         .gallery img {
-            width: 300px; /* Default desktop width */
-            max-width: 100%; /* Pastikan gambar tidak melebihi lebar parent */
-            height: auto; /* Penting agar aspek rasio terjaga */
-            object-fit: contain; /* Memastikan gambar sepenuhnya terlihat dalam area */
+            width: clamp(150px, 45vw, 300px); 
+            max-width: 100%; 
+            height: auto; 
+            object-fit: contain; 
             border-radius: 10px;
             transition: transform 0.3s;
             cursor: pointer;
         }
 
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
-
-        .back-button {
+        .back-button, .detail-actions a {
             margin-top: var(--gap-md);
             padding: var(--gap-sm) var(--gap-lg);
             background: var(--primary);
@@ -143,145 +161,40 @@
             border: none;
             border-radius: 30px;
             cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            max-width: 500px;
-            margin: auto;
-            gap: var(--gap-sm);
-        }
-
-        input, textarea {
-            padding: var(--gap-sm);
-            border-radius: 5px;
-            border: none;
-            font-size: 1rem;
-        }
-
-        button[type="submit"] {
-            background: var(--accent);
-            color: white;
-            padding: var(--gap-sm);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .notification {
-            color: var(--primary);
-            margin-top: var(--gap-sm);
-            display: none;
-        }
-
-        footer {
-            background: var(--secondary);
-            color: white;
-            text-align: center;
-            padding: var(--gap-md);
-            margin-top: var(--gap-lg);
-        }
-
-        /* Detail page styling */
-        .detail-page {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: var(--gap-md);
-            padding: var(--gap-lg);
-            border-radius: 12px;
-            background: linear-gradient(180deg, rgba(0,119,182,0.06), rgba(0,180,216,0.03));
-            box-shadow: 0 5px 20px rgba(3,10,20,0.25);
-        }
-
-        /* PERBAIKAN UTAMA 2: Detail Hero Gambar */
-        .detail-hero {
-            width: 100%;
-            max-width: 920px;
-            border-radius: 12px;
-            overflow: hidden;
-            background: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: var(--gap-sm); /* Tambahkan padding agar gambar tidak menempel di tepi hero */
-        }
-
-        .detail-hero img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: contain; /* Pastikan gambar sepenuhnya terlihat */
-            max-height: 500px; /* Batasi tinggi maksimum untuk gambar detail */
-        }
-
-        .detail-desc {
-            max-width: 920px;
-            text-align: left;
-            color: var(--text);
-            background: transparent;
-            padding: var(--gap-md) var(--gap-sm);
-            font-size: 1rem;
-            line-height: 1.5;
-        }
-
-        .detail-desc p {
-            margin-bottom: var(--gap-sm);
-            color: var(--text);
-        }
-
-        .detail-actions {
-            display:flex;
-            gap:var(--gap-sm);
-            align-items:center;
-            flex-wrap: wrap; /* Memungkinkan wrap di layar kecil */
-            justify-content: center;
-        }
-
-        /* About Me Spacing Disesuaikan */
-        #about-me p {
-            max-width: 800px;
-            margin: var(--gap-md) auto;
-            text-align: left;
-            padding: 0 var(--gap-md);
-            line-height: 1.6;
-        }
-        #about-me h3 {
-            color: var(--primary);
-            margin-top: var(--gap-lg);
-            margin-bottom: var(--gap-sm);
-            text-align: left;
+        
+        #about-me p, #about-me h3, #about-me ul {
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
             padding: 0 var(--gap-md);
         }
-        #about-me ul {
-            max-width: 800px;
-            margin: 0 auto var(--gap-md) auto;
+        #about-me p {
+            margin: var(--gap-md) auto;
             text-align: left;
-            list-style: none;
-            padding: 0 calc(var(--gap-md) + 20px); /* Sedikit lebih banyak padding untuk list item */
+        }
+        #about-me h3 {
+            color: var(--primary);
+            margin-top: var(--gap-xl);
+            margin-bottom: var(--gap-sm);
+            text-align: left;
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            font-weight: 600;
+        }
+        #about-me ul {
+            margin-bottom: var(--gap-lg);
+            text-align: left;
+            padding: 0 calc(var(--gap-md) + 1.2rem); 
         }
         #about-me ul li {
-            margin-bottom: 5px; /* Jarak antar list item dikurangi */
-            position: relative;
-            padding-left: 20px;
-        }
-        #about-me ul li::before {
-            content: '•';
-            color: var(--primary);
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
-            position: absolute;
-            left: 0;
+            margin-bottom: var(--gap-xs); 
+            padding-left: 1.5rem;
         }
         #about-me .profile-img {
-            width: 120px;
-            height: 120px;
+            width: clamp(100px, 15vw, 150px); 
+            height: clamp(100px, 15vw, 150px);
             margin-bottom: var(--gap-md);
             border-radius: 50%;
             object-fit: cover;
@@ -289,88 +202,84 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         
-        /* Media Query untuk Layar Handphone */
-        @media (max-width: 768px) { /* Menggunakan breakpoint 768px untuk tablet/HP */
-            :root {
-                --gap-sm: 8px;
-                --gap-md: 12px;
-                --gap-lg: 16px;
-            }
+        .detail-page {
+            padding: var(--gap-lg);
+        }
 
+        .detail-hero {
+            width: 100%;
+            max-width: 1000px;
+        }
+        .detail-hero img {
+            max-height: 80vh; 
+        }
+        .detail-desc {
+            max-width: 920px;
+            padding: var(--gap-md) var(--gap-sm);
+        }
+        .detail-desc h3 {
+             font-size: clamp(1.2rem, 2vw, 1.8rem);
+             margin-bottom: var(--gap-sm);
+             font-weight: 600;
+        }
+        .detail-desc p {
+            font-size: 0.95rem; 
+            margin-bottom: var(--gap-sm);
+        }
+
+        .detail-actions {
+            display:flex;
+            gap:var(--gap-sm);
+            align-items:center;
+            flex-wrap: wrap; 
+            justify-content: center;
+        }
+
+        form {
+            max-width: 500px;
+            gap: var(--gap-md);
+        }
+
+        input, textarea {
+            padding: var(--gap-md);
+            font-size: 1rem;
+        }
+
+        footer {
+            background: var(--secondary);
+            padding: var(--gap-md);
+            margin-top: var(--gap-xl);
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        /* Media Query untuk Layar Handphone (Fine-tuning) */
+        @media (max-width: 768px) { 
+            
             .container {
-                padding: var(--gap-md) var(--gap-sm);
-            }
-
-            header h1 {
-                font-size: 1.8rem;
-            }
-
-            .toggle-theme {
-                top: var(--gap-sm);
-                right: var(--gap-sm);
-                padding: 6px 10px;
+                padding: var(--gap-md) var(--gap-xs);
             }
             
-            .download-cv {
-                margin-top: var(--gap-sm);
-                padding: 8px 16px;
-                font-size: 0.9rem;
-            }
-
             .category-grid {
-                grid-template-columns: 1fr 1fr; /* 2 kolom di HP */
+                grid-template-columns: 1fr 1fr; 
                 gap: var(--gap-md);
-            }
-
-            .category {
-                padding: var(--gap-lg) var(--gap-sm);
-                font-size: 0.95rem;
+                margin-top: var(--gap-lg);
             }
             
-            /* PERBAIKAN UTAMA 3: Galeri Gambar di Mobile */
-            .gallery {
-                gap: var(--gap-sm);
-            }
-            .gallery img {
-                width: 95%; /* Gambar akan mengambil hampir seluruh lebar layar */
-                max-width: 320px; /* Batasan maksimum agar tidak terlalu besar di tablet kecil */
-            }
-
-            /* Mengurangi Jarak Antar Tombol di Mobile */
             #home > div:last-child { 
-                margin-top: var(--gap-lg) !important; 
-                gap: var(--gap-sm) !important; 
+                margin-top: var(--gap-xl) !important; 
+                gap: var(--gap-md) !important; 
                 flex-direction: column; 
             }
             
-            #about-me p, #about-me h3, #about-me ul {
-                 padding: 0 var(--gap-sm);
+            .gallery img {
+                width: 90vw; 
+                max-width: 400px;
             }
 
-            #about-me ul {
-                padding: 0 calc(var(--gap-sm) + 20px);
-            }
-
-            .detail-desc {
-                padding: var(--gap-sm);
-                font-size: 0.9rem;
-            }
-
-            .detail-actions {
-                flex-direction: column;
-                gap: var(--gap-sm);
-            }
-            
             .back-button, .detail-actions a.download-cv {
                 width: 100%;
-                max-width: 250px; 
-                padding: 8px 16px;
-                font-size: 0.9rem;
-            }
-            
-            footer {
-                padding: var(--gap-sm);
-                font-size: 0.85rem;
+                max-width: 300px; 
             }
         }
         
