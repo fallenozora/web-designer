@@ -144,6 +144,8 @@
         }
 
         .gallery img {
+            /* Nilai default (tablet/desktop) */
+            /* Ini sudah bagus untuk desktop, membatasi gambar maksimum 300px */
             width: clamp(150px, 45vw, 300px); 
             max-width: 100%; 
             height: auto; 
@@ -209,6 +211,7 @@
         .detail-hero {
             width: 100%;
             max-width: 1000px;
+            margin: 0 auto;
         }
         .detail-hero img {
             max-height: 80vh; 
@@ -216,6 +219,7 @@
         .detail-desc {
             max-width: 920px;
             padding: var(--gap-md) var(--gap-sm);
+            margin: 0 auto;
         }
         .detail-desc h3 {
              font-size: clamp(1.2rem, 2vw, 1.8rem);
@@ -253,13 +257,20 @@
             font-weight: 300;
         }
 
-        /* Media Query untuk Layar Handphone (Fine-tuning) */
+        /* Media Query untuk Layar Handphone (Minimal Change) */
         @media (max-width: 768px) { 
             
             .container {
                 padding: var(--gap-md) var(--gap-xs);
             }
             
+            /* HANYA BAGIAN INI YANG DIUBAH SECARA KRITIS */
+            .gallery img {
+                /* Mengambil lebar penuh kontainer (95vw) agar tidak terlalu kecil */
+                width: 90vw; 
+                max-width: 400px;
+            }
+
             .category-grid {
                 grid-template-columns: 1fr 1fr; 
                 gap: var(--gap-md);
@@ -272,11 +283,6 @@
                 flex-direction: column; 
             }
             
-            .gallery img {
-                width: 90vw; 
-                max-width: 400px;
-            }
-
             .back-button, .detail-actions a.download-cv {
                 width: 100%;
                 max-width: 300px; 
