@@ -308,10 +308,14 @@
     <section id="home" class="section active container">
         <h2>Pilih Kategori Portofolio</h2>
         <div class="category-grid">
-            <div class="category" onclick="showSection('about-me')">Tentang Saya 🧑‍💻</div> <div class="category" onclick="showSection('sport')">Sport Design</div>
+            <div class="category" onclick="showSection('sport')">Sport Design</div>
             <div class="category" onclick="showSection('feed')">Feed Instagram</div>
             <div class="category" onclick="showSection('logo')">Logo Design</div>
             <div class="category" onclick="showSection('uiux')">UI/UX Design</div>
+        </div>
+        <div style="margin-top: 40px; display: flex; justify-content: center; gap: 20px;">
+            <a class="download-cv" style="background: var(--accent);" onclick="showSection('about-me')">🧑‍💻 Tentang Saya</a>
+            <a class="download-cv" style="background: var(--accent);" onclick="showSection('contact')">✉ Kontak Saya</a>
         </div>
     </section>
 
@@ -332,8 +336,10 @@
         <p>
             Portofolio ini mencerminkan perjalanan dan eksperimen saya di berbagai bidang desain. Saya selalu terbuka untuk proyek baru dan kesempatan berkolaborasi.
         </p>
-        <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
-        <button class="download-cv" style="background: var(--accent);" onclick="showSection('contact')">✉ Kontak Saya</button>
+        <div class="detail-actions">
+            <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
+            <a class="download-cv" href="cv-fallen-ozora.pdf" download style="margin: 0; background: var(--secondary);">📄 Unduh CV</a>
+        </div>
     </section>
 
     <section id="sport" class="section container">
