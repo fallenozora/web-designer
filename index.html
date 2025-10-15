@@ -151,8 +151,6 @@
             border-radius: 5px;
             border: none;
             font-size: 1rem;
-            color: var(--text); /* Set text color for inputs */
-            background: var(--secondary); /* Set background for inputs */
         }
 
         button[type="submit"] {
@@ -178,7 +176,7 @@
             margin-top: 40px;
         }
 
-        /* Detail page styling: biru lembut dengan gradien tipis */
+        /* Detail page styling: biru lembut dengan gradien tipis /
         .detail-page {
             display: flex;
             flex-direction: column;
@@ -186,14 +184,8 @@
             gap: 18px;
             padding: 30px;
             border-radius: 12px;
-            background: linear-gradient(180deg, rgba(0, 119, 182, 0.06), rgba(0, 180, 216, 0.03));
-            box-shadow: 0 10px 30px rgba(3, 10, 20, 0.35);
-        }
-        
-        /* Override for light mode */
-        body.light .detail-page {
-             background: linear-gradient(180deg, rgba(0, 119, 182, 0.1), rgba(0, 180, 216, 0.05));
-             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: linear-gradient(180deg, rgba(0,119,182,0.06), rgba(0,180,216,0.03));
+            box-shadow: 0 10px 30px rgba(3,10,20,0.35);
         }
 
         .detail-hero {
@@ -226,42 +218,78 @@
 
         .detail-desc p {
             margin-bottom: 8px;
-            color: var(--text);
-        }
-        
-        .detail-desc h3 {
-             color: var(--primary);
-             margin-bottom: 10px;
+            color: rgba(0,0,0,0.75); /* when in dark mode it'll be overridden by var(--text) so it's readable */
         }
 
         .detail-actions {
-            display: flex;
-            gap: 12px;
-            align-items: center;
+            display:flex;
+            gap:12px;
+            align-items:center;
         }
 
+        /* styling for the new 'about' section content using existing classes */
+        #about-me p {
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: left;
+            padding: 0 15px;
+            line-height: 1.7;
+        }
+        #about-me h3 {
+            color: var(--accent);
+            margin-top: 30px;
+            margin-bottom: 10px;
+            text-align: left;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 15px;
+        }
+        #about-me ul {
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            text-align: left;
+            list-style: none;
+            padding: 0 35px;
+        }
+        #about-me ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+        #about-me ul li::before {
+            content: '•';
+            color: var(--primary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+            left: 0;
+        }
+
+
         /* make sure detail pages respond well */
-        @media (max-width:720px) {
-            .gallery img {
+        @media (max-width:720px){
+            .gallery img{
                 width: 90%;
                 max-width: 320px;
             }
-
             .detail-hero {
                 max-width: 100%;
             }
-
             .detail-desc {
                 padding: 10px;
             }
+            #about-me p, #about-me h3, #about-me ul {
+                 padding: 0 5px;
+            }
         }
-
         @keyframes fadeIn {
             from {
                 opacity: 0;
                 transform: translateY(20px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -280,12 +308,32 @@
     <section id="home" class="section active container">
         <h2>Pilih Kategori Portofolio</h2>
         <div class="category-grid">
-            <div class="category" onclick="showSection('sport')">Sport Design</div>
+            <div class="category" onclick="showSection('about-me')">Tentang Saya 🧑‍💻</div> <div class="category" onclick="showSection('sport')">Sport Design</div>
             <div class="category" onclick="showSection('feed')">Feed Instagram</div>
             <div class="category" onclick="showSection('logo')">Logo Design</div>
             <div class="category" onclick="showSection('uiux')">UI/UX Design</div>
         </div>
-        <div style="margin-top: 40px;"><a class="download-cv" style="background: var(--accent);" onclick="showSection('contact')">✉ Kontak Saya</a></div>
+    </section>
+
+    <section id="about-me" class="section container">
+        <h2>Tentang Fallen Ozora Raza</h2>
+        <p>
+            Halo! Saya Fallen Ozora Raza, seorang desainer grafis pelajar yang bersemangat dalam menciptakan visual yang kuat dan komunikatif. Saya berfokus pada desain yang tidak hanya indah secara estetika, tetapi juga efektif dalam mencapai tujuannya, baik itu untuk branding, media sosial, atau antarmuka pengguna.
+        </p>
+
+        <h3>Keahlian Utama:</h3>
+        <ul>
+            <li>**Desain Grafis:** Mahir menggunakan Adobe Photoshop dan Illustrator untuk membuat ilustrasi, poster, dan materi promosi.</li>
+            <li>**Desain UI/UX:** Memahami prinsip dasar User Interface dan User Experience, dengan pengalaman menggunakan Figma untuk prototyping.</li>
+            <li>**Branding:** Mampu mengembangkan identitas visual dan logo yang unik dan berkesan.</li>
+            <li>**Tipografi dan Layout:** Fokus pada komposisi dan keterbacaan yang optimal.</li>
+        </ul>
+
+        <p>
+            Portofolio ini mencerminkan perjalanan dan eksperimen saya di berbagai bidang desain. Saya selalu terbuka untuk proyek baru dan kesempatan berkolaborasi.
+        </p>
+        <button class="back-button" onclick="showSection('home')">⬅ Kembali ke Menu</button>
+        <button class="download-cv" style="background: var(--accent);" onclick="showSection('contact')">✉ Kontak Saya</button>
     </section>
 
     <section id="sport" class="section container">
@@ -381,7 +429,6 @@
             </div>
         </div>
     </section>
-
     <section id="feed-detail-1" class="section container">
         <div class="detail-page">
             <div class="detail-hero"><img src="Pekukuhan.png" alt="Pekukuhan - detail"></div>
@@ -426,14 +473,13 @@
             <div class="detail-actions"><button class="back-button" onclick="showSection('feed')">⬅ Kembali ke Galeri Feed</button></div>
         </div>
     </section>
-
     <section id="logo-detail-1" class="section container">
         <div class="detail-page">
             <div class="detail-hero"><img src="logo.png" alt="Logo 1 - detail"></div>
             <div class="detail-desc">
                 <h3>Logo 1 — Ringkas</h3>
                 <p>Logo ini saya buat untuk instagram kelas desain komunikasi visual, Dengan maskot burung hantu yang melambangkan maskot DKV (desain komunikasi visual) yang memegang kamera yang melambangkan senjata para anggota DKV. Versi hitam-putih siap untuk format berbeda.</p>
-                <p>Tools: Illustrator, Coreldraw • Catatan: scalable vector.</p>
+                <p>Tools: Illustrator,Coreldraw • Catatan: scalable vector.</p>
             </div>
             <div class="detail-actions"><button class="back-button" onclick="showSection('logo')">⬅ Kembali ke Galeri Logo</button></div>
         </div>
@@ -460,7 +506,6 @@
             <div class="detail-actions"><button class="back-button" onclick="showSection('logo')">⬅ Kembali ke Galeri Logo</button></div>
         </div>
     </section>
-
     <section id="uiux-detail-1" class="section container">
         <div class="detail-page">
             <div class="detail-hero"><img src="https://via.placeholder.com/300x200?text=UIUX+1" alt="UIUX 1 - detail"></div>
@@ -483,7 +528,6 @@
             <div class="detail-actions"><button class="back-button" onclick="showSection('uiux')">⬅ Kembali ke Galeri UI/UX</button></div>
         </div>
     </section>
-
     <section id="contact" class="section container">
         <h2>Kontak Saya</h2>
         <form id="contact-form">
