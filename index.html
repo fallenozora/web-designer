@@ -135,25 +135,37 @@
             font-weight: 700;
         }
         
+        /* REVISI GALERI: MENGGUNAKAN FLEX UNTUK OTOMATIS WRAPPING */
         .gallery {
             display: flex;
             flex-wrap: wrap;
             gap: var(--gap-md);
             justify-content: center;
             margin: var(--gap-xl) 0;
+            /* Perubahan di sini untuk memastikan wrap di HP */
+            align-items: flex-start; 
         }
 
         .gallery img {
-            /* Nilai default (tablet/desktop) */
-            /* Ini sudah bagus untuk desktop, membatasi gambar maksimum 300px */
-            width: clamp(150px, 45vw, 300px); 
-            max-width: 100%; 
+            /* Dihapus: width: clamp(150px, 45vw, 300px); */
+            /* BARU: Membiarkan gambar mengambil ruang fleksibel. */
+            flex-grow: 1; /* Biarkan gambar tumbuh (agar di desktop bisa memenuhi baris) */
+            flex-shrink: 1; /* Biarkan gambar menyusut saat ruang sempit (HP) */
+            
+            /* BARU: JAMINAN LEBAR MINIMUM dan MAKSIMUM */
+            min-width: 250px; /* Minimal ukuran gambar di desktop/tablet */
+            max-width: 300px; /* Maksimal ukuran gambar di desktop */
+            
+            /* DIBUAT FLEKSIBEL DI HP: */
+            width: 100%; /* Agar di HP, ketika tidak ada ruang, gambar mengambil lebar penuh kontainer */
+            
             height: auto; 
             object-fit: contain; 
             border-radius: 10px;
             transition: transform 0.3s;
             cursor: pointer;
         }
+        /* AKHIR REVISI GALERI */
 
         .back-button, .detail-actions a {
             margin-top: var(--gap-md);
@@ -261,15 +273,18 @@
         @media (max-width: 768px) { 
             
             .container {
+                /* Padding sedikit dikurangi di HP agar lebih lega */
                 padding: var(--gap-md) var(--gap-xs);
             }
             
-            /* HANYA BAGIAN INI YANG DIUBAH SECARA KRITIS */
+            /* Gambar galeri sudah diurus di bagian .gallery img di atas, 
+               tapi kita tambahkan sedikit penyesuaian untuk memaksa satu kolom di HP */
             .gallery img {
-                /* Mengambil lebar penuh kontainer (95vw) agar tidak terlalu kecil */
-                width: 90vw; 
-                max-width: 400px;
+                width: 95%; /* Di HP, gambar benar-benar mengambil hampir seluruh lebar kontainer */
+                max-width: none; /* Hilangkan max-width desktop */
+                min-width: 100%; /* Tambahkan min-width agar responsif sempurna */
             }
+
 
             .category-grid {
                 grid-template-columns: 1fr 1fr; 
