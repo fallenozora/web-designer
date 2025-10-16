@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -21,11 +21,11 @@
             --accent: #0077b6;
             
             /* Jarak menggunakan REM (Relatif terhadap root font-size) */
-            --gap-xs: 0.5rem;   /* ~8px */
-            --gap-sm: 0.75rem;  /* ~12px */
-            --gap-md: 1rem;     /* ~16px */
-            --gap-lg: 1.5rem;   /* ~24px */
-            --gap-xl: 2.5rem;   /* ~40px */
+            --gap-xs: 0.5rem; 	/* ~8px */
+            --gap-sm: 0.75rem; 	/* ~12px */
+            --gap-md: 1rem; 	/* ~16px */
+            --gap-lg: 1.5rem; 	/* ~24px */
+            --gap-xl: 2.5rem; 	/* ~40px */
         }
 
         body.light {
@@ -43,13 +43,19 @@
         }
 
         body {
-            /* Menggunakan Poppins */
+            /* Font body tetap Poppins */
             font-family: 'Poppins', sans-serif;
             background: var(--bg);
             color: var(--text);
             transition: background 0.3s, color 0.3s;
             line-height: 1.6; 
         }
+
+        /* --- PENAMBAHAN FONT MONTSERRAT UNTUK JUDUL --- */
+        header h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif; 
+        }
+        /* ----------------------------------------------- */
 
         .container {
             width: 95vw; 
@@ -66,22 +72,41 @@
             position: relative;
         }
         
-        /* FIX: Kontras Header di Light Mode */
         body.light header {
-            color: var(--text); /* Warna teks jadi gelap */
-            background: var(--secondary); /* Latar belakang lebih terang */
-            border-bottom: 5px solid var(--primary); /* Tambahkan garis pemisah */
+            color: var(--text); 
+            background: var(--secondary); 
+            border-bottom: 5px solid var(--primary); 
         }
-
 
         header h1 {
             font-size: clamp(2rem, 4vw, 3.5rem); 
             margin-bottom: var(--gap-xs);
-            font-weight: 700; /* Bold */
+            font-weight: 900; /* Ekstra Bold dari Montserrat */
+            position: relative; 
+            padding-bottom: var(--gap-sm); /* Ruang untuk garis */
         }
+        
+        /* --- GARIS PEMISAH (DIVIDER) BARU DI BAWAH H1 --- */
+        header h1::after {
+            content: '';
+            display: block;
+            width: 60px; /* Lebar garis */
+            height: 4px;
+            background: var(--text); /* Warna garis (putih di dark mode) */
+            margin: var(--gap-xs) auto 0 auto;
+            border-radius: 2px;
+            transition: background 0.3s;
+        }
+
+        /* Aturan untuk Light Mode */
+        body.light header h1::after {
+            background: var(--primary); /* Warna garis (biru di light mode) */
+        }
+        /* ---------------------------------------------------- */
+
         header p {
             font-size: clamp(0.9rem, 1.5vw, 1.2rem);
-            font-weight: 300; /* Light */
+            font-weight: 300; 
         }
 
         .toggle-theme {
@@ -97,7 +122,6 @@
             font-size: 0.85rem;
         }
         
-        /* FIX: Pastikan tombol Ganti Tema tetap kontras di Light Mode */
         body.light .toggle-theme {
             background: var(--accent); 
         }
@@ -118,7 +142,6 @@
             display: none;
         }
         
-        /* A11Y: Tambahkan aria-hidden untuk pembaca layar (diaktifkan di JS) */
         .section[aria-hidden="true"] {
             display: none;
         }
@@ -144,23 +167,20 @@
             transition: background 0.3s;
             font-size: clamp(1rem, 1.5vw, 1.2rem);
             font-weight: 600;
-            
-            /* A11Y: Memungkinkan fokus (tabindex) */
             outline: none; 
         }
         
-        /* FIX: Kontras Kategori di Light Mode */
         body.light .category {
-            color: var(--text); /* Menggunakan warna teks standar gelap */
+            color: var(--text); 
             background: var(--secondary); 
-            border: 1px solid var(--primary); /* Tambahkan sedikit batas agar terlihat jelas */
+            border: 1px solid var(--primary); 
         }
 
         h2 {
             color: var(--primary);
             margin-bottom: var(--gap-lg);
             font-size: clamp(1.5rem, 3vw, 2.5rem);
-            font-weight: 700;
+            font-weight: 700; /* Bold dari Montserrat */
         }
         
         /* CSS GALERI (Untuk halaman kategori) */
@@ -179,10 +199,18 @@
             height: auto; 
             object-fit: contain; 
             border-radius: 10px;
-            transition: transform 0.3s;
+            /* Tambahkan box-shadow ke transisi */
+            transition: transform 0.3s, box-shadow 0.3s; 
             cursor: pointer;
         }
-        /* AKHIR GALERI */
+        
+        /* --- ANIMASI HOVER GALERI BARU --- */
+        .gallery img:hover {
+            transform: scale(1.03); /* Membesar sedikit */
+            /* Tambahkan bayangan biru dari warna primary */
+            box-shadow: 0 8px 20px rgba(0, 180, 216, 0.6); 
+        }
+        /* --------------------------------- */
 
         .back-button, .detail-actions a {
             margin-top: var(--gap-md);
@@ -208,7 +236,7 @@
             margin-right: auto;
             padding: 0 var(--gap-md);
         }
-        /* ... (Styling about me lainnya tetap sama) ... */
+        
         #about-me p {
             margin: var(--gap-md) auto;
             text-align: left;
@@ -220,6 +248,7 @@
             text-align: left;
             font-size: clamp(1.1rem, 2vw, 1.5rem);
             font-weight: 600;
+            font-family: 'Poppins', sans-serif; /* Menggunakan Poppins agar tidak terlalu tebal */
         }
         #about-me ul {
             margin-bottom: var(--gap-lg);
@@ -241,7 +270,7 @@
         }
 
         /* DETAIL PAGE STYLES */
-        /* ... (Styling detail page tetap sama) ... */
+        
         .detail-page {
             padding: var(--gap-lg);
         }
@@ -269,11 +298,12 @@
         .detail-desc h3 {
              font-size: clamp(1.2rem, 2vw, 1.8rem);
              margin-bottom: var(--gap-sm);
-             font-weight: 600;
+             font-weight: 700; /* Bold dari Montserrat */
         }
         .detail-desc p {
             font-size: 0.95rem; 
             margin-bottom: var(--gap-sm);
+            font-family: 'Poppins', sans-serif; /* Teks deskripsi tetap Poppins */
         }
 
         .detail-actions {
@@ -288,7 +318,7 @@
         .social-link {
             display: inline-block;
             padding: var(--gap-sm) var(--gap-lg);
-            background: #E1306C; /* Warna khas Instagram */
+            background: #E1306C; 
             color: white;
             text-decoration: none;
             border-radius: 30px;
@@ -317,12 +347,11 @@
             background: var(--secondary);
             border-radius: 15px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-            color: white; /* Default text color in dark mode */
+            color: white; 
         }
         
-        /* FIX: Perbaikan Form Kontak untuk Light Mode */
         body.light #contact-form {
-            background: #f0f0f0; /* Latar belakang yang lebih netral di Light Mode */
+            background: #f0f0f0; 
             color: var(--text);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
         }
@@ -375,7 +404,7 @@
             color: white;
             border-radius: 5px;
             font-weight: 600;
-            transition: opacity 0.5s ease; /* Transisi untuk notifikasi */
+            transition: opacity 0.5s ease; 
         }
         
         footer {
@@ -384,10 +413,9 @@
             margin-top: var(--gap-xl);
             font-size: 0.85rem;
             font-weight: 300;
-            color: white; /* Default text color in dark mode */
+            color: white; 
         }
         
-        /* FIX: Kontras Footer di Light Mode */
         body.light footer {
             background: var(--secondary);
             color: var(--text);
@@ -438,7 +466,7 @@
             }
             
             .back-button, .detail-actions a.download-cv, .social-link {
-                width: 100%; /* Membuat tombol dan link sosial full width di HP */
+                width: 100%; 
                 max-width: 300px; 
             }
             
@@ -618,7 +646,7 @@
             </div>
         </div>
     </section>
-                    
+                
     <section id="feed-detail-1" class="section container" aria-hidden="true">
         <div class="detail-page">
             <div class="detail-hero"><img src="Pekukuhan.png" alt="Pekukuhan - detail"></div>
@@ -787,31 +815,48 @@
             if (themeToggle) {
                 themeToggle.addEventListener('click', () => {
                     document.body.classList.toggle('light');
+                    // Simpan preferensi tema ke LocalStorage
+                    const isLight = document.body.classList.contains('light');
+                    localStorage.setItem('theme', isLight ? 'light' : 'dark');
                 });
             }
 
-            // Simulasi submit Form
-            const form = document.getElementById('contact-form');
-            const notif = document.getElementById('notif');
-            if (form) {
-                form.addEventListener('submit', (e) => {
+            // Load theme dari LocalStorage
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light');
+            } else {
+                 document.body.classList.remove('light');
+            }
+            
+            // Handle form submission (Dummy)
+            const contactForm = document.getElementById('contact-form');
+            const notification = document.getElementById('notif');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
                     e.preventDefault();
-                    notif.style.opacity = '1';
-                    notif.style.display = 'block';
+                    // Simulasi kirim data
                     
-                    // Notifikasi menghilang setelah 3 detik
+                    // Tampilkan notifikasi
+                    notification.style.opacity = 0;
+                    notification.style.display = 'block';
                     setTimeout(() => {
-                        notif.style.opacity = '0'; // Mulai transisi fade out
+                        notification.style.opacity = 1;
+                    }, 10); // Sedikit delay untuk transisi
+
+                    // Sembunyikan notifikasi setelah 3 detik
+                    setTimeout(() => {
+                        notification.style.opacity = 0;
                         setTimeout(() => {
-                            notif.style.display = 'none'; // Sembunyikan setelah fade out
-                        }, 500); // 500ms adalah durasi transisi di CSS
-                        form.reset();
-                    }, 3000); 
+                            notification.style.display = 'none';
+                        }, 500); // Tunggu sampai transisi selesai
+                    }, 3000);
+
+                    // Reset form
+                    contactForm.reset();
                 });
             }
-
-            // Inisialisasi: Tampilkan bagian 'home' saat startup
-            showSection('home');
         });
     </script>
 </body>
