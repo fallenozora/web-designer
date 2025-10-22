@@ -503,7 +503,7 @@
             <div class="category" role="button" tabindex="0" data-target-section="sport">Sport Design</div>
             <div class="category" role="button" tabindex="0" data-target-section="feed">Feed Instagram</div>
             <div class="category" role="button" tabindex="0" data-target-section="logo">Logo Design</div>
-            <div class="category" role="button" tabindex="0" data-target-section="forografi">Fotografi</div>
+            <div class="category" role="button" tabindex="0" data-target-section="fotografi">Fotografi</div>
         </div>
         <div style="margin-top: 40px; display: flex; justify-content: center; gap: 20px;">
             <a class="download-cv" style="background: var(--accent);" data-target-section="about-me"> Tentang Saya</a>
@@ -569,14 +569,13 @@
     </section>
 
     <section id="fotografi" class="section container" aria-hidden="true">
-        <h2>fotografi</h2>
+        <h2>Fotografi</h2>
         <div class="gallery">
             <img src="gambar1.jpg" alt="gambar 1" data-target-section="fotografi-detail-1">
-            <img src="https://via.placeholder.com/300x200?text=fotografi-2" alt="gambar 2" data-target-section="fotografi-detail-2">
+            <img src="https://via.placeholder.com/300x200?text=Fotografi+2" alt="gambar 2" data-target-section="fotografi-detail-2">
         </div>
         <button class="back-button" data-target-section="home">⬅ Kembali ke Menu</button>
     </section>
-
     <section id="sport-detail-1" class="section container" aria-hidden="true">
         <div class="detail-page">
             <div class="detail-hero"><img src="barca vs psg.png" alt="Barca vs PSG - detail"></div>
@@ -726,29 +725,29 @@
         </div>
     </section>
     
-    <section id="fotografi" class="section container" aria-hidden="true">
+    <section id="fotografi-detail-1" class="section container" aria-hidden="true">
         <div class="detail-page">
-            <div class="detail-hero"><img src="gambar1.jpg" alt="gambar 1" - detail"></div>
+            <div class="detail-hero"><img src="gambar1.jpg" alt="Ocean - detail"></div>
             <div class="detail-desc">
                 <h3>Ocean — Ringkas</h3>
-                <p>Gambar ini menampilkan keindahan lautan yang mendeskripsikan ketenangan, kedamaian, dan keindahan.</p>
-                <p>Tools: lightroom</p>
+                <p>Gambar ini menampilkan keindahan lautan yang mendeskripsikan ketenangan, kedamaian, dan keindahan. Teknik: Street/Nature Photography.</p>
+                <p>Tools: Adobe Lightroom • Catatan: Fokus pada *mood* dan komposisi.</p>
             </div>
-            <div class="detail-actions"><button class="back-button" data-target-section="fotografi">⬅ Kembali ke Galeri fotografi</button></div>
-        </div>
-    </section>
-    <section id="uiux-detail-2" class="section container" aria-hidden="true">
-        <div class="detail-page">
-            <div class="detail-hero"><img src="https://via.placeholder.com/300x200?text=UIUX+2" alt="UIUX 2 - detail"></div>
-            <div class="detail-desc">
-                <h3>UIUX 2 — Ringkas</h3>
-                <p>Exploration warna & hierarchy, dibuat untuk mobile-first. Clean layout supaya navigasi jelas.</p>
-                <p>Tools: Figma • Catatan: responsive-ready.</p>
-            </div>
-            <div class="detail-actions"><button class="back-button" data-target-section="uiux">⬅ Kembali ke Galeri UI/UX</button></div>
+            <div class="detail-actions"><button class="back-button" data-target-section="fotografi">⬅ Kembali ke Galeri Fotografi</button></div>
         </div>
     </section>
     
+    <section id="fotografi-detail-2" class="section container" aria-hidden="true">
+        <div class="detail-page">
+            <div class="detail-hero"><img src="https://via.placeholder.com/300x200?text=Fotografi+2" alt="Fotografi 2 - detail"></div>
+            <div class="detail-desc">
+                <h3>Skyscrapers at Dusk — Ringkas</h3>
+                <p>Eksplorasi garis dan bayangan di lingkungan urban. Foto ini menangkap kontras antara arsitektur modern dan cahaya senja.</p>
+                <p>Tools: Lightroom • Catatan: cocok untuk ilustrasi majalah.</p>
+            </div>
+            <div class="detail-actions"><button class="back-button" data-target-section="fotografi">⬅ Kembali ke Galeri Fotografi</button></div>
+        </div>
+    </section>
     <section id="contact" class="section container" aria-hidden="true">
         <h2>Kontak Saya</h2>
         <form id="contact-form">
@@ -799,65 +798,55 @@
                 }
             });
 
-            // Handle keydown untuk aksesibilitas (memungkinkan tombol "Enter" pada div kategori)
-            document.body.addEventListener('keydown', (e) => {
-                const target = e.target.closest('[data-target-section]');
-                // Cek jika tombol yang ditekan adalah 'Enter' dan targetnya bukan <A> atau <BUTTON> (misal div category)
-                if (e.key === 'Enter' && target && target.tagName !== 'A' && target.tagName !== 'BUTTON') {
-                    e.preventDefault();
-                    const sectionId = target.getAttribute('data-target-section');
-                    showSection(sectionId);
+            // TEMA TOGGLE
+            const themeButton = document.querySelector('.toggle-theme');
+            const savedTheme = localStorage.getItem('theme');
+            
+            // Terapkan tema yang tersimpan saat load
+            if (savedTheme === 'light') {
+                document.body.classList.add('light');
+                themeButton.textContent = 'Ganti ke Dark';
+            } else {
+                themeButton.textContent = 'Ganti ke Light';
+            }
+
+            themeButton.addEventListener('click', () => {
+                document.body.classList.toggle('light');
+                const isLight = document.body.classList.contains('light');
+                
+                if (isLight) {
+                    localStorage.setItem('theme', 'light');
+                    themeButton.textContent = 'Ganti ke Dark';
+                } else {
+                    localStorage.setItem('theme', 'dark');
+                    themeButton.textContent = 'Ganti ke Light';
                 }
             });
             
-            // Perbaikan untuk memastikan section HOME muncul pertama kali
-            showSection('home');
-
-
-            // Dark mode toggle
-            const themeToggle = document.querySelector('.toggle-theme');
-            const body = document.body;
-            
-            // Load theme preference from localStorage
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'light') {
-                body.classList.add('light');
-                themeToggle.textContent = 'Mode Gelap';
-            } else {
-                themeToggle.textContent = 'Mode Terang';
-            }
-
-            if (themeToggle) {
-                themeToggle.addEventListener('click', () => {
-                    body.classList.toggle('light');
-                    if (body.classList.contains('light')) {
-                        localStorage.setItem('theme', 'light');
-                        themeToggle.textContent = 'Mode Gelap';
-                    } else {
-                        localStorage.setItem('theme', 'dark');
-                        themeToggle.textContent = 'Mode Terang';
-                    }
-                });
-            }
-            
-            // Kontak form submission
+            // FORM SUBMISSION HANDLER
             const contactForm = document.getElementById('contact-form');
-            const notif = document.getElementById('notif');
-            
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Reset form fields (simulasi pengiriman)
-                    contactForm.reset();
-                    
-                    // Tampilkan notifikasi
-                    notif.style.display = 'block';
-                    setTimeout(() => {
-                        notif.style.display = 'none';
-                    }, 3000); 
-                });
-            }
+            const notification = document.getElementById('notif');
+
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault(); // Mencegah form reload page
+                
+                // Simulasikan pengiriman data ke server
+                console.log('Form Submitted!');
+                
+                // Tampilkan notifikasi
+                notification.style.display = 'block';
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Sembunyikan notifikasi setelah 3 detik
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 3000);
+            });
+
+            // Pastikan halaman awal muncul
+            showSection('home');
         });
     </script>
 </body>
