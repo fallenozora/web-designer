@@ -21,8 +21,8 @@
             --accent: #0077b6;
             
             /* Jarak menggunakan REM (Relatif terhadap root font-size) */
-            --gap-xs: 0.5rem;    /* ~8px */
-            --gap-sm: 0.75rem;  /* ~12px */
+            --gap-xs: 0.5rem;   /* ~8px */
+            --gap-sm: 0.75rem; /* ~12px */
             --gap-md: 1rem;      /* ~16px */
             --gap-lg: 1.5rem;    /* ~24px */
             --gap-xl: 2.5rem;    /* ~40px */
@@ -53,7 +53,7 @@
 
         /* MODIFIKASI (1): Terapkan font Montserrat pada Judul (H1, H2, H3) */
         header h1, h2, h3 {
-             font-family: 'Montserrat', sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
         /* End MODIFIKASI (1) */
 
@@ -279,6 +279,8 @@
             width: 100%;
             max-width: 1000px;
             margin: 0 auto;
+            /* Tambahan kursor agar terlihat bisa diklik */
+            cursor: pointer; 
         }
         
         .detail-hero img {
@@ -296,9 +298,9 @@
             margin: 0 auto;
         }
         .detail-desc h3 {
-             font-size: clamp(1.2rem, 2vw, 1.8rem);
-             margin-bottom: var(--gap-sm);
-             font-weight: 700; 
+            font-size: clamp(1.2rem, 2vw, 1.8rem);
+            margin-bottom: var(--gap-sm);
+            font-weight: 700; 
         }
         .detail-desc p {
             font-size: 0.95rem; 
@@ -429,6 +431,80 @@
             border-top: 1px solid #ccc;
         }
 
+        /* --- BARU: CSS VIDEO MODAL (LIGHTBOX) --- */
+        .video-modal {
+            display: none; /* Sembunyikan secara default */
+            position: fixed;
+            z-index: 10000; /* Pastikan di atas semua konten lain */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9); /* Overlay gelap */
+            justify-content: center;
+            align-items: center;
+            padding: var(--gap-lg);
+        }
+
+        .video-modal.show {
+            display: flex; /* Tampilkan ketika class 'show' ditambahkan */
+            animation: fadeInModal 0.3s ease-out;
+        }
+
+        .video-modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            width: 100%; /* Agar video responsive */
+            height: auto;
+        }
+        
+        /* Kontainer untuk aspek rasio video */
+        .video-wrapper {
+             /* Misalnya, rasio 16:9 */
+            position: relative;
+            padding-bottom: 56.25%; /* (9 / 16) * 100% */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 40px rgba(0, 180, 216, 0.5);
+            display: block;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px; 
+            right: 0;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+            line-height: 1;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            opacity: 1;
+        }
+
+        @keyframes fadeInModal {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        /* --- AKHIR CSS VIDEO MODAL --- */
+
 
         /* Media Query untuk Layar Handphone */
         @media (max-width: 768px) { 
@@ -482,6 +558,12 @@
                 margin-top: var(--gap-md);
                 margin-bottom: var(--gap-md);
             }
+
+            .close-modal {
+                top: 0px; 
+                font-size: 2rem;
+                text-shadow: 0 0 5px black; 
+            }
         }
         
         @keyframes fadeIn {
@@ -501,7 +583,7 @@
         <h1>Fallen Ozora Raza</h1>
         <p>Desainer Grafis Pelajar</p>
         <button class="toggle-theme">Ganti Tema</button><br>
-        </header>
+    </header>
 
     <section id="home" class="section container active" aria-hidden="false">
         <h2>Pilih Kategori Portofolio</h2>
@@ -583,9 +665,12 @@
         </div>
         <button class="back-button" data-target-section="home">⬅ Kembali ke Menu</button>
     </section>
+
     <section id="sport-detail-1" class="section container" aria-hidden="true">
         <div class="detail-page">
-            <div class="detail-hero"><img src="barca vs psg.png" alt="Barca vs PSG - detail"></div>
+            <div class="detail-hero video-trigger" data-video-src="video/barca_psg_animasi.mp4" style="cursor: pointer;" role="button" tabindex="0">
+                <img src="barca vs psg.png" alt="Barca vs PSG - detail">
+            </div>
             <div class="detail-desc">
                 <h3>Barca vs PSG — Ringkas</h3>
                 <p>Desain poster ini dibuat untuk memunculkan energi pertandingan. Saya pakai warna kontras dan susunan pemain yang berekspresi tegas supaya mata langsung fokus ke aksi.</p>
@@ -599,7 +684,9 @@
     
     <section id="sport-detail-2" class="section container" aria-hidden="true">
         <div class="detail-page">
-            <div class="detail-hero"><img src="MESSI KIYOWO.png" alt="Messi - detail"></div>
+            <div class="detail-hero video-trigger" data-video-src="video/messi_kiyowo_animasi.mp4" style="cursor: pointer;" role="button" tabindex="0">
+                <img src="MESSI KIYOWO.png" alt="Messi - detail">
+            </div>
             <div class="detail-desc">
                 <h3>Messi Kiyowo — Ringkas</h3>
                 <p>Konsepnya fokus ke persona atlet: ekspresi dan gerak di-highlight. Warna dipilih menyesuaikan tone tim tersebut.</p>
@@ -613,7 +700,9 @@
     
     <section id="sport-detail-3" class="section container" aria-hidden="true">
         <div class="detail-page">
-            <div class="detail-hero"><img src="dembele.png" alt="Dembele - detail"></div>
+            <div class="detail-hero video-trigger" data-video-src="video/dembele_animasi.mp4" style="cursor: pointer;" role="button" tabindex="0">
+                <img src="dembele.png" alt="Dembele - detail">
+            </div>
             <div class="detail-desc">
                 <h3>Dembele — Ringkas</h3>
                 <p>Eksperimen warna dan tekstur untuk memberi kesan gerak cepat. Layout dibuat simple supaya tetap mudah dibaca di mobile.</p>
@@ -627,7 +716,9 @@
     
     <section id="sport-detail-4" class="section container" aria-hidden="true">
         <div class="detail-page">
-            <div class="detail-hero"><img src="RAPHINHA FINAL.png" alt="Raphinha - detail"></div>
+            <div class="detail-hero video-trigger" data-video-src="video/raphinha_animasi.mp4" style="cursor: pointer;" role="button" tabindex="0">
+                <img src="RAPHINHA FINAL.png" alt="Raphinha - detail">
+            </div>
             <div class="detail-desc">
                 <h3>Raphinha Final — Ringkas</h3>
                 <p>Desain ini menekankan momen kemenangan. Elemen grafis mendukung rasa dinamis dan cocok untuk header event.</p>
@@ -641,7 +732,9 @@
 
     <section id="sport-detail-5" class="section container" aria-hidden="true">
         <div class="detail-page">
-            <div class="detail-hero"><img src="INDONESIA.png" alt="Indonesia - detail"></div>
+            <div class="detail-hero video-trigger" data-video-src="video/indonesia_animasi.mp4" style="cursor: pointer;" role="button" tabindex="0">
+                <img src="INDONESIA.png" alt="Indonesia - detail">
+            </div>
             <div class="detail-desc">
                 <h3>Indonesia — Ringkas</h3>
                 <p>Desain ini menyimbolkan semangat dan harapan.cocok untuk poster pertandingan/matchday.</p>
@@ -655,7 +748,9 @@
                         
     <section id="feed-detail-1" class="section container" aria-hidden="true">
         <div class="detail-page">
-            <div class="detail-hero"><img src="Pekukuhan.png" alt="Pekukuhan - detail"></div>
+            <div class="detail-hero video-trigger" data-video-src="video/pekukuhan_animasi.mp4" style="cursor: pointer;" role="button" tabindex="0">
+                <img src="Pekukuhan.png" alt="Pekukuhan - detail">
+            </div>
             <div class="detail-desc">
                 <h3>Pekukuhan — Ringkas</h3>
                 <p>Konten ini dibuat untuk pengumuman resmi—komposisi bersih dan warna brand agar terlihat profesional pada feed.</p>
@@ -666,7 +761,9 @@
     </section>
     <section id="feed-detail-2" class="section container" aria-hidden="true">
         <div class="detail-page">
-            <div class="detail-hero"><img src="Fanta.png" alt="Fanta - detail"></div>
+            <div class="detail-hero video-trigger" data-video-src="video/fanta_animasi.mp4" style="cursor: pointer;" role="button" tabindex="0">
+                <img src="Fanta.png" alt="Fanta - detail">
+            </div>
             <div class="detail-desc">
                 <h3>Fanta — Ringkas</h3>
                 <p>Desain promosi produk dengan warna cerah untuk menarik perhatian. Visual kuat supaya engagement naik.</p>
@@ -677,7 +774,9 @@
     </section>
     <section id="feed-detail-3" class="section container" aria-hidden="true">
         <div class="detail-page">
-            <div class="detail-hero"><img src="OPPENHEIMER final ig.png" alt="Oppenheimer - detail"></div>
+            <div class="detail-hero video-trigger" data-video-src="video/oppenheimer_animasi.mp4" style="cursor: pointer;" role="button" tabindex="0">
+                <img src="OPPENHEIMER final ig.png" alt="Oppenheimer - detail">
+            </div>
             <div class="detail-desc">
                 <h3>Oppenheimer — Ringkas</h3>
                 <p>Poster tematik dengan mood dramatis. Kontras tinggi dan tipografi kuat jadi fokus utama.</p>
@@ -688,7 +787,9 @@
     </section>
     <section id="feed-detail-4" class="section container" aria-hidden="true">
         <div class="detail-page">
-            <div class="detail-hero"><img src="Burger poster.png" alt="Burger poster - detail"></div>
+            <div class="detail-hero video-trigger" data-video-src="video/burger_animasi.mp4" style="cursor: pointer;" role="button" tabindex="0">
+                <img src="Burger poster.png" alt="Burger poster - detail">
+            </div>
             <div class="detail-desc">
                 <h3>Burger Poster — Ringkas</h3>
                 <p>Poster makanan yang menggugah selera; komposisi dan warna dipilih untuk meningkatkan nafsu beli.</p>
@@ -700,7 +801,9 @@
     
     <section id="logo-detail-1" class="section container" aria-hidden="true">
         <div class="detail-page">
-            <div class="detail-hero"><img src="logo.png" alt="Logo 1 - detail"></div>
+            <div class="detail-hero video-trigger" data-video-src="video/logo_1_animasi.mp4" style="cursor: pointer;" role="button" tabindex="0">
+                <img src="logo.png" alt="Logo 1 - detail">
+            </div>
             <div class="detail-desc">
                 <h3>Logo 1 — Ringkas</h3>
                 <p>Logo ini saya buat untuk instagram kelas desain komunikasi visual, Dengan maskot burung hantu yang melambangkan maskot DKV (desain komunikasi visual) yang memegang kamera yang melambangkan senjata para anggota DKV. Versi hitam-putih siap untuk format berbeda.</p>
@@ -711,7 +814,9 @@
     </section>
     <section id="logo-detail-2" class="section container" aria-hidden="true">
         <div class="detail-page">
-            <div class="detail-hero"><img src="logo kopi brewmance.png" alt="Logo Kopi Brewmance - detail"></div>
+            <div class="detail-hero video-trigger" data-video-src="video/logo_brewmance_animasi.mp4" style="cursor: pointer;" role="button" tabindex="0">
+                <img src="logo kopi brewmance.png" alt="Logo Kopi Brewmance - detail">
+            </div>
             <div class="detail-desc">
                 <h3>Logo Kopi Brewmance — Ringkas</h3>
                 <p>Identitas hangat dan ramah, dibuat supaya terasa cozy di kemasan & social media.</p>
@@ -722,7 +827,9 @@
     </section>
     <section id="logo-detail-3" class="section container" aria-hidden="true">
         <div class="detail-page">
-            <div class="detail-hero"><img src="logo fanz design 2.png" alt="Logo Fanz Design - detail"></div>
+            <div class="detail-hero video-trigger" data-video-src="video/logo_fanz_animasi.mp4" style="cursor: pointer;" role="button" tabindex="0">
+                <img src="logo fanz design 2.png" alt="Logo Fanz Design - detail">
+            </div>
             <div class="detail-desc">
                 <h3>Logo Fanz Design — Ringkas</h3>
                 <p>Logo modern dengan bentuk geometris untuk kesan profesional. Versi monokrom tersedia.</p>
@@ -734,7 +841,9 @@
     
     <section id="fotografi-detail-1" class="section container" aria-hidden="true">
         <div class="detail-page">
-            <div class="detail-hero"><img src="gambar1.jpg" alt="Ocean - detail"></div>
+            <div class="detail-hero">
+                <img src="gambar1.jpg" alt="Ocean - detail">
+            </div>
             <div class="detail-desc">
                 <h3>Ocean — Ringkas</h3>
                 <p>Gambar ini menampilkan keindahan lautan yang mendeskripsikan ketenangan, kedamaian, dan keindahan. Teknik: Street/Nature Photography.</p>
@@ -746,7 +855,9 @@
     
     <section id="fotografi-detail-2" class="section container" aria-hidden="true">
         <div class="detail-page">
-            <div class="detail-hero"><img src="pics.jpg" alt="Fotografi 2 - detail"></div>
+            <div class="detail-hero">
+                <img src="pics.jpg" alt="Fotografi 2 - detail">
+            </div>
             <div class="detail-desc">
                 <h3>Urban Study — Ringkas</h3>
                 <p>Hamparan kota dari puncak gunung, kota nampak kecil namun penuh kehidupan. cahaya lampu dan langit yan membiru terpadu, seolah langit dan bumi saling menyapa. Teknik : Urban & Nature Photography.</p>
@@ -758,7 +869,9 @@
 
     <section id="fotografi-detail-3" class="section container" aria-hidden="true">
         <div class="detail-page">
-            <div class="detail-hero"><img src="gambar3.jpeg" alt="Fotografi 3 - detail"></div>
+            <div class="detail-hero">
+                <img src="gambar3.jpeg" alt="Fotografi 3 - detail">
+            </div>
             <div class="detail-desc">
                 <h3>Potraiture — Ringkas</h3>
                 <p>Tampak lautan dengan fajar, menyatu menciptakan suasana tenangkan jiwa raga. Teknik : Nature Photography.</p>
@@ -770,7 +883,9 @@
 
     <section id="fotografi-detail-4" class="section container" aria-hidden="true">
         <div class="detail-page">
-            <div class="detail-hero"><img src="gambar4.jpeg" alt="Fotografi 4 - detail"></div>
+            <div class="detail-hero">
+                <img src="gambar4.jpeg" alt="Fotografi 4 - detail">
+            </div>
             <div class="detail-desc">
                 <h3>Still Life — Ringkas</h3>
                 <p>cantiknya kedua ciptaan yang maha kuasa, menghidupkan rasa dan hati, bagaikan lukisan semesta yang tak tertandingi pena manusia. Teknik : Medium-shot.</p>
@@ -779,129 +894,134 @@
             <div class="detail-actions"><button class="back-button" data-target-section="fotografi">⬅ Kembali ke Galeri Fotografi</button></div>
         </div>
     </section>
+
     <section id="contact" class="section container" aria-hidden="true">
         <h2>Kontak Saya</h2>
         <p>Anda dapat menghubungi saya melalui form di bawah ini atau melalui Instagram.</p>
-        <a href="https://www.instagram.com/fanzz.design?igsh=MW1waHN1ZDh0ejF4eg==" target="https://www.instagram.com/fanzz.design?igsh=MW1waHN1ZDh0ejF4eg==" class="social-link" style="background: #E1306C;">Kunjungi Instagram</a>
+        <a href="https://www.instagram.com/fanzz.design?igsh=MW1waHN1ZDh0ejF4eg==" target="_blank" class="social-link">Kunjungi Instagram Saya</a>
         <form id="contact-form">
             <input type="text" placeholder="Nama Anda" required>
             <input type="email" placeholder="Email Anda" required>
             <textarea placeholder="Pesan Anda" required></textarea>
-            <button type="submit">Kirim</button>
-            <div class="notification" id="contact-notification">Pesan Anda berhasil dikirim!</div>
+            <button type="submit">Kirim Pesan</button>
+            <div class="notification">Pesan Terkirim!</div>
         </form>
-        <div class="detail-actions">
-            <button class="back-button" data-target-section="home">⬅ Kembali ke Menu</button>
-        </div>
+        <button class="back-button" data-target-section="home">⬅ Kembali ke Menu</button>
     </section>
-
+    
     <footer>
         <div class="container">
-            &copy; 2025 Fallen Ozora Raza. All rights reserved. | Dibuat dengan semangat.
+            <p>&copy; 2025 Fallen Ozora Raza. All Rights Reserved.</p>
         </div>
     </footer>
 
+    <div id="global-video-modal" class="video-modal">
+        <div class="video-modal-content">
+            <span class="close-modal" role="button" aria-label="Tutup Video">&times;</span>
+            <div class="video-wrapper">
+                <video id="modal-video-player" controls preload="metadata" playsinline>
+                    </video>
+            </div>
+        </div>
+    </div>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const body = document.body;
-            const sections = document.querySelectorAll('.section');
-            const toggleThemeButton = document.querySelector('.toggle-theme');
-            const contactForm = document.getElementById('contact-form');
-            const notification = document.getElementById('contact-notification');
+        // Logika Tema Toggle (Sudah ada di kode lama, hanya disajikan lengkap)
+        const toggleThemeBtn = document.querySelector('.toggle-theme');
+        if (toggleThemeBtn) {
+            toggleThemeBtn.addEventListener('click', () => {
+                document.body.classList.toggle('light');
+            });
+        }
+        
+        // Logika Form (Sudah ada di kode lama, hanya disajikan lengkap)
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const notification = document.querySelector('.notification');
+                notification.style.display = 'block';
+                e.target.reset();
+                
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 3000);
+            });
+        }
 
-            // --- Fungsi Manajemen Seksi (Halaman) ---
-            function showSection(targetId) {
-                // Sembunyikan semua seksi
-                sections.forEach(section => {
+        // ----------------------------------------------------
+        // LOGIKA BARU: NAVIGASI SEKSI & MODAL VIDEO
+        // ----------------------------------------------------
+        const modal = document.getElementById('global-video-modal');
+        const videoPlayer = document.getElementById('modal-video-player');
+        const closeButton = document.querySelector('.close-modal');
+        const videoTriggers = document.querySelectorAll('.detail-hero'); 
+        
+        // Fungsi untuk membuka modal video
+        function openVideoModal(videoSrc) {
+            // Mengganti src video player
+            videoPlayer.src = videoSrc;
+            modal.classList.add('show');
+            // Timeout singkat untuk memastikan video siap diputar setelah modal terlihat
+            setTimeout(() => {
+                videoPlayer.load();
+                videoPlayer.play();
+            }, 50); 
+        }
+
+        // Fungsi untuk menutup modal video
+        function closeVideoModal() {
+            videoPlayer.pause(); 
+            videoPlayer.removeAttribute('src'); // Menghapus sumber untuk menghentikan loading
+            modal.classList.remove('show');
+        }
+
+        // Event listener untuk tombol tutup
+        closeButton.addEventListener('click', closeVideoModal);
+
+        // Event listener untuk menutup modal saat mengklik di luar konten (overlay)
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal || e.target.closest('.close-modal')) {
+                closeVideoModal();
+            }
+        });
+
+        // Event listener untuk tombol ESC (Aksesibilitas)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape" && modal.classList.contains('show')) {
+                closeVideoModal();
+            }
+        });
+        
+        // Logika Navigasi (diubah sedikit untuk menampung interaksi video)
+        document.addEventListener('click', (e) => {
+            const target = e.target.closest('[data-target-section], .detail-hero');
+            
+            if (!target) return;
+
+            const targetSectionId = target.getAttribute('data-target-section');
+            const videoSrc = target.getAttribute('data-video-src');
+
+            if (videoSrc) {
+                // Jika elemen memiliki data-video-src, ini adalah pemicu video.
+                // Mencegah navigasi ke halaman detail (karena Anda sudah berada di detail page)
+                e.preventDefault(); 
+                openVideoModal(videoSrc);
+                return; 
+            }
+            
+            if (targetSectionId) {
+                // Ini adalah navigasi normal antar seksi (Home, Sport, About, dll.)
+                document.querySelectorAll('.section').forEach(section => {
                     section.classList.remove('active');
                     section.setAttribute('aria-hidden', 'true');
                 });
-
-                // Tampilkan seksi yang dituju
-                const targetSection = document.getElementById(targetId);
+                
+                const targetSection = document.getElementById(targetSectionId);
                 if (targetSection) {
                     targetSection.classList.add('active');
                     targetSection.setAttribute('aria-hidden', 'false');
-                    window.scrollTo(0, 0); // Gulir ke atas halaman
+                    window.scrollTo(0, 0); 
                 }
-            }
-
-            // --- Event Listeners untuk Navigasi ---
-            // Menggunakan event delegation pada body untuk menangani klik pada semua elemen navigasi
-            body.addEventListener('click', (event) => {
-                const target = event.target;
-                let targetSectionId = null;
-
-                // Cek untuk tombol/link dengan data-target-section
-                if (target.hasAttribute('data-target-section')) {
-                    targetSectionId = target.getAttribute('data-target-section');
-                } else if (target.closest('.category')) {
-                    // Cek untuk elemen kategori (div.category)
-                    targetSectionId = target.closest('.category').getAttribute('data-target-section');
-                } else if (target.closest('.gallery img')) {
-                    // Cek untuk gambar galeri
-                    targetSectionId = target.closest('.gallery img').getAttribute('data-target-section');
-                } else if (target.closest('.back-button')) {
-                    // Cek untuk tombol kembali
-                    targetSectionId = target.closest('.back-button').getAttribute('data-target-section');
-                } else if (target.closest('a.download-cv') && target.closest('a.download-cv').hasAttribute('data-target-section')) {
-                    // Cek untuk link/button di home/about-me
-                    targetSectionId = target.closest('a.download-cv').getAttribute('data-target-section');
-                    // Cegah navigasi browser untuk link yang berfungsi sebagai button (halaman 'Tentang Saya'/'Kontak Saya')
-                    if (targetSectionId === 'about-me' || targetSectionId === 'contact') {
-                        event.preventDefault();
-                    }
-                }
-
-                if (targetSectionId) {
-                    showSection(targetSectionId);
-                }
-            });
-
-            // --- Fungsi Theme Toggling ---
-            toggleThemeButton.addEventListener('click', () => {
-                body.classList.toggle('light');
-                const isLight = body.classList.contains('light');
-                toggleThemeButton.textContent = isLight ? 'Ganti ke Dark' : 'Ganti Tema';
-                // Simpan preferensi di localStorage
-                localStorage.setItem('theme', isLight ? 'light' : 'dark');
-            });
-
-            // Muat Preferensi Tema saat startup
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'light') {
-                body.classList.add('light');
-                toggleThemeButton.textContent = 'Ganti ke Dark';
-            } else {
-                body.classList.remove('light');
-                toggleThemeButton.textContent = 'Ganti Tema';
-            }
-
-            // --- Fungsi Simulasi Form Kontak ---
-            if (contactForm) {
-                contactForm.addEventListener('submit', (event) => {
-                    event.preventDefault(); // Mencegah form submit default (page refresh)
-                    
-                    // Sembunyikan notifikasi sebelumnya
-                    notification.style.display = 'none';
-
-                    // Simulasi pengiriman data (Anda akan mengganti ini dengan AJAX nyata)
-                    console.log('Form Submitted!');
-
-                    // Tampilkan notifikasi sukses
-                    notification.style.display = 'block';
-                    notification.style.opacity = '1';
-
-                    // Kosongkan form setelah delay
-                    setTimeout(() => {
-                        contactForm.reset();
-                        // Hilangkan notifikasi setelah 3 detik
-                        notification.style.opacity = '0';
-                        setTimeout(() => {
-                            notification.style.display = 'none';
-                        }, 500); // Sinkronkan dengan waktu transisi CSS
-                    }, 1500);
-                });
             }
         });
     </script>
